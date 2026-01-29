@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend Maintenance Request Form View to add Portal Users and Portal Notes -->
+    <record id="maintenance_request_view_form_portal" model="ir.ui.view">
+        <field name="name">maintenance.request.form.portal</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="portal_user_ids" widget="many2many_tags"
+                       options="{'color_field': 'color'}"
+                       placeholder="Select external vendors..."/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Portal Notes" name="portal_notes">
+                    <field name="portal_notes" placeholder="Notes from external vendor will appear here..."/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extend Maintenance Request List View to show Portal Users -->
+    <record id="maintenance_request_view_list_portal" model="ir.ui.view">
+        <field name="name">maintenance.request.list.portal</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="portal_user_ids" widget="many2many_tags" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extend Maintenance Request Search View to filter by Portal Users -->
+    <record id="maintenance_request_view_search_portal" model="ir.ui.view">
+        <field name="name">maintenance.request.search.portal</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <filter string="Has Portal Users" name="has_portal_users"
+                        domain="[('portal_user_ids', '!=', False)]"/>
+                <field name="portal_user_ids" string="Portal User"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

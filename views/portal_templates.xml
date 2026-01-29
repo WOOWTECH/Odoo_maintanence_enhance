@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ==================== Portal Home Cards ==================== -->
+
+    <!-- Add Equipment counter to portal home -->
+    <template id="portal_my_home_equipment" name="Portal My Home: Equipment" inherit_id="portal.portal_my_home" priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="before">
+            <t t-set="portal_client_category_enable" t-value="True"/>
+        </xpath>
+        <div id="portal_client_category" position="inside">
+            <div class="o_portal_index_card col-md-6 order-2">
+                <a href="/my/equipments" title="設備" class="d-flex gap-2 gap-md-3 py-3 pe-2 px-md-3 h-100 rounded text-decoration-none bg-100">
+                    <div class="o_portal_icon d-block align-self-start">
+                        <img src="/maintenance_portal/static/src/img/equipment.svg?v=3" style="width: 38px; height: 38px;"/>
+                    </div>
+                    <div>
+                        <div class="mt-0 mb-1 fs-5 fw-normal lh-1">
+                            <span t-att-data-placeholder_count="'equipment_count'"/>
+                            <span>設備</span>
+                        </div>
+                        <div class="opacity-75">查看指派給您的設備</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </template>
+
+    <!-- Add Maintenance Request counter to portal home -->
+    <template id="portal_my_home_maintenance_request" name="Portal My Home: Maintenance Requests" inherit_id="portal.portal_my_home" priority="41">
+        <div id="portal_client_category" position="inside">
+            <div class="o_portal_index_card col-md-6 order-2">
+                <a href="/my/maintenance-requests" title="維修請求" class="d-flex gap-2 gap-md-3 py-3 pe-2 px-md-3 h-100 rounded text-decoration-none bg-100">
+                    <div class="o_portal_icon d-block align-self-start">
+                        <img src="/maintenance_portal/static/src/img/maintenance.svg?v=3" style="width: 38px; height: 38px;"/>
+                    </div>
+                    <div>
+                        <div class="mt-0 mb-1 fs-5 fw-normal lh-1">
+                            <span t-att-data-placeholder_count="'maintenance_request_count'"/>
+                            <span>維修請求</span>
+                        </div>
+                        <div class="opacity-75">查看和更新維修請求</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </template>
+
+    <!-- ==================== Equipment List Page ==================== -->
+
+    <template id="portal_my_equipments" name="My Equipment">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">設備</t>
+            </t>
+
+            <t t-if="equipments">
+                <div class="row mt-3">
+                    <t t-foreach="equipments" t-as="equipment">
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <div class="card h-100 shadow-sm maintenance-equipment-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a t-attf-href="/my/equipments/#{equipment.id}">
+                                            <t t-esc="equipment.name"/>
+                                        </a>
+                                    </h5>
+                                    <p class="card-text text-muted mb-2">
+                                        <t t-if="equipment.serial_no">
+                                            <small><i class="mdi mdi-barcode me-1"></i><t t-esc="equipment.serial_no"/></small>
+                                        </t>
+                                    </p>
+                                    <p class="card-text mb-2">
+                                        <t t-if="equipment.category_id">
+                                            <span class="badge bg-secondary">
+                                                <t t-esc="equipment.category_id.name"/>
+                                            </span>
+                                        </t>
+                                    </p>
+                                    <p class="card-text">
+                                        <t t-if="equipment.location">
+                                            <small class="text-muted">
+                                                <i class="mdi mdi-map-marker me-1"></i>
+                                                <t t-esc="equipment.location"/>
+                                            </small>
+                                        </t>
+                                    </p>
+                                </div>
+                                <div class="card-footer bg-transparent">
+                                    <a t-attf-href="/my/equipments/#{equipment.id}" class="btn btn-sm btn-outline-primary">
+                                        <i class="mdi mdi-eye me-1"></i>查看詳情
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+
+                <div class="d-flex justify-content-center mt-4">
+                    <t t-call="portal.pager"/>
+                </div>
+            </t>
+
+            <t t-else="">
+                <div class="alert alert-info mt-3">
+                    <i class="mdi mdi-information me-2"></i>
+                    沒有指派給您的設備。
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- ==================== Equipment Detail Page ==================== -->
+
+    <template id="portal_equipment_detail" name="Equipment Detail">
+        <t t-call="portal.portal_layout">
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3>
+                            <i class="mdi mdi-desktop-classic me-2 text-primary"></i>
+                            <t t-esc="equipment.name"/>
+                        </h3>
+                        <a href="/my/equipments" class="btn btn-secondary">
+                            <i class="mdi mdi-arrow-left me-1"></i>返回列表
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Equipment Info -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="mdi mdi-information me-2"></i>設備資訊</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr t-if="equipment.serial_no">
+                                        <th class="text-muted" style="width: 40%;">序號</th>
+                                        <td><t t-esc="equipment.serial_no"/></td>
+                                    </tr>
+                                    <tr t-if="equipment.category_id">
+                                        <th class="text-muted">類別</th>
+                                        <td><span class="badge bg-secondary"><t t-esc="equipment.category_id.name"/></span></td>
+                                    </tr>
+                                    <tr t-if="equipment.location">
+                                        <th class="text-muted">位置</th>
+                                        <td><t t-esc="equipment.location"/></td>
+                                    </tr>
+                                    <tr t-if="equipment.model">
+                                        <th class="text-muted">型號</th>
+                                        <td><t t-esc="equipment.model"/></td>
+                                    </tr>
+                                    <tr t-if="equipment.assign_date">
+                                        <th class="text-muted">指派日期</th>
+                                        <td><t t-esc="equipment.assign_date" t-options='{"widget": "date"}'/></td>
+                                    </tr>
+                                    <tr t-if="equipment.note">
+                                        <th class="text-muted">備註</th>
+                                        <td><t t-raw="equipment.note"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Maintenance Requests -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-warning">
+                            <h5 class="mb-0"><i class="mdi mdi-tools me-2"></i>相關維修請求</h5>
+                        </div>
+                        <div class="card-body">
+                            <t t-if="maintenance_requests">
+                                <div class="list-group list-group-flush">
+                                    <t t-foreach="maintenance_requests" t-as="req">
+                                        <a t-attf-href="/my/maintenance-requests/#{req.id}" class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1"><t t-esc="req.name"/></h6>
+                                                <span t-attf-class="badge #{req.stage_id.done and 'bg-success' or 'bg-info'}">
+                                                    <t t-esc="req.stage_id.name"/>
+                                                </span>
+                                            </div>
+                                            <small class="text-muted">
+                                                <t t-esc="req.create_date" t-options='{"widget": "datetime", "format": "yyyy-MM-dd"}'/>
+                                            </small>
+                                        </a>
+                                    </t>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <p class="text-muted mb-0">此設備沒有維修請求。</p>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- ==================== Maintenance Request List Page ==================== -->
+
+    <template id="portal_my_maintenance_requests" name="My Maintenance Requests">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">維修請求</t>
+            </t>
+
+            <t t-if="requests">
+                <div class="table-responsive mt-3">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>請求名稱</th>
+                                <th>設備</th>
+                                <th>階段</th>
+                                <th>日期</th>
+                                <th class="text-end">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="requests" t-as="req">
+                                <tr>
+                                    <td>
+                                        <a t-attf-href="/my/maintenance-requests/#{req.id}">
+                                            <t t-esc="req.name"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <t t-if="req.equipment_id">
+                                            <t t-esc="req.sudo().equipment_id.name"/>
+                                        </t>
+                                        <t t-else="">-</t>
+                                    </td>
+                                    <td>
+                                        <span t-attf-class="badge #{req.stage_id.done and 'bg-success' or 'bg-info'}">
+                                            <t t-esc="req.stage_id.name"/>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <t t-esc="req.create_date" t-options='{"widget": "datetime", "format": "yyyy-MM-dd"}'/>
+                                    </td>
+                                    <td class="text-end">
+                                        <a t-attf-href="/my/maintenance-requests/#{req.id}" class="btn btn-sm btn-outline-primary">
+                                            <i class="mdi mdi-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="d-flex justify-content-center mt-4">
+                    <t t-call="portal.pager"/>
+                </div>
+            </t>
+
+            <t t-else="">
+                <div class="alert alert-info mt-3">
+                    <i class="mdi mdi-information me-2"></i>
+                    沒有指派給您的維修請求。
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- ==================== Maintenance Request Detail Page ==================== -->
+
+    <template id="portal_maintenance_request_detail" name="Maintenance Request Detail">
+        <t t-call="portal.portal_layout">
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3>
+                            <i class="mdi mdi-tools me-2 text-primary"></i>
+                            <t t-esc="mrequest.name"/>
+                        </h3>
+                        <a href="/my/maintenance-requests" class="btn btn-secondary">
+                            <i class="mdi mdi-arrow-left me-1"></i>返回列表
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Progress Bar -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h6 class="card-title text-muted mb-3">狀態進度</h6>
+                            <div class="d-flex justify-content-between position-relative maintenance-progress">
+                                <t t-foreach="stages" t-as="stage">
+                                    <div class="text-center maintenance-stage">
+                                        <div t-attf-class="rounded-circle d-inline-flex align-items-center justify-content-center #{stage.sequence &lt;= mrequest.stage_id.sequence and 'bg-primary text-white' or 'bg-light text-muted'}" style="width: 40px; height: 40px;">
+                                            <t t-if="stage.done">
+                                                <i class="mdi mdi-check"></i>
+                                            </t>
+                                            <t t-else="">
+                                                <span t-esc="stage_index + 1"/>
+                                            </t>
+                                        </div>
+                                        <div class="mt-2">
+                                            <small t-attf-class="#{stage.id == mrequest.stage_id.id and 'fw-bold text-primary' or 'text-muted'}">
+                                                <t t-esc="stage.name"/>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Request Info -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="mdi mdi-information me-2"></i>請求資訊</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th class="text-muted" style="width: 40%;">請求名稱</th>
+                                        <td><t t-esc="mrequest.name"/></td>
+                                    </tr>
+                                    <tr t-if="mrequest.sudo().equipment_id">
+                                        <th class="text-muted">設備</th>
+                                        <td>
+                                            <a t-attf-href="/my/equipments/#{mrequest.sudo().equipment_id.id}">
+                                                <t t-esc="mrequest.sudo().equipment_id.name"/>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr t-if="mrequest.sudo().equipment_id.category_id">
+                                        <th class="text-muted">類別</th>
+                                        <td>
+                                            <span class="badge bg-secondary">
+                                                <t t-esc="mrequest.sudo().equipment_id.category_id.name"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-muted">維護類型</th>
+                                        <td>
+                                            <t t-if="mrequest.maintenance_type == 'corrective'">修復性維護</t>
+                                            <t t-else="">預防性維護</t>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-muted">請求日期</th>
+                                        <td><t t-esc="mrequest.request_date" t-options='{"widget": "date"}'/></td>
+                                    </tr>
+                                    <tr t-if="mrequest.schedule_date">
+                                        <th class="text-muted">預定日期</th>
+                                        <td><t t-esc="mrequest.schedule_date" t-options='{"widget": "date"}'/></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-muted">目前階段</th>
+                                        <td>
+                                            <span t-attf-class="badge #{mrequest.stage_id.done and 'bg-success' or 'bg-info'}">
+                                                <t t-esc="mrequest.stage_id.name"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr t-if="mrequest.description">
+                                        <th class="text-muted">描述</th>
+                                        <td><t t-out="mrequest.description"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Update Status Form -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0"><i class="mdi mdi-pencil me-2"></i>更新狀態</h5>
+                        </div>
+                        <div class="card-body">
+                            <form t-attf-action="/my/maintenance-requests/#{mrequest.id}/update" method="post">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                <!-- Status Update Buttons -->
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">更新階段</label>
+                                    <div class="d-grid gap-2">
+                                        <t t-if="not mrequest.stage_id.done">
+                                            <!-- Find if current stage is the first one -->
+                                            <t t-set="is_first_stage" t-value="mrequest.stage_id.sequence == min(stages.mapped('sequence'))"/>
+                                            <t t-if="is_first_stage">
+                                                <button type="submit" name="action" value="in_progress" class="btn btn-warning">
+                                                    <i class="mdi mdi-play me-1"></i>開始工作（進行中）
+                                                </button>
+                                            </t>
+                                            <t t-else="">
+                                                <button type="submit" name="action" value="done" class="btn btn-success">
+                                                    <i class="mdi mdi-check me-1"></i>標記為完成
+                                                </button>
+                                            </t>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="alert alert-success mb-0">
+                                                <i class="mdi mdi-check-circle me-2"></i>
+                                                此請求已完成。
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+
+                                <!-- Notes -->
+                                <div class="mb-3">
+                                    <label for="notes" class="form-label fw-bold">新增備註</label>
+                                    <textarea name="notes" id="notes" class="form-control" rows="4"
+                                              placeholder="描述執行的工作、使用的零件、發現的問題..."></textarea>
+                                </div>
+
+                                <t t-if="not mrequest.stage_id.done">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="mdi mdi-content-save me-1"></i>儲存備註
+                                    </button>
+                                </t>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Portal Notes Display -->
+                    <t t-if="mrequest.portal_notes">
+                        <div class="card shadow-sm mt-4">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="mb-0"><i class="mdi mdi-comment-text me-2"></i>工作備註</h5>
+                            </div>
+                            <div class="card-body">
+                                <pre class="mb-0" style="white-space: pre-wrap;"><t t-esc="mrequest.portal_notes"/></pre>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

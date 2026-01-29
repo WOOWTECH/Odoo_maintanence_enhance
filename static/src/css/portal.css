@@ -1,0 +1,155 @@
+/* Maintenance Portal Custom Styles */
+
+/* Equipment Card Styles */
+.maintenance-equipment-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid #e9ecef;
+}
+
+.maintenance-equipment-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.maintenance-equipment-card .card-title a {
+    color: #495057;
+    text-decoration: none;
+}
+
+.maintenance-equipment-card .card-title a:hover {
+    color: #007bff;
+}
+
+/* Status Progress Bar */
+.maintenance-progress {
+    padding: 0 2rem;
+}
+
+.maintenance-progress::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: #e9ecef;
+    z-index: 0;
+}
+
+.maintenance-stage {
+    z-index: 1;
+    flex: 1;
+}
+
+/* Badge Styles */
+.badge.bg-info {
+    background-color: #17a2b8 !important;
+}
+
+.badge.bg-success {
+    background-color: #28a745 !important;
+}
+
+.badge.bg-warning {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+/* Card Header Colors */
+.card-header.bg-primary {
+    background-color: #714B67 !important;
+}
+
+.card-header.bg-success {
+    background-color: #28a745 !important;
+}
+
+.card-header.bg-warning {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.card-header.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #714B67;
+    border-color: #714B67;
+}
+
+.btn-primary:hover {
+    background-color: #5a3d53;
+    border-color: #5a3d53;
+}
+
+.btn-outline-primary {
+    color: #714B67;
+    border-color: #714B67;
+}
+
+.btn-outline-primary:hover {
+    background-color: #714B67;
+    border-color: #714B67;
+    color: #fff;
+}
+
+/* Table Styles */
+.table-hover tbody tr:hover {
+    background-color: rgba(113, 75, 103, 0.05);
+}
+
+/* Form Styles */
+.form-control:focus {
+    border-color: #714B67;
+    box-shadow: 0 0 0 0.2rem rgba(113, 75, 103, 0.25);
+}
+
+/* Alert Styles */
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+/* List Group Styles */
+.list-group-item-action:hover {
+    background-color: rgba(113, 75, 103, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .maintenance-progress {
+        padding: 0;
+    }
+
+    .maintenance-progress::before {
+        left: 10%;
+        right: 10%;
+    }
+
+    .maintenance-stage small {
+        font-size: 0.7rem;
+    }
+}
+
+/* Pre-formatted text for notes */
+pre {
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: #495057;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}

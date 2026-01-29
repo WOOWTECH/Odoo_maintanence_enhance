@@ -1,0 +1,315 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* maintenance_portal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-27 12:00+0000\n"
+"PO-Revision-Date: 2026-01-27 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. module: maintenance_portal
+#: model:ir.model.fields,field_description:maintenance_portal.field_maintenance_equipment__portal_user_ids
+#: model:ir.model.fields,field_description:maintenance_portal.field_maintenance_request__portal_user_ids
+msgid "Portal Users"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.model.fields,help:maintenance_portal.field_maintenance_equipment__portal_user_ids
+msgid "External vendors who can view this equipment in portal"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.model.fields,help:maintenance_portal.field_maintenance_request__portal_user_ids
+msgid "External vendors who can view and update this request in portal"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.model.fields,field_description:maintenance_portal.field_maintenance_request__portal_notes
+msgid "Portal Notes"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.model.fields,help:maintenance_portal.field_maintenance_request__portal_notes
+msgid "Notes from portal user about the maintenance work performed"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.rule,name:maintenance_portal.equipment_portal_rule
+msgid "Portal: Equipment Access"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.rule,name:maintenance_portal.request_portal_rule
+msgid "Portal: Maintenance Request Access"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.rule,name:maintenance_portal.stage_portal_rule
+msgid "Portal: Maintenance Stage Access"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.rule,name:maintenance_portal.category_portal_rule
+msgid "Portal: Equipment Category Access"
+msgstr ""
+
+#. module: maintenance_portal
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#, python-format
+msgid "Name"
+msgstr ""
+
+#. module: maintenance_portal
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#, python-format
+msgid "Serial Number"
+msgstr ""
+
+#. module: maintenance_portal
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#, python-format
+msgid "Category"
+msgstr ""
+
+#. module: maintenance_portal
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#, python-format
+msgid "Request"
+msgstr ""
+
+#. module: maintenance_portal
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#, python-format
+msgid "Equipment"
+msgstr ""
+
+#. module: maintenance_portal
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#, python-format
+msgid "Newest"
+msgstr ""
+
+#. module: maintenance_portal
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#, python-format
+msgid "Stage"
+msgstr ""
+
+#. module: maintenance_portal
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#, python-format
+msgid "All"
+msgstr ""
+
+#. module: maintenance_portal
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+#, python-format
+msgid "Status updated to \"%s\" by portal user."
+msgstr ""
+
+#. module: maintenance_portal
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+#, python-format
+msgid "Portal notes updated by portal user."
+msgstr ""
+
+#. module: maintenance_portal
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#, python-format
+msgid "This document does not exist."
+msgstr ""
+
+#. module: maintenance_portal
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#, python-format
+msgid "You do not have access to this document."
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
+msgid "View Details"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
+msgid "No equipment assigned to you."
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Back to List"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Equipment Information"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Location"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Model"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Assigned Date"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Notes"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Related Maintenance Requests"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "No maintenance requests for this equipment."
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
+msgid "Maintenance Requests"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
+msgid "Date"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
+msgid "Actions"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
+msgid "No maintenance requests assigned to you."
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Status Progress"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Request Information"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Maintenance Type"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Corrective"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Preventive"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Request Date"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Scheduled Date"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Current Stage"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Description"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Update Status"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Update Stage"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Start Work (In Progress)"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Mark as Done"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "This request has been completed."
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Add Notes"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Describe the work performed, parts used, issues found..."
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Save Notes"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Work Notes"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_my_home_equipment
+msgid "View your assigned equipment"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance_request
+msgid "View and update maintenance requests"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.maintenance_equipment_view_search_portal
+msgid "Has Portal Users"
+msgstr ""
+
+#. module: maintenance_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.maintenance_equipment_view_search_portal
+#: model:ir.ui.view,arch_db:maintenance_portal.maintenance_request_view_search_portal
+msgid "Portal User"
+msgstr ""

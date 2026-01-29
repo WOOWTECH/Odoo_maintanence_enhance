@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extend Equipment Form View to add Portal Users field -->
+    <record id="maintenance_equipment_view_form_portal" model="ir.ui.view">
+        <field name="name">maintenance.equipment.form.portal</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='technician_user_id']" position="after">
+                <field name="portal_user_ids" widget="many2many_tags"
+                       options="{'color_field': 'color'}"
+                       placeholder="Select external vendors..."/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extend Equipment List View to show Portal Users -->
+    <record id="maintenance_equipment_view_list_portal" model="ir.ui.view">
+        <field name="name">maintenance.equipment.list.portal</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='technician_user_id']" position="after">
+                <field name="portal_user_ids" widget="many2many_tags" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extend Equipment Search View to filter by Portal Users -->
+    <record id="maintenance_equipment_view_search_portal" model="ir.ui.view">
+        <field name="name">maintenance.equipment.search.portal</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <filter string="Has Portal Users" name="has_portal_users"
+                        domain="[('portal_user_ids', '!=', False)]"/>
+                <field name="portal_user_ids" string="Portal User"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
