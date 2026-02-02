@@ -43,7 +43,7 @@ class MaintenancePortal(CustomerPortal):
     @http.route([
         '/my/equipments',
         '/my/equipments/page/<int:page>'
-    ], type='http', auth='user', website=False)
+    ], type='http', auth='user', website=True)
     def portal_my_equipments(self, page=1, sortby=None, search=None, search_in='name', **kw):
         """List equipment assigned to portal user"""
         Equipment = request.env['maintenance.equipment']
@@ -115,7 +115,7 @@ class MaintenancePortal(CustomerPortal):
 
         return request.render('maintenance_portal.portal_my_equipments', values)
 
-    @http.route(['/my/equipments/<int:equipment_id>'], type='http', auth='user', website=False)
+    @http.route(['/my/equipments/<int:equipment_id>'], type='http', auth='user', website=True)
     def portal_equipment_detail(self, equipment_id, **kw):
         """Equipment detail page"""
         try:
@@ -145,7 +145,7 @@ class MaintenancePortal(CustomerPortal):
     @http.route([
         '/my/maintenance-requests',
         '/my/maintenance-requests/page/<int:page>'
-    ], type='http', auth='user', website=False)
+    ], type='http', auth='user', website=True)
     def portal_my_maintenance_requests(self, page=1, sortby=None, filterby=None, search=None, search_in='name', **kw):
         """List maintenance requests assigned to portal user"""
         MaintenanceRequest = request.env['maintenance.request']
@@ -230,7 +230,7 @@ class MaintenancePortal(CustomerPortal):
 
         return request.render('maintenance_portal.portal_my_maintenance_requests', values)
 
-    @http.route(['/my/maintenance-requests/<int:request_id>'], type='http', auth='user', website=False)
+    @http.route(['/my/maintenance-requests/<int:request_id>'], type='http', auth='user', website=True)
     def portal_maintenance_request_detail(self, request_id, **kw):
         """Maintenance request detail page"""
         try:
@@ -252,7 +252,7 @@ class MaintenancePortal(CustomerPortal):
 
         return request.render('maintenance_portal.portal_maintenance_request_detail', values)
 
-    @http.route(['/my/maintenance-requests/<int:request_id>/update'], type='http', auth='user', methods=['POST'], website=False, csrf=True)
+    @http.route(['/my/maintenance-requests/<int:request_id>/update'], type='http', auth='user', methods=['POST'], website=True, csrf=True)
     def portal_maintenance_request_update(self, request_id, **kw):
         """Update maintenance request status and notes"""
         try:
