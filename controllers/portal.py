@@ -272,17 +272,12 @@ class MaintenancePortal(CustomerPortal):
             return request.redirect('/my')
 
         action = kw.get('action')
-        notes = kw.get('notes', '').strip()
 
         # Handle status update actions
         if action == 'in_progress':
             maintenance_request.action_portal_set_in_progress()
         elif action == 'done':
             maintenance_request.action_portal_set_done()
-
-        # Handle notes update
-        if notes:
-            maintenance_request.action_portal_add_notes(notes)
 
         return request.redirect(f'/my/maintenance-requests/{request_id}')
 
