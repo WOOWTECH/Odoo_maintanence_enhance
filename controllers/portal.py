@@ -12,6 +12,13 @@ from odoo.exceptions import AccessError, MissingError
 
 class MaintenancePortal(CustomerPortal):
 
+    @staticmethod
+    def _escape_search_term(term):
+        """Escape SQL LIKE/ILIKE wildcards in user search input."""
+        if not term:
+            return term
+        return term.replace('\\', '\\\\').replace('%', '\\%').replace('_', '\\_')
+
     def _prepare_home_portal_values(self, counters):
         """Add equipment and maintenance request counts to portal home"""
         values = super()._prepare_home_portal_values(counters)
@@ -70,13 +77,14 @@ class MaintenancePortal(CustomerPortal):
 
         # Search - validate search_in parameter
         if search and search_in:
+            safe_search = self._escape_search_term(search)
             search_domain = []
             if search_in == 'name':
-                search_domain = [('name', 'ilike', search)]
+                search_domain = [('name', 'ilike', safe_search)]
             elif search_in == 'serial_no':
-                search_domain = [('serial_no', 'ilike', search)]
+                search_domain = [('serial_no', 'ilike', safe_search)]
             elif search_in == 'category':
-                search_domain = [('category_id.name', 'ilike', search)]
+                search_domain = [('category_id.name', 'ilike', safe_search)]
             domain = AND([domain, search_domain])
 
         # Count and pager
@@ -186,11 +194,12 @@ class MaintenancePortal(CustomerPortal):
 
         # Search
         if search and search_in:
+            safe_search = self._escape_search_term(search)
             search_domain = []
             if search_in == 'name':
-                search_domain = [('name', 'ilike', search)]
+                search_domain = [('name', 'ilike', safe_search)]
             elif search_in == 'equipment':
-                search_domain = [('equipment_id.name', 'ilike', search)]
+                search_domain = [('equipment_id.name', 'ilike', safe_search)]
             domain = AND([domain, search_domain])
 
         # Count and pager
