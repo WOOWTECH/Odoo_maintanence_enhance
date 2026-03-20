@@ -117,12 +117,12 @@
         <t t-call="portal.portal_layout">
             <div class="row mt-3">
                 <div class="col-12">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h3>
-                            <i class="mdi mdi-desktop-classic me-2 text-primary"></i>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                        <h3 class="mb-0">
+                            <i class="mdi mdi-desktop-classic me-2 text-primary d-none d-sm-inline"></i>
                             <t t-esc="equipment.name"/>
                         </h3>
-                        <a href="/my/equipments" class="btn btn-secondary">
+                        <a href="/my/equipments" class="btn btn-secondary btn-sm">
                             <i class="mdi mdi-arrow-left me-1"></i>返回列表
                         </a>
                     </div>
@@ -140,7 +140,7 @@
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr t-if="equipment.serial_no">
-                                        <th class="text-muted" style="width: 40%;">序號</th>
+                                        <th class="text-muted maintenance-info-label">序號</th>
                                         <td><t t-esc="equipment.serial_no"/></td>
                                     </tr>
                                     <tr t-if="equipment.category_id">
@@ -224,7 +224,8 @@
             </t>
 
             <t t-if="requests">
-                <div class="table-responsive mt-3">
+                <!-- Desktop/Tablet: Table view -->
+                <div class="table-responsive mt-3 d-none d-md-block">
                     <table class="table table-hover">
                         <thead class="table-light">
                             <tr>
@@ -268,6 +269,34 @@
                     </table>
                 </div>
 
+                <!-- Mobile: Card view -->
+                <div class="d-md-none mt-3">
+                    <t t-foreach="requests" t-as="req">
+                        <a t-attf-href="/my/maintenance-requests/#{req.id}" class="text-decoration-none">
+                            <div class="card mb-2 maintenance-request-card">
+                                <div class="card-body py-2 px-3">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div class="flex-grow-1" style="min-width: 0;">
+                                            <h6 class="mb-1 text-truncate text-primary"><t t-esc="req.name"/></h6>
+                                            <small class="text-muted d-flex flex-wrap gap-2">
+                                                <t t-if="req.equipment_id">
+                                                    <span><i class="mdi mdi-desktop-classic me-1"></i><t t-esc="req.sudo().equipment_id.name"/></span>
+                                                </t>
+                                                <span>
+                                                    <i class="mdi mdi-calendar me-1"></i><t t-esc="req.create_date" t-options='{"widget": "datetime", "format": "yyyy-MM-dd"}'/>
+                                                </span>
+                                            </small>
+                                        </div>
+                                        <span t-attf-class="badge ms-2 flex-shrink-0 #{req.stage_id.done and 'bg-success' or 'bg-info'}">
+                                            <t t-esc="req.stage_id.name"/>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </t>
+                </div>
+
                 <div class="d-flex justify-content-center mt-4">
                     <t t-call="portal.pager"/>
                 </div>
@@ -288,12 +317,12 @@
         <t t-call="portal.portal_layout">
             <div class="row mt-3">
                 <div class="col-12">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h3>
-                            <i class="mdi mdi-tools me-2 text-primary"></i>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                        <h3 class="mb-0">
+                            <i class="mdi mdi-tools me-2 text-primary d-none d-sm-inline"></i>
                             <t t-esc="mrequest.name"/>
                         </h3>
-                        <a href="/my/maintenance-requests" class="btn btn-secondary">
+                        <a href="/my/maintenance-requests" class="btn btn-secondary btn-sm">
                             <i class="mdi mdi-arrow-left me-1"></i>返回列表
                         </a>
                     </div>
@@ -304,12 +333,12 @@
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="card shadow-sm">
-                        <div class="card-body">
+                        <div class="card-body maintenance-progress-wrapper">
                             <h6 class="card-title text-muted mb-3">狀態進度</h6>
                             <div class="d-flex justify-content-between position-relative maintenance-progress">
                                 <t t-foreach="stages" t-as="stage">
                                     <div class="text-center maintenance-stage">
-                                        <div t-attf-class="rounded-circle d-inline-flex align-items-center justify-content-center #{stage.sequence &lt;= mrequest.stage_id.sequence and 'bg-primary text-white' or 'bg-light text-muted'}" style="width: 40px; height: 40px;">
+                                        <div t-attf-class="maintenance-stage-circle rounded-circle d-inline-flex align-items-center justify-content-center #{stage.sequence &lt;= mrequest.stage_id.sequence and 'bg-primary text-white' or 'bg-light text-muted'}">
                                             <t t-if="stage.done">
                                                 <i class="mdi mdi-check"></i>
                                             </t>
@@ -317,8 +346,8 @@
                                                 <span t-esc="stage_index + 1"/>
                                             </t>
                                         </div>
-                                        <div class="mt-2">
-                                            <small t-attf-class="#{stage.id == mrequest.stage_id.id and 'fw-bold text-primary' or 'text-muted'}">
+                                        <div class="mt-1 mt-md-2">
+                                            <small t-attf-class="maintenance-stage-label #{stage.id == mrequest.stage_id.id and 'fw-bold text-primary' or 'text-muted'}">
                                                 <t t-esc="stage.name"/>
                                             </small>
                                         </div>
@@ -341,7 +370,7 @@
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr>
-                                        <th class="text-muted" style="width: 40%;">請求名稱</th>
+                                        <th class="text-muted maintenance-info-label">請求名稱</th>
                                         <td><t t-esc="mrequest.name"/></td>
                                     </tr>
                                     <tr t-if="mrequest.sudo().equipment_id">

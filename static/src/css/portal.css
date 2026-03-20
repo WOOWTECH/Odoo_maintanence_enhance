@@ -128,10 +128,39 @@
     background-color: rgba(113, 75, 103, 0.05);
 }
 
-/* Responsive adjustments */
+/* Status Progress Bar - Circle sizes */
+.maintenance-stage-circle {
+    width: 40px;
+    height: 40px;
+}
+
+/* Info table label column */
+.maintenance-info-label {
+    width: 40%;
+    white-space: nowrap;
+}
+
+/* Mobile request card styles */
+.maintenance-request-card {
+    border: 1px solid #e9ecef;
+    transition: background-color 0.15s;
+}
+
+.maintenance-request-card:hover {
+    background-color: rgba(113, 75, 103, 0.04);
+}
+
+/* Progress bar wrapper - allow horizontal scroll on mobile */
+.maintenance-progress-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ==================== Responsive: Tablet (<=768px) ==================== */
 @media (max-width: 768px) {
     .maintenance-progress {
         padding: 0;
+        min-width: 400px;
     }
 
     .maintenance-progress::before {
@@ -139,8 +168,87 @@
         right: 10%;
     }
 
-    .maintenance-stage small {
+    .maintenance-stage-circle {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+
+    .maintenance-stage-label {
         font-size: 0.7rem;
+    }
+
+    .maintenance-info-label {
+        width: auto;
+    }
+
+    /* Disable hover transform on touch devices */
+    .maintenance-equipment-card:hover {
+        transform: none;
+    }
+}
+
+/* ==================== Responsive: Mobile (<=576px) ==================== */
+@media (max-width: 576px) {
+    /* Equipment cards: tighter padding */
+    .maintenance-equipment-card .card-body {
+        padding: 0.75rem;
+    }
+
+    .maintenance-equipment-card .card-title {
+        font-size: 1rem;
+    }
+
+    .maintenance-equipment-card .card-footer {
+        padding: 0.5rem 0.75rem;
+    }
+
+    /* Detail page info tables */
+    .table-borderless th,
+    .table-borderless td {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Detail page card headers */
+    .card-header h5 {
+        font-size: 1rem;
+    }
+
+    /* Progress bar - compact */
+    .maintenance-progress {
+        min-width: 320px;
+        padding: 0;
+    }
+
+    .maintenance-stage-circle {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+    }
+
+    .maintenance-stage-label {
+        font-size: 0.6rem;
+    }
+
+    .maintenance-progress::before {
+        top: 14px;
+        left: 8%;
+        right: 8%;
+    }
+
+    /* Related requests list in equipment detail */
+    .list-group-item h6 {
+        font-size: 0.85rem;
+        max-width: 55%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    /* Chatter heading */
+    .col-12 > h4 {
+        font-size: 1.1rem;
     }
 }
 
