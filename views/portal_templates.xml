@@ -200,6 +200,16 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Chatter / Message Thread -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h4><i class="mdi mdi-comment-text-multiple me-2"></i>評論與討論</h4>
+                    <t t-call="portal.message_thread">
+                        <t t-set="object" t-value="equipment"/>
+                    </t>
+                </div>
+            </div>
         </t>
     </template>
 
@@ -420,32 +430,18 @@
                                     </div>
                                 </div>
 
-                                <!-- Notes -->
-                                <div class="mb-3">
-                                    <label for="notes" class="form-label fw-bold">新增備註</label>
-                                    <textarea name="notes" id="notes" class="form-control" rows="4"
-                                              placeholder="描述執行的工作、使用的零件、發現的問題..."></textarea>
-                                </div>
-
-                                <t t-if="not mrequest.stage_id.done">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="mdi mdi-content-save me-1"></i>儲存備註
-                                    </button>
-                                </t>
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Portal Notes Display -->
-                    <t t-if="mrequest.portal_notes">
-                        <div class="card shadow-sm mt-4">
-                            <div class="card-header bg-secondary text-white">
-                                <h5 class="mb-0"><i class="mdi mdi-comment-text me-2"></i>工作備註</h5>
-                            </div>
-                            <div class="card-body">
-                                <pre class="mb-0" style="white-space: pre-wrap;"><t t-esc="mrequest.portal_notes"/></pre>
-                            </div>
-                        </div>
+            <!-- Chatter / Message Thread -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h4><i class="mdi mdi-comment-text-multiple me-2"></i>評論與討論</h4>
+                    <t t-call="portal.message_thread">
+                        <t t-set="object" t-value="mrequest"/>
                     </t>
                 </div>
             </div>

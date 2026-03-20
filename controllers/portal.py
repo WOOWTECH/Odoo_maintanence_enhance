@@ -141,6 +141,7 @@ class MaintenancePortal(CustomerPortal):
         frontend_languages = request.env['res.lang']._get_frontend()
         values.update({
             'equipment': equipment,
+            'object': equipment,
             'maintenance_requests': requests,
             'page_name': 'equipment_detail',
             'frontend_languages': frontend_languages,
@@ -254,6 +255,7 @@ class MaintenancePortal(CustomerPortal):
         frontend_languages = request.env['res.lang']._get_frontend()
         values.update({
             'mrequest': maintenance_request,
+            'object': maintenance_request,
             'stages': stages,
             'page_name': 'maintenance_request_detail',
             'frontend_languages': frontend_languages,

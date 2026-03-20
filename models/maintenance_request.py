@@ -100,6 +100,12 @@ class MaintenanceRequest(models.Model):
             )
         return True
 
+    def _get_mail_message_access(self, res_ids, operation='read', model_name=None):
+        """Allow portal users to post messages on their assigned requests."""
+        if operation == 'create' and self.env.user.has_group('base.group_portal'):
+            return 'read'  # Only require read access to post messages
+        return super()._get_mail_message_access(res_ids, operation, model_name=model_name)
+
     def _check_portal_access(self):
         """Verify the current user has portal access to this request."""
         if self.env.user.has_group('base.group_portal'):

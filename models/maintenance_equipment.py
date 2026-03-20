@@ -20,3 +20,9 @@ class MaintenanceEquipment(models.Model):
         """Get the portal URL for this equipment"""
         self.ensure_one()
         return f'/my/equipments/{self.id}'
+
+    def _get_mail_message_access(self, res_ids, operation='read', model_name=None):
+        """Allow portal users to post messages on their assigned equipment."""
+        if operation == 'create' and self.env.user.has_group('base.group_portal'):
+            return 'read'  # Only require read access to post messages
+        return super()._get_mail_message_access(res_ids, operation, model_name=model_name)

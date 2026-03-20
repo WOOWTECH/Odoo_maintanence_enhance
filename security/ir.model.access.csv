@@ -3,3 +3,4 @@ access_maintenance_equipment_portal,maintenance.equipment.portal,maintenance.mod
 access_maintenance_request_portal,maintenance.request.portal,maintenance.model_maintenance_request,base.group_portal,1,1,0,0
 access_maintenance_stage_portal,maintenance.stage.portal,maintenance.model_maintenance_stage,base.group_portal,1,0,0,0
 access_maintenance_equipment_category_portal,maintenance.equipment.category.portal,maintenance.model_maintenance_equipment_category,base.group_portal,1,0,0,0
+access_mail_message_portal,mail.message.portal,mail.model_mail_message,base.group_portal,1,0,1,0
