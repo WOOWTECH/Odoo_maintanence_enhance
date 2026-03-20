@@ -64,11 +64,11 @@ class MaintenancePortal(CustomerPortal):
             'serial_no': {'label': _('Serial Number'), 'order': 'serial_no asc'},
         }
 
-        if not sortby:
+        if not sortby or sortby not in searchbar_sortings:
             sortby = 'name'
         order = searchbar_sortings[sortby]['order']
 
-        # Search
+        # Search - validate search_in parameter
         if search and search_in:
             search_domain = []
             if search_in == 'name':
@@ -176,11 +176,11 @@ class MaintenancePortal(CustomerPortal):
                 'domain': [('stage_id', '=', stage.id)]
             }
 
-        if not sortby:
+        if not sortby or sortby not in searchbar_sortings:
             sortby = 'date'
         order = searchbar_sortings[sortby]['order']
 
-        if not filterby:
+        if not filterby or filterby not in searchbar_filters:
             filterby = 'all'
         domain = AND([domain, searchbar_filters.get(filterby, searchbar_filters['all'])['domain']])
 

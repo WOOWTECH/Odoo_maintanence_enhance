@@ -46,6 +46,7 @@ class MaintenanceRequest(models.Model):
                 message_type='comment',
                 subtype_xmlid='mail.mt_note'
             )
+        return True
 
     def action_portal_set_done(self):
         """Portal action: Set request to Done/Repaired stage"""
@@ -60,6 +61,7 @@ class MaintenanceRequest(models.Model):
                 message_type='comment',
                 subtype_xmlid='mail.mt_note'
             )
+        return True
 
     def action_portal_add_notes(self, notes):
         """Portal action: Add notes from portal user"""
@@ -74,3 +76,4 @@ class MaintenanceRequest(models.Model):
                 message_type='comment',
                 subtype_xmlid='mail.mt_note'
             )
+        return True
