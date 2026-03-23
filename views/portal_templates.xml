@@ -59,40 +59,35 @@
                 <div class="row mt-3">
                     <t t-foreach="equipments" t-as="equipment">
                         <div class="col-md-4 col-sm-6 mb-4">
-                            <div class="card h-100 shadow-sm maintenance-equipment-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <a t-attf-href="/my/equipments/#{equipment.id}">
+                            <a t-attf-href="/my/equipments/#{equipment.id}" class="text-decoration-none d-block h-100">
+                                <div class="card h-100 maintenance-equipment-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-2">
                                             <t t-esc="equipment.name"/>
-                                        </a>
-                                    </h5>
-                                    <p class="card-text text-muted mb-2">
-                                        <t t-if="equipment.serial_no">
-                                            <small><i class="mdi mdi-barcode me-1"></i><t t-esc="equipment.serial_no"/></small>
-                                        </t>
-                                    </p>
-                                    <p class="card-text mb-2">
-                                        <t t-if="equipment.category_id">
-                                            <span class="badge bg-secondary">
-                                                <t t-esc="equipment.category_id.name"/>
-                                            </span>
-                                        </t>
-                                    </p>
-                                    <p class="card-text">
-                                        <t t-if="equipment.location">
-                                            <small class="text-muted">
-                                                <i class="mdi mdi-map-marker me-1"></i>
-                                                <t t-esc="equipment.location"/>
-                                            </small>
-                                        </t>
-                                    </p>
+                                        </h5>
+                                        <p class="card-text mb-2">
+                                            <t t-if="equipment.serial_no">
+                                                <small class="text-muted"><i class="mdi mdi-barcode me-1"></i><t t-esc="equipment.serial_no"/></small>
+                                            </t>
+                                        </p>
+                                        <p class="card-text mb-2">
+                                            <t t-if="equipment.category_id">
+                                                <span class="badge bg-secondary">
+                                                    <t t-esc="equipment.category_id.name"/>
+                                                </span>
+                                            </t>
+                                        </p>
+                                        <p class="card-text mb-0">
+                                            <t t-if="equipment.location">
+                                                <small class="text-muted">
+                                                    <i class="mdi mdi-map-marker me-1"></i>
+                                                    <t t-esc="equipment.location"/>
+                                                </small>
+                                            </t>
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="card-footer bg-transparent">
-                                    <a t-attf-href="/my/equipments/#{equipment.id}" class="btn btn-sm btn-outline-primary">
-                                        <i class="mdi mdi-eye me-1"></i>查看詳情
-                                    </a>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </t>
                 </div>
@@ -103,9 +98,9 @@
             </t>
 
             <t t-else="">
-                <div class="alert alert-info mt-3">
-                    <i class="mdi mdi-information me-2"></i>
-                    沒有指派給您的設備。
+                <div class="maintenance-empty-state mt-4">
+                    <i class="mdi mdi-clipboard-text-outline"></i>
+                    <p>沒有指派給您的設備。</p>
                 </div>
             </t>
         </t>
@@ -117,12 +112,12 @@
         <t t-call="portal.portal_layout">
             <div class="row mt-3">
                 <div class="col-12">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center maintenance-page-header gap-2">
                         <h3 class="mb-0">
-                            <i class="mdi mdi-desktop-classic me-2 text-primary d-none d-sm-inline"></i>
+                            <i class="mdi mdi-desktop-classic me-2 d-none d-sm-inline" style="color: var(--wt-primary)"></i>
                             <t t-esc="equipment.name"/>
                         </h3>
-                        <a href="/my/equipments" class="btn btn-secondary btn-sm">
+                        <a href="/my/equipments" class="btn btn-ghost btn-sm">
                             <i class="mdi mdi-arrow-left me-1"></i>返回列表
                         </a>
                     </div>
@@ -132,11 +127,12 @@
             <div class="row">
                 <!-- Equipment Info -->
                 <div class="col-lg-6 mb-4">
-                    <div class="card shadow-sm">
-                        <div class="card-header bg-primary text-white">
-                            <h5 class="mb-0"><i class="mdi mdi-information me-2"></i>設備資訊</h5>
-                        </div>
+                    <div class="card maintenance-detail-card">
                         <div class="card-body">
+                            <div class="maintenance-section-title">
+                                <span class="maintenance-section-dot dot-blue"></span>
+                                設備資訊
+                            </div>
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr t-if="equipment.serial_no">
@@ -171,11 +167,12 @@
 
                 <!-- Related Maintenance Requests -->
                 <div class="col-lg-6 mb-4">
-                    <div class="card shadow-sm">
-                        <div class="card-header bg-warning">
-                            <h5 class="mb-0"><i class="mdi mdi-tools me-2"></i>相關維修請求</h5>
-                        </div>
+                    <div class="card maintenance-detail-card">
                         <div class="card-body">
+                            <div class="maintenance-section-title">
+                                <span class="maintenance-section-dot dot-cyan"></span>
+                                相關維修請求
+                            </div>
                             <t t-if="maintenance_requests">
                                 <div class="list-group list-group-flush">
                                     <t t-foreach="maintenance_requests" t-as="req">
@@ -202,9 +199,12 @@
             </div>
 
             <!-- Chatter / Message Thread -->
-            <div class="row mt-4">
-                <div class="col-12">
-                    <h4><i class="mdi mdi-comment-text-multiple me-2"></i>評論與討論</h4>
+            <div class="row">
+                <div class="col-12 maintenance-chatter-section">
+                    <div class="maintenance-section-title">
+                        <span class="maintenance-section-dot dot-lavender"></span>
+                        評論與討論
+                    </div>
                     <t t-call="portal.message_thread">
                         <t t-set="object" t-value="equipment"/>
                     </t>
@@ -227,13 +227,12 @@
                 <!-- Desktop/Tablet: Table view -->
                 <div class="table-responsive mt-3 d-none d-md-block">
                     <table class="table table-hover">
-                        <thead class="table-light">
+                        <thead>
                             <tr>
                                 <th>請求名稱</th>
                                 <th>設備</th>
                                 <th>階段</th>
                                 <th>日期</th>
-                                <th class="text-end">操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -258,11 +257,6 @@
                                     <td>
                                         <t t-esc="req.create_date" t-options='{"widget": "datetime", "format": "yyyy-MM-dd"}'/>
                                     </td>
-                                    <td class="text-end">
-                                        <a t-attf-href="/my/maintenance-requests/#{req.id}" class="btn btn-sm btn-outline-primary">
-                                            <i class="mdi mdi-eye"></i>
-                                        </a>
-                                    </td>
                                 </tr>
                             </t>
                         </tbody>
@@ -277,7 +271,7 @@
                                 <div class="card-body py-2 px-3">
                                     <div class="d-flex justify-content-between align-items-start">
                                         <div class="flex-grow-1" style="min-width: 0;">
-                                            <h6 class="mb-1 text-truncate text-primary"><t t-esc="req.name"/></h6>
+                                            <h6 class="mb-1 text-truncate" style="color: var(--wt-primary)"><t t-esc="req.name"/></h6>
                                             <small class="text-muted d-flex flex-wrap gap-2">
                                                 <t t-if="req.equipment_id">
                                                     <span><i class="mdi mdi-desktop-classic me-1"></i><t t-esc="req.sudo().equipment_id.name"/></span>
@@ -303,9 +297,9 @@
             </t>
 
             <t t-else="">
-                <div class="alert alert-info mt-3">
-                    <i class="mdi mdi-information me-2"></i>
-                    沒有指派給您的維修請求。
+                <div class="maintenance-empty-state mt-4">
+                    <i class="mdi mdi-clipboard-text-outline"></i>
+                    <p>沒有指派給您的維修請求。</p>
                 </div>
             </t>
         </t>
@@ -317,12 +311,12 @@
         <t t-call="portal.portal_layout">
             <div class="row mt-3">
                 <div class="col-12">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center maintenance-page-header gap-2">
                         <h3 class="mb-0">
-                            <i class="mdi mdi-tools me-2 text-primary d-none d-sm-inline"></i>
+                            <i class="mdi mdi-tools me-2 d-none d-sm-inline" style="color: var(--wt-primary)"></i>
                             <t t-esc="mrequest.name"/>
                         </h3>
-                        <a href="/my/maintenance-requests" class="btn btn-secondary btn-sm">
+                        <a href="/my/maintenance-requests" class="btn btn-ghost btn-sm">
                             <i class="mdi mdi-arrow-left me-1"></i>返回列表
                         </a>
                     </div>
@@ -332,14 +326,16 @@
             <!-- Status Progress Bar -->
             <div class="row mb-4">
                 <div class="col-12">
-                    <div class="card shadow-sm">
+                    <div class="card maintenance-detail-card">
                         <div class="card-body maintenance-progress-wrapper">
                             <h6 class="card-title text-muted mb-3">狀態進度</h6>
                             <div class="d-flex justify-content-between position-relative maintenance-progress">
                                 <t t-foreach="stages" t-as="stage">
                                     <div class="text-center maintenance-stage">
-                                        <div t-attf-class="maintenance-stage-circle rounded-circle d-inline-flex align-items-center justify-content-center #{stage.sequence &lt;= mrequest.stage_id.sequence and 'bg-primary text-white' or 'bg-light text-muted'}">
-                                            <t t-if="stage.done">
+                                        <t t-set="is_active" t-value="stage.sequence &lt;= mrequest.stage_id.sequence"/>
+                                        <t t-set="is_done_stage" t-value="stage.done and is_active"/>
+                                        <div t-attf-class="maintenance-stage-circle rounded-circle d-inline-flex align-items-center justify-content-center #{is_done_stage and 'stage-done-active' or (is_active and 'bg-primary text-white' or 'bg-light text-muted')}">
+                                            <t t-if="is_done_stage">
                                                 <i class="mdi mdi-check"></i>
                                             </t>
                                             <t t-else="">
@@ -347,7 +343,7 @@
                                             </t>
                                         </div>
                                         <div class="mt-1 mt-md-2">
-                                            <small t-attf-class="maintenance-stage-label #{stage.id == mrequest.stage_id.id and 'fw-bold text-primary' or 'text-muted'}">
+                                            <small t-attf-class="maintenance-stage-label #{stage.id == mrequest.stage_id.id and 'fw-bold' or 'text-muted'}" t-att-style="stage.id == mrequest.stage_id.id and 'color: var(--wt-primary)' or ''">
                                                 <t t-esc="stage.name"/>
                                             </small>
                                         </div>
@@ -362,11 +358,12 @@
             <div class="row">
                 <!-- Request Info -->
                 <div class="col-lg-6 mb-4">
-                    <div class="card shadow-sm">
-                        <div class="card-header bg-primary text-white">
-                            <h5 class="mb-0"><i class="mdi mdi-information me-2"></i>請求資訊</h5>
-                        </div>
+                    <div class="card maintenance-detail-card">
                         <div class="card-body">
+                            <div class="maintenance-section-title">
+                                <span class="maintenance-section-dot dot-blue"></span>
+                                請求資訊
+                            </div>
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr>
@@ -424,11 +421,12 @@
 
                 <!-- Update Status Form -->
                 <div class="col-lg-6 mb-4">
-                    <div class="card shadow-sm">
-                        <div class="card-header bg-success text-white">
-                            <h5 class="mb-0"><i class="mdi mdi-pencil me-2"></i>更新狀態</h5>
-                        </div>
+                    <div class="card maintenance-detail-card">
                         <div class="card-body">
+                            <div class="maintenance-section-title">
+                                <span class="maintenance-section-dot dot-green"></span>
+                                更新狀態
+                            </div>
                             <form t-attf-action="/my/maintenance-requests/#{mrequest.id}/update" method="post">
                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
@@ -440,18 +438,18 @@
                                             <!-- Find if current stage is the first one -->
                                             <t t-set="is_first_stage" t-value="mrequest.stage_id.sequence == min(stages.mapped('sequence'))"/>
                                             <t t-if="is_first_stage">
-                                                <button type="submit" name="action" value="in_progress" class="btn btn-warning">
+                                                <button type="submit" name="action" value="in_progress" class="btn btn-start-work">
                                                     <i class="mdi mdi-play me-1"></i>開始工作（進行中）
                                                 </button>
                                             </t>
                                             <t t-else="">
-                                                <button type="submit" name="action" value="done" class="btn btn-success">
+                                                <button type="submit" name="action" value="done" class="btn btn-mark-done">
                                                     <i class="mdi mdi-check me-1"></i>標記為完成
                                                 </button>
                                             </t>
                                         </t>
                                         <t t-else="">
-                                            <div class="alert alert-success mb-0">
+                                            <div class="maintenance-alert alert-completed">
                                                 <i class="mdi mdi-check-circle me-2"></i>
                                                 此請求已完成。
                                             </div>
@@ -466,9 +464,12 @@
             </div>
 
             <!-- Chatter / Message Thread -->
-            <div class="row mt-4">
-                <div class="col-12">
-                    <h4><i class="mdi mdi-comment-text-multiple me-2"></i>評論與討論</h4>
+            <div class="row">
+                <div class="col-12 maintenance-chatter-section">
+                    <div class="maintenance-section-title">
+                        <span class="maintenance-section-dot dot-lavender"></span>
+                        評論與討論
+                    </div>
                     <t t-call="portal.message_thread">
                         <t t-set="object" t-value="mrequest"/>
                     </t>

@@ -1,26 +1,153 @@
-/* Maintenance Portal Custom Styles */
+/* ============================================================
+   Woowtech Smart Space Solution — Maintenance Portal Styles
+   Brand: Air · Mind · Community · Nourishment
+   ============================================================ */
 
-/* Equipment Card Styles */
+/* --- CSS Custom Properties (Brand Tokens) --- */
+:root {
+    --wt-primary: #6183FC;
+    --wt-primary-hover: #4A6AD4;
+    --wt-primary-light: rgba(97, 131, 252, 0.08);
+    --wt-white: #FFFFFF;
+    --wt-light-gray: #EFF1F5;
+    --wt-gray: #646262;
+    --wt-deep-gray: #212121;
+    --wt-border: #E0E3EA;
+    --wt-cyan: #7BDBE0;
+    --wt-yellow: #F8D158;
+    --wt-green: #8CD37F;
+    --wt-orange: #E66D3E;
+    --wt-coral: #F45D6D;
+    --wt-lavender: #C09FE0;
+    --wt-brown: #B17148;
+    --wt-sand: #F1C692;
+    --wt-sky-blue: #65C2E0;
+    --wt-royal-blue: #6791DE;
+    --wt-radius-card: 12px;
+    --wt-radius-btn: 8px;
+    --wt-radius-badge: 6px;
+    --wt-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --wt-shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --wt-transition: 0.15s ease;
+}
+
+/* --- Typography --- */
+.o_portal h1, .o_portal h2, .o_portal h3,
+.o_portal .maintenance-section-title {
+    font-family: 'Gira Sans', 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--wt-deep-gray);
+    font-weight: 600;
+}
+
+.o_portal body, .o_portal p, .o_portal td, .o_portal th,
+.o_portal .form-label, .o_portal small, .o_portal .text-muted,
+.o_portal .list-group-item {
+    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Chinese text enhancement */
+.o_portal {
+    font-family: 'Outfit', 'UD Digi Kyokasho', 'Noto Sans TC', 'Microsoft JhengHei', -apple-system, sans-serif;
+}
+
+/* ============================================================
+   Equipment Cards (List Page)
+   ============================================================ */
 .maintenance-equipment-card {
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--wt-border);
+    border-left: 4px solid var(--wt-primary);
+    border-radius: var(--wt-radius-card);
+    box-shadow: var(--wt-shadow);
+    transition: background-color var(--wt-transition), box-shadow var(--wt-transition);
+    overflow: hidden;
 }
 
 .maintenance-equipment-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    background-color: var(--wt-light-gray);
+    box-shadow: var(--wt-shadow-hover);
+    transform: none;
 }
 
 .maintenance-equipment-card .card-title a {
-    color: #495057;
+    color: var(--wt-deep-gray);
     text-decoration: none;
+    font-weight: 600;
 }
 
 .maintenance-equipment-card .card-title a:hover {
-    color: #007bff;
+    color: var(--wt-primary);
 }
 
-/* Status Progress Bar */
+.maintenance-equipment-card .card-footer {
+    background: transparent;
+    border-top: 1px solid var(--wt-border);
+}
+
+/* ============================================================
+   Request Cards (Mobile)
+   ============================================================ */
+.maintenance-request-card {
+    border: 1px solid var(--wt-border);
+    border-left: 4px solid var(--wt-primary);
+    border-radius: 10px;
+    box-shadow: var(--wt-shadow);
+    transition: background-color var(--wt-transition);
+}
+
+.maintenance-request-card:hover {
+    background-color: var(--wt-light-gray);
+}
+
+.maintenance-request-card .text-primary {
+    color: var(--wt-primary) !important;
+}
+
+/* ============================================================
+   Detail Page Cards (Info, Related, Status, Chatter)
+   ============================================================ */
+.maintenance-detail-card {
+    border: 1px solid var(--wt-border);
+    border-radius: var(--wt-radius-card);
+    box-shadow: var(--wt-shadow);
+    background: var(--wt-white);
+}
+
+.maintenance-detail-card .card-body {
+    padding: 1.25rem 1.5rem;
+}
+
+/* Section title with colored dot indicator */
+.maintenance-section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--wt-deep-gray);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.maintenance-section-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.maintenance-section-dot.dot-blue { background-color: var(--wt-primary); }
+.maintenance-section-dot.dot-cyan { background-color: var(--wt-cyan); }
+.maintenance-section-dot.dot-green { background-color: var(--wt-green); }
+.maintenance-section-dot.dot-lavender { background-color: var(--wt-lavender); }
+
+/* ============================================================
+   Status Progress Bar
+   ============================================================ */
+.maintenance-progress-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 .maintenance-progress {
     padding: 0 2rem;
 }
@@ -32,7 +159,7 @@
     left: 15%;
     right: 15%;
     height: 2px;
-    background: #e9ecef;
+    background: var(--wt-border);
     z-index: 0;
 }
 
@@ -41,97 +168,195 @@
     flex: 1;
 }
 
-/* Badge Styles */
-.badge.bg-info {
-    background-color: #17a2b8 !important;
-}
-
-.badge.bg-success {
-    background-color: #28a745 !important;
-}
-
-.badge.bg-warning {
-    background-color: #ffc107 !important;
-    color: #212529 !important;
-}
-
-.badge.bg-secondary {
-    background-color: #6c757d !important;
-}
-
-/* Card Header Colors */
-.card-header.bg-primary {
-    background-color: #714B67 !important;
-}
-
-.card-header.bg-success {
-    background-color: #28a745 !important;
-}
-
-.card-header.bg-warning {
-    background-color: #ffc107 !important;
-    color: #212529 !important;
-}
-
-.card-header.bg-secondary {
-    background-color: #6c757d !important;
-}
-
-/* Button Styles */
-.btn-primary {
-    background-color: #714B67;
-    border-color: #714B67;
-}
-
-.btn-primary:hover {
-    background-color: #5a3d53;
-    border-color: #5a3d53;
-}
-
-.btn-outline-primary {
-    color: #714B67;
-    border-color: #714B67;
-}
-
-.btn-outline-primary:hover {
-    background-color: #714B67;
-    border-color: #714B67;
-    color: #fff;
-}
-
-/* Table Styles */
-.table-hover tbody tr:hover {
-    background-color: rgba(113, 75, 103, 0.05);
-}
-
-/* Form Styles */
-.form-control:focus {
-    border-color: #714B67;
-    box-shadow: 0 0 0 0.2rem rgba(113, 75, 103, 0.25);
-}
-
-/* Alert Styles */
-.alert-info {
-    background-color: #d1ecf1;
-    border-color: #bee5eb;
-    color: #0c5460;
-}
-
-.alert-success {
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-    color: #155724;
-}
-
-/* List Group Styles */
-.list-group-item-action:hover {
-    background-color: rgba(113, 75, 103, 0.05);
-}
-
-/* Status Progress Bar - Circle sizes */
 .maintenance-stage-circle {
     width: 40px;
     height: 40px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 2px solid transparent;
+}
+
+/* Active stage (current and prior) */
+.maintenance-stage-circle.bg-primary {
+    background-color: var(--wt-primary) !important;
+    border-color: var(--wt-primary);
+}
+
+/* Done stage with green */
+.maintenance-stage-circle.stage-done-active {
+    background-color: var(--wt-green) !important;
+    border-color: var(--wt-green);
+    color: var(--wt-white);
+}
+
+/* Inactive stage */
+.maintenance-stage-circle.bg-light {
+    background-color: var(--wt-light-gray) !important;
+    border-color: var(--wt-border);
+    color: var(--wt-gray);
+}
+
+.maintenance-stage-label {
+    font-size: 0.75rem;
+}
+
+/* ============================================================
+   Badge System
+   ============================================================ */
+.badge {
+    border-radius: var(--wt-radius-badge) !important;
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+/* Stage badges */
+.badge.bg-info {
+    background-color: var(--wt-cyan) !important;
+    color: var(--wt-deep-gray) !important;
+}
+
+.badge.bg-success {
+    background-color: var(--wt-green) !important;
+    color: var(--wt-white) !important;
+}
+
+.badge.bg-warning {
+    background-color: var(--wt-yellow) !important;
+    color: var(--wt-deep-gray) !important;
+}
+
+/* Category badge */
+.badge.bg-secondary {
+    background-color: var(--wt-lavender) !important;
+    color: var(--wt-white) !important;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+    border-radius: var(--wt-radius-btn);
+    transition: all var(--wt-transition);
+}
+
+.btn-primary {
+    background-color: var(--wt-primary);
+    border-color: var(--wt-primary);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--wt-primary-hover);
+    border-color: var(--wt-primary-hover);
+}
+
+.btn-outline-primary {
+    color: var(--wt-primary);
+    border-color: var(--wt-primary);
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+    background-color: var(--wt-primary);
+    border-color: var(--wt-primary);
+    color: var(--wt-white);
+}
+
+/* Ghost button (back to list) */
+.btn-ghost {
+    background: transparent;
+    color: var(--wt-gray);
+    border: 1px solid var(--wt-border);
+    border-radius: var(--wt-radius-btn);
+    font-weight: 500;
+    transition: all var(--wt-transition);
+}
+
+.btn-ghost:hover, .btn-ghost:focus {
+    background: var(--wt-light-gray);
+    color: var(--wt-deep-gray);
+    border-color: var(--wt-border);
+}
+
+/* CTA: Start Work */
+.btn-start-work {
+    background-color: var(--wt-orange);
+    border-color: var(--wt-orange);
+    color: var(--wt-white);
+    font-weight: 600;
+    border-radius: var(--wt-radius-btn);
+}
+
+.btn-start-work:hover, .btn-start-work:focus {
+    background-color: #D15E30;
+    border-color: #D15E30;
+    color: var(--wt-white);
+}
+
+/* CTA: Mark Complete */
+.btn-mark-done {
+    background-color: var(--wt-green);
+    border-color: var(--wt-green);
+    color: var(--wt-white);
+    font-weight: 600;
+    border-radius: var(--wt-radius-btn);
+}
+
+.btn-mark-done:hover, .btn-mark-done:focus {
+    background-color: #72B866;
+    border-color: #72B866;
+    color: var(--wt-white);
+}
+
+/* Secondary (filter/sort dropdowns) */
+.btn-secondary {
+    background-color: var(--wt-light-gray);
+    border-color: var(--wt-border);
+    color: var(--wt-gray);
+}
+
+.btn-secondary:hover {
+    background-color: var(--wt-border);
+    color: var(--wt-deep-gray);
+}
+
+/* ============================================================
+   Links
+   ============================================================ */
+.o_portal a {
+    color: var(--wt-primary);
+    transition: color var(--wt-transition);
+}
+
+.o_portal a:hover {
+    color: var(--wt-primary-hover);
+}
+
+/* ============================================================
+   Table Styles
+   ============================================================ */
+.table thead {
+    background-color: var(--wt-light-gray);
+}
+
+.table thead th {
+    color: var(--wt-gray);
+    font-weight: 600;
+    border-bottom: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--wt-primary-light);
+}
+
+.table-borderless th {
+    color: var(--wt-gray);
+    font-weight: 500;
+}
+
+.table-borderless td {
+    color: var(--wt-deep-gray);
 }
 
 /* Info table label column */
@@ -140,23 +365,144 @@
     white-space: nowrap;
 }
 
-/* Mobile request card styles */
-.maintenance-request-card {
-    border: 1px solid #e9ecef;
-    transition: background-color 0.15s;
+/* ============================================================
+   Form Styles
+   ============================================================ */
+.form-control:focus {
+    border-color: var(--wt-primary);
+    box-shadow: 0 0 0 0.2rem rgba(97, 131, 252, 0.2);
 }
 
-.maintenance-request-card:hover {
-    background-color: rgba(113, 75, 103, 0.04);
+.form-label {
+    color: var(--wt-gray);
+    font-weight: 500;
 }
 
-/* Progress bar wrapper - allow horizontal scroll on mobile */
-.maintenance-progress-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+/* ============================================================
+   Alerts (left-border style)
+   ============================================================ */
+.maintenance-alert {
+    background-color: var(--wt-light-gray);
+    border: none;
+    border-left: 4px solid var(--wt-green);
+    border-radius: var(--wt-radius-btn);
+    color: var(--wt-gray);
+    padding: 1rem 1.25rem;
 }
 
-/* ==================== Responsive: Tablet (<=768px) ==================== */
+.maintenance-alert.alert-completed {
+    border-left-color: var(--wt-green);
+}
+
+.maintenance-alert.alert-completed i {
+    color: var(--wt-green);
+}
+
+/* Legacy alert overrides */
+.alert-info {
+    background-color: var(--wt-light-gray);
+    border: none;
+    border-left: 4px solid var(--wt-cyan);
+    color: var(--wt-gray);
+}
+
+.alert-success {
+    background-color: var(--wt-light-gray);
+    border: none;
+    border-left: 4px solid var(--wt-green);
+    color: var(--wt-gray);
+}
+
+/* ============================================================
+   Empty States
+   ============================================================ */
+.maintenance-empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.maintenance-empty-state i {
+    font-size: 3rem;
+    color: var(--wt-border);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.maintenance-empty-state p {
+    color: var(--wt-gray);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* ============================================================
+   List Group (Related Requests)
+   ============================================================ */
+.list-group-item {
+    border-color: var(--wt-light-gray);
+}
+
+.list-group-item-action:hover {
+    background-color: var(--wt-primary-light);
+}
+
+.list-group-item h6 {
+    color: var(--wt-deep-gray);
+}
+
+/* ============================================================
+   Chatter Section
+   ============================================================ */
+.maintenance-chatter-section {
+    border-top: 1px solid var(--wt-light-gray);
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+}
+
+/* ============================================================
+   Page Header (title + back button row)
+   ============================================================ */
+.maintenance-page-header {
+    border-bottom: 1px solid var(--wt-light-gray);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.maintenance-page-header h3 {
+    font-weight: 600;
+    color: var(--wt-deep-gray);
+}
+
+/* ============================================================
+   Portal Home Cards Override
+   ============================================================ */
+.o_portal_index_card a.bg-100 {
+    background-color: var(--wt-white) !important;
+    border: 1px solid var(--wt-border);
+    border-left: 4px solid var(--wt-primary);
+    border-radius: var(--wt-radius-card);
+    transition: background-color var(--wt-transition), box-shadow var(--wt-transition);
+}
+
+.o_portal_index_card a.bg-100:hover {
+    background-color: var(--wt-light-gray) !important;
+    box-shadow: var(--wt-shadow-hover);
+}
+
+/* ============================================================
+   Pre-formatted text
+   ============================================================ */
+pre {
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--wt-gray);
+    background-color: var(--wt-light-gray);
+    padding: 1rem;
+    border-radius: var(--wt-radius-btn);
+}
+
+/* ============================================================
+   Responsive: Tablet (<=768px)
+   ============================================================ */
 @media (max-width: 768px) {
     .maintenance-progress {
         padding: 0;
@@ -182,15 +528,19 @@
         width: auto;
     }
 
-    /* Disable hover transform on touch devices */
     .maintenance-equipment-card:hover {
         transform: none;
     }
+
+    .maintenance-detail-card .card-body {
+        padding: 1rem;
+    }
 }
 
-/* ==================== Responsive: Mobile (<=576px) ==================== */
+/* ============================================================
+   Responsive: Mobile (<=576px)
+   ============================================================ */
 @media (max-width: 576px) {
-    /* Equipment cards: tighter padding */
     .maintenance-equipment-card .card-body {
         padding: 0.75rem;
     }
@@ -203,19 +553,16 @@
         padding: 0.5rem 0.75rem;
     }
 
-    /* Detail page info tables */
     .table-borderless th,
     .table-borderless td {
         padding: 0.4rem 0.5rem;
         font-size: 0.9rem;
     }
 
-    /* Detail page card headers */
-    .card-header h5 {
+    .maintenance-section-title {
         font-size: 1rem;
     }
 
-    /* Progress bar - compact */
     .maintenance-progress {
         min-width: 320px;
         padding: 0;
@@ -237,7 +584,6 @@
         right: 8%;
     }
 
-    /* Related requests list in equipment detail */
     .list-group-item h6 {
         font-size: 0.85rem;
         max-width: 55%;
@@ -246,18 +592,17 @@
         white-space: nowrap;
     }
 
-    /* Chatter heading */
+    .maintenance-chatter-section h4,
     .col-12 > h4 {
         font-size: 1.1rem;
     }
-}
 
-/* Pre-formatted text for notes */
-pre {
-    font-family: inherit;
-    font-size: 0.9rem;
-    color: #495057;
-    background-color: #f8f9fa;
-    padding: 1rem;
-    border-radius: 0.25rem;
+    .maintenance-detail-card .card-body {
+        padding: 0.75rem;
+    }
+
+    .maintenance-page-header {
+        padding-bottom: 0.75rem;
+        margin-bottom: 1rem;
+    }
 }
