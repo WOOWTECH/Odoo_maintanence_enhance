@@ -5,9 +5,9 @@
 
 /* --- CSS Custom Properties (Brand Tokens) --- */
 :root {
-    --wt-primary: #6183FC;
-    --wt-primary-hover: #4A6AD4;
-    --wt-primary-light: rgba(97, 131, 252, 0.08);
+    --wt-primary: #714B67;
+    --wt-primary-hover: #5E3D56;
+    --wt-primary-light: rgba(113, 75, 103, 0.08);
     --wt-white: #FFFFFF;
     --wt-light-gray: #EFF1F5;
     --wt-gray: #646262;
@@ -31,22 +31,20 @@
     --wt-transition: 0.15s ease;
 }
 
-/* --- Typography --- */
-.o_portal h1, .o_portal h2, .o_portal h3,
-.o_portal .maintenance-section-title {
+/* --- Typography (scoped to module elements) --- */
+.maintenance-page-header h3,
+.maintenance-section-title,
+.maintenance-detail-card h5,
+.maintenance-equipment-card .card-title {
     font-family: 'Gira Sans', 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--wt-deep-gray);
     font-weight: 600;
 }
 
-.o_portal body, .o_portal p, .o_portal td, .o_portal th,
-.o_portal .form-label, .o_portal small, .o_portal .text-muted,
-.o_portal .list-group-item {
-    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* Chinese text enhancement */
-.o_portal {
+.maintenance-detail-card,
+.maintenance-equipment-card,
+.maintenance-request-card,
+.maintenance-chatter-section {
     font-family: 'Outfit', 'UD Digi Kyokasho', 'Noto Sans TC', 'Microsoft JhengHei', -apple-system, sans-serif;
 }
 
@@ -201,63 +199,56 @@
 }
 
 /* ============================================================
-   Badge System
+   Badge System (scoped to module elements)
    ============================================================ */
-.badge {
+.maintenance-detail-card .badge,
+.maintenance-equipment-card .badge,
+.maintenance-request-card .badge,
+.table-hover .badge,
+.list-group-item .badge {
     border-radius: var(--wt-radius-badge) !important;
     font-weight: 500;
     padding: 0.35em 0.65em;
 }
 
 /* Stage badges */
-.badge.bg-info {
+.maintenance-detail-card .badge.bg-info,
+.maintenance-request-card .badge.bg-info,
+.table-hover .badge.bg-info,
+.list-group-item .badge.bg-info {
     background-color: var(--wt-cyan) !important;
     color: var(--wt-deep-gray) !important;
 }
 
-.badge.bg-success {
+.maintenance-detail-card .badge.bg-success,
+.maintenance-request-card .badge.bg-success,
+.table-hover .badge.bg-success,
+.list-group-item .badge.bg-success {
     background-color: var(--wt-green) !important;
     color: var(--wt-white) !important;
 }
 
-.badge.bg-warning {
+.maintenance-detail-card .badge.bg-warning,
+.table-hover .badge.bg-warning {
     background-color: var(--wt-yellow) !important;
     color: var(--wt-deep-gray) !important;
 }
 
 /* Category badge */
-.badge.bg-secondary {
+.maintenance-detail-card .badge.bg-secondary,
+.maintenance-equipment-card .badge.bg-secondary {
     background-color: var(--wt-lavender) !important;
     color: var(--wt-white) !important;
 }
 
 /* ============================================================
-   Buttons
+   Buttons (scoped to module elements)
    ============================================================ */
-.btn {
+.maintenance-detail-card .btn,
+.maintenance-page-header .btn,
+.maintenance-equipment-card .btn {
     border-radius: var(--wt-radius-btn);
     transition: all var(--wt-transition);
-}
-
-.btn-primary {
-    background-color: var(--wt-primary);
-    border-color: var(--wt-primary);
-}
-
-.btn-primary:hover, .btn-primary:focus {
-    background-color: var(--wt-primary-hover);
-    border-color: var(--wt-primary-hover);
-}
-
-.btn-outline-primary {
-    color: var(--wt-primary);
-    border-color: var(--wt-primary);
-}
-
-.btn-outline-primary:hover, .btn-outline-primary:focus {
-    background-color: var(--wt-primary);
-    border-color: var(--wt-primary);
-    color: var(--wt-white);
 }
 
 /* Ghost button (back to list) */
@@ -306,38 +297,34 @@
     color: var(--wt-white);
 }
 
-/* Secondary (filter/sort dropdowns) */
-.btn-secondary {
-    background-color: var(--wt-light-gray);
-    border-color: var(--wt-border);
-    color: var(--wt-gray);
-}
-
-.btn-secondary:hover {
-    background-color: var(--wt-border);
-    color: var(--wt-deep-gray);
-}
+/* Secondary button removed — keep native Odoo styling */
 
 /* ============================================================
-   Links
+   Links (scoped to module pages only)
    ============================================================ */
-.o_portal a {
+.maintenance-equipment-card a,
+.maintenance-detail-card a,
+.maintenance-request-card a,
+.maintenance-page-header a {
     color: var(--wt-primary);
     transition: color var(--wt-transition);
 }
 
-.o_portal a:hover {
+.maintenance-equipment-card a:hover,
+.maintenance-detail-card a:hover,
+.maintenance-request-card a:hover,
+.maintenance-page-header a:hover {
     color: var(--wt-primary-hover);
 }
 
 /* ============================================================
-   Table Styles
+   Table Styles (scoped to module list/detail pages)
    ============================================================ */
-.table thead {
+.table-responsive .table thead {
     background-color: var(--wt-light-gray);
 }
 
-.table thead th {
+.table-responsive .table thead th {
     color: var(--wt-gray);
     font-weight: 600;
     border-bottom: none;
@@ -346,16 +333,16 @@
     letter-spacing: 0.03em;
 }
 
-.table-hover tbody tr:hover {
+.table-responsive .table-hover tbody tr:hover {
     background-color: var(--wt-primary-light);
 }
 
-.table-borderless th {
+.maintenance-detail-card .table-borderless th {
     color: var(--wt-gray);
     font-weight: 500;
 }
 
-.table-borderless td {
+.maintenance-detail-card .table-borderless td {
     color: var(--wt-deep-gray);
 }
 
@@ -366,14 +353,14 @@
 }
 
 /* ============================================================
-   Form Styles
+   Form Styles (scoped to module detail pages)
    ============================================================ */
-.form-control:focus {
+.maintenance-detail-card .form-control:focus {
     border-color: var(--wt-primary);
-    box-shadow: 0 0 0 0.2rem rgba(97, 131, 252, 0.2);
+    box-shadow: 0 0 0 0.2rem rgba(113, 75, 103, 0.2);
 }
 
-.form-label {
+.maintenance-detail-card .form-label {
     color: var(--wt-gray);
     font-weight: 500;
 }
@@ -398,20 +385,7 @@
     color: var(--wt-green);
 }
 
-/* Legacy alert overrides */
-.alert-info {
-    background-color: var(--wt-light-gray);
-    border: none;
-    border-left: 4px solid var(--wt-cyan);
-    color: var(--wt-gray);
-}
-
-.alert-success {
-    background-color: var(--wt-light-gray);
-    border: none;
-    border-left: 4px solid var(--wt-green);
-    color: var(--wt-gray);
-}
+/* Legacy alert overrides removed — keep native styling */
 
 /* ============================================================
    Empty States
@@ -472,21 +446,7 @@
     color: var(--wt-deep-gray);
 }
 
-/* ============================================================
-   Portal Home Cards Override
-   ============================================================ */
-.o_portal_index_card a.bg-100 {
-    background-color: var(--wt-white) !important;
-    border: 1px solid var(--wt-border);
-    border-left: 4px solid var(--wt-primary);
-    border-radius: var(--wt-radius-card);
-    transition: background-color var(--wt-transition), box-shadow var(--wt-transition);
-}
-
-.o_portal_index_card a.bg-100:hover {
-    background-color: var(--wt-light-gray) !important;
-    box-shadow: var(--wt-shadow-hover);
-}
+/* Portal Home Cards: no override — keep native Odoo theme */
 
 /* ============================================================
    Pre-formatted text
