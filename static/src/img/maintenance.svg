@@ -1,3 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#714B67">
-  <path d="M22.7 19L13.6 9.9C14.5 7.6 14 4.9 12.1 3C10.1 1 7.1 0.6 4.7 1.7L9 6L6 9L1.6 4.7C0.4 7.1 0.9 10.1 2.9 12.1C4.8 14 7.5 14.5 9.8 13.6L18.9 22.7C19.3 23.1 19.9 23.1 20.3 22.7L22.6 20.4C23.1 20 23.1 19.3 22.7 19Z"/>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shadow ellipse -->
+  <ellipse cx="32" cy="57" rx="14" ry="3" fill="#C1DBF6"/>
+  <!-- Wrench -->
+  <path d="M44.5 12.5C41.5 9.5 37 9 33.5 10.8L22 22.3C20.2 25.8 20.7 30.3 23.7 33.3C26.7 36.3 31.2 36.8 34.7 35L46.2 23.5C48 20 47.5 15.5 44.5 12.5Z" fill="#C1DBF6"/>
+  <path d="M46.8 14.2C44.3 10.3 39.3 8.8 35 10.3L23.2 22.1C21.7 26.4 23.2 31.4 27.1 33.9" stroke="#374874" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M27.1 33.9L22 39L18 43L16 48L19 51L24 49L28 45L33 40" stroke="#374874" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Wrench head detail -->
+  <circle cx="40" cy="18" r="4" fill="white" stroke="#374874" stroke-width="1.2"/>
+  <circle cx="40" cy="18" r="1.5" fill="#374874"/>
+  <!-- Handle grip lines -->
+  <line x1="20" y1="45" x2="23" y2="42" stroke="#374874" stroke-width="1" stroke-linecap="round"/>
+  <line x1="21.5" y1="46.5" x2="24.5" y2="43.5" stroke="#374874" stroke-width="1" stroke-linecap="round"/>
+  <!-- Screw/bolt bottom left -->
+  <circle cx="16.5" cy="48.5" r="2" fill="#FBDBD0" stroke="#374874" stroke-width="1"/>
+  <!-- Clipboard/checklist on the right side -->
+  <rect x="38" y="32" width="16" height="20" rx="2" fill="white" stroke="#374874" stroke-width="1.2"/>
+  <rect x="42" y="30" width="8" height="4" rx="1" fill="#FBDBD0" stroke="#374874" stroke-width="1"/>
+  <!-- Checklist lines -->
+  <rect x="41" y="37" width="2" height="2" rx="0.3" fill="#374874"/>
+  <line x1="45" y1="38" x2="51" y2="38" stroke="#C1DBF6" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="41" y="42" width="2" height="2" rx="0.3" fill="#374874"/>
+  <line x1="45" y1="43" x2="51" y2="43" stroke="#C1DBF6" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="41" y="47" width="2" height="2" rx="0.3" fill="#FBDBD0"/>
+  <line x1="45" y1="48" x2="51" y2="48" stroke="#C1DBF6" stroke-width="1.5" stroke-linecap="round"/>
 </svg>
