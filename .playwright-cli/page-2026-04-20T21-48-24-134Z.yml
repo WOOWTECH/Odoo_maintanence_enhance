@@ -1,0 +1,76 @@
+- generic [ref=e2]:
+  - link "跳至內容" [ref=e3] [cursor=pointer]:
+    - /url: "#wrap"
+  - banner [ref=e4]:
+    - navigation [ref=e5]:
+      - generic [ref=e6]:
+        - link "Logo of My Company" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Logo of My Company" [ref=e8]
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - button "Test Vendor (Portal)" [ref=e11] [cursor=pointer]
+            - text:  
+  - main [ref=e12]:
+    - generic [ref=e14]:
+      - navigation [ref=e15]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link "首頁" [ref=e18] [cursor=pointer]:
+              - /url: /my/home
+              - generic [ref=e19]: 
+        - text: 
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - generic [ref=e22]:
+              - text: 排列依據：
+              - button "Newest" [ref=e24] [cursor=pointer]
+            - generic [ref=e25]:
+              - text: 篩選依據：
+              - button "All" [ref=e27] [cursor=pointer]
+          - generic [ref=e29]:
+            - button [ref=e30] [cursor=pointer]
+            - searchbox "Request" [ref=e31]
+            - button "" [ref=e32] [cursor=pointer]:
+              - generic [ref=e33]: 
+      - table [ref=e35]:
+        - rowgroup [ref=e36]:
+          - row "請求名稱 設備 階段 日期" [ref=e37]:
+            - columnheader "請求名稱" [ref=e38]
+            - columnheader "設備" [ref=e39]
+            - columnheader "階段" [ref=e40]
+            - columnheader "日期" [ref=e41]
+        - rowgroup [ref=e42]:
+          - row "V3_NoStageRequest - 已維修 2026-03-20" [ref=e43]:
+            - cell "V3_NoStageRequest" [ref=e44]:
+              - link "V3_NoStageRequest" [ref=e45] [cursor=pointer]:
+                - /url: /my/maintenance-requests/175
+            - cell "-" [ref=e46]
+            - cell "已維修" [ref=e47]:
+              - generic [ref=e48]: 已維修
+            - cell "2026-03-20" [ref=e49]
+          - row "V3_ReqOnlyUser1 V3_SharedEquipment 新增請求 2026-03-20" [ref=e50]:
+            - cell "V3_ReqOnlyUser1" [ref=e51]:
+              - link "V3_ReqOnlyUser1" [ref=e52] [cursor=pointer]:
+                - /url: /my/maintenance-requests/172
+            - cell "V3_SharedEquipment" [ref=e53]
+            - cell "新增請求" [ref=e54]:
+              - generic [ref=e55]: 新增請求
+            - cell "2026-03-20" [ref=e56]
+          - row "Test Request Alpha Test Equipment A 已維修 2026-03-20" [ref=e57]:
+            - cell "Test Request Alpha" [ref=e58]:
+              - link "Test Request Alpha" [ref=e59] [cursor=pointer]:
+                - /url: /my/maintenance-requests/1
+            - cell "Test Equipment A" [ref=e60]
+            - cell "已維修" [ref=e61]:
+              - generic [ref=e62]: 已維修
+            - cell "2026-03-20" [ref=e63]
+  - contentinfo [ref=e64]:
+    - generic [ref=e67]:
+      - generic [ref=e69]: 版權所有 © My Company
+      - generic [ref=e71]:
+        - text: 由
+        - link "Odoo" [ref=e72] [cursor=pointer]:
+          - /url: http://www.odoo.com?utm_source=db&utm_medium=portal
+          - img "Odoo" [ref=e73]
+        - text: 驅動
