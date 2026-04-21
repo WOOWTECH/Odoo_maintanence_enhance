@@ -19,7 +19,7 @@
     --wt-cyan: #7BDBE0;
     --wt-yellow: #F8D158;
     --wt-green: #8CD37F;
-    --wt-orange: #E66D3E;
+    --wt-orange: #BF5525;
     --wt-coral: #F45D6D;
     --wt-lavender: #C09FE0;
     --wt-brown: #B17148;
@@ -228,7 +228,7 @@
 .table-hover .badge.bg-success,
 .list-group-item .badge.bg-success {
     background-color: var(--wt-green) !important;
-    color: var(--wt-white) !important;
+    color: var(--wt-deep-gray) !important;
 }
 
 .maintenance-detail-card .badge.bg-warning,
@@ -241,7 +241,7 @@
 .maintenance-detail-card .badge.bg-secondary,
 .maintenance-equipment-card .badge.bg-secondary {
     background-color: var(--wt-lavender) !important;
-    color: var(--wt-white) !important;
+    color: var(--wt-deep-gray) !important;
 }
 
 /* ============================================================
@@ -280,8 +280,8 @@
 }
 
 .btn-start-work:hover, .btn-start-work:focus {
-    background-color: #D15E30;
-    border-color: #D15E30;
+    background-color: #A8471B;
+    border-color: #A8471B;
     color: var(--wt-white);
 }
 
@@ -289,7 +289,7 @@
 .btn-mark-done {
     background-color: var(--wt-green);
     border-color: var(--wt-green);
-    color: var(--wt-white);
+    color: var(--wt-deep-gray);
     font-weight: 600;
     border-radius: var(--wt-radius-btn);
 }
@@ -297,7 +297,7 @@
 .btn-mark-done:hover, .btn-mark-done:focus {
     background-color: #72B866;
     border-color: #72B866;
-    color: var(--wt-white);
+    color: var(--wt-deep-gray);
 }
 
 /* Secondary button removed — keep native Odoo styling */
