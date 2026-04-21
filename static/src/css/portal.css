@@ -3,11 +3,14 @@
    Brand: Air · Mind · Community · Nourishment
    ============================================================ */
 
-/* --- CSS Custom Properties (Brand Tokens) --- */
+/* --- CSS Custom Properties (Brand Tokens) ---
+   --wt-primary follows --custom-primary from odoo_color_customizer when installed.
+   Falls back to Odoo default #714B67 when the customizer is not present.
+*/
 :root {
-    --wt-primary: #714B67;
-    --wt-primary-hover: #5E3D56;
-    --wt-primary-light: rgba(113, 75, 103, 0.08);
+    --wt-primary: var(--custom-primary, #714B67);
+    --wt-primary-hover: var(--custom-primary-hover, #5E3D56);
+    --wt-primary-light: var(--custom-primary-light, rgba(113, 75, 103, 0.08));
     --wt-white: #FFFFFF;
     --wt-light-gray: #EFF1F5;
     --wt-gray: #646262;
@@ -357,7 +360,7 @@
    ============================================================ */
 .maintenance-detail-card .form-control:focus {
     border-color: var(--wt-primary);
-    box-shadow: 0 0 0 0.2rem rgba(113, 75, 103, 0.2);
+    box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--wt-primary) 20%, transparent);
 }
 
 .maintenance-detail-card .form-label {
