@@ -1,0 +1,319 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - button "" [ref=e5] [cursor=pointer]:
+        - generic [ref=e6]: 
+      - menuitem "預約管理" [ref=e251] [cursor=pointer]
+      - menu [ref=e22]:
+        - menuitem "行事曆" [ref=e252] [cursor=pointer]
+        - menuitem "預約類型" [ref=e253] [cursor=pointer]
+        - menuitem "所有預約" [ref=e254] [cursor=pointer]
+        - menuitem "場地預約" [ref=e255] [cursor=pointer]
+        - menuitem "服務人員預約" [ref=e256] [cursor=pointer]
+        - button "設定" [ref=e257] [cursor=pointer]:
+          - generic [ref=e258]: 設定
+      - menu [ref=e7]:
+        - button "訊息 10" [ref=e25] [cursor=pointer]:
+          - img "訊息" [ref=e10]: 
+          - generic [ref=e11]: "10"
+        - button "活動 25" [ref=e26] [cursor=pointer]:
+          - img "活動" [ref=e13]: 
+          - generic [ref=e27]: "25"
+        - button "YourCompany" [disabled] [ref=e15]:
+          - text: 
+          - generic [ref=e16]: YourCompany
+        - button "使用者" [ref=e18] [cursor=pointer]:
+          - img "使用者" [ref=e19]
+          - text: 
+  - generic [ref=e777]:
+    - generic [ref=e779]:
+      - generic [ref=e780]:
+        - button "新增" [ref=e783] [cursor=pointer]
+        - generic [ref=e784]:
+          - generic [ref=e786]: 預約管理
+          - button "" [ref=e790] [cursor=pointer]:
+            - generic [ref=e791]: 
+      - search [ref=e793]:
+        - search [ref=e794]:
+          - button "搜尋⋯" [ref=e795] [cursor=pointer]:
+            - img [ref=e796]: 
+          - generic [ref=e797]:
+            - listitem "搜尋" [ref=e798]:
+              - button " " [ref=e800] [cursor=pointer]:
+                - generic [ref=e801]: 
+                - generic [ref=e803]: 
+              - generic [ref=e804]:
+                - generic "已發布" [ref=e805]
+                - button "移除" [ref=e806] [cursor=pointer]: 
+            - searchbox "搜尋⋯" [active] [ref=e807]
+        - button "" [ref=e808] [cursor=pointer]
+      - generic [ref=e809]:
+        - search [ref=e810]:
+          - navigation "頁面工具" [ref=e811]:
+            - generic [ref=e812]:
+              - generic [ref=e813]: 1-8
+              - text: / 8
+            - generic [ref=e814]:
+              - button "上一頁" [disabled]:
+                - generic: 
+              - button "下一頁" [disabled]:
+                - generic: 
+        - navigation [ref=e815]:
+          - button "" [ref=e816] [cursor=pointer]:
+            - generic [ref=e817]: 
+          - button "" [ref=e818] [cursor=pointer]:
+            - generic [ref=e819]: 
+    - generic [ref=e821]:
+      - article [ref=e822] [cursor=pointer]:
+        - complementary [ref=e823]:
+          - generic [ref=e825]: 
+        - main [ref=e826]:
+          - generic [ref=e827]:
+            - generic [ref=e828]:
+              - strong [ref=e829]: 商務會議
+              - generic [ref=e830]:
+                - generic [ref=e831]: 
+                - generic [ref=e832]: 01:00
+                - text: 時長
+            - generic [ref=e834]: 已發布
+          - generic [ref=e835]:
+            - generic [ref=e837]:
+              - generic [ref=e838]: "11"
+              - generic [ref=e839]: 即將到來
+            - generic [ref=e841]:
+              - generic [ref=e842]: "16"
+              - generic [ref=e843]: 總計
+          - generic [ref=e845]:
+            - generic [ref=e846]: 
+            - text: 1 位服務人員
+          - generic [ref=e847]:
+            - button " 分享" [ref=e848]:
+              - generic [ref=e849]: 
+              - text: 分享
+            - button " 預約" [ref=e850]:
+              - generic [ref=e851]: 
+              - text: 預約
+            - button "" [ref=e852]:
+              - generic [ref=e853]: 
+      - article [ref=e854] [cursor=pointer]:
+        - complementary [ref=e855]:
+          - generic [ref=e857]: 
+        - main [ref=e858]:
+          - generic [ref=e859]:
+            - generic [ref=e860]:
+              - strong [ref=e861]: 視訊諮詢
+              - generic [ref=e862]:
+                - generic [ref=e863]: 
+                - generic [ref=e864]: 00:30
+                - text: 時長
+            - generic [ref=e866]: 已發布
+          - generic [ref=e867]:
+            - generic [ref=e869]:
+              - generic [ref=e870]: "23"
+              - generic [ref=e871]: 即將到來
+            - generic [ref=e873]:
+              - generic [ref=e874]: "42"
+              - generic [ref=e875]: 總計
+          - generic [ref=e877]:
+            - generic [ref=e878]: 
+            - text: 1 位服務人員
+          - generic [ref=e879]:
+            - button " 分享" [ref=e880]:
+              - generic [ref=e881]: 
+              - text: 分享
+            - button " 預約" [ref=e882]:
+              - generic [ref=e883]: 
+              - text: 預約
+            - button "" [ref=e884]:
+              - generic [ref=e885]: 
+      - article [ref=e886] [cursor=pointer]:
+        - complementary [ref=e887]:
+          - generic [ref=e889]: 
+        - main [ref=e890]:
+          - generic [ref=e891]:
+            - generic [ref=e892]:
+              - strong [ref=e893]: 餐廳訂位
+              - generic [ref=e894]:
+                - generic [ref=e895]: 
+                - generic [ref=e896]: 02:00
+                - text: 時長
+            - generic [ref=e898]: 已發布
+          - generic [ref=e899]:
+            - generic [ref=e901]:
+              - generic [ref=e902]: "1"
+              - generic [ref=e903]: 即將到來
+            - generic [ref=e905]:
+              - generic [ref=e906]: "1"
+              - generic [ref=e907]: 總計
+          - generic [ref=e908]:
+            - generic [ref=e909]:
+              - generic [ref=e910]: 
+              - text: 3 個場地
+            - generic [ref=e911]:
+              - generic [ref=e912]: 
+              - text: 容量： 18
+          - generic [ref=e913]:
+            - button " 分享" [ref=e914]:
+              - generic [ref=e915]: 
+              - text: 分享
+            - button " 預約" [ref=e916]:
+              - generic [ref=e917]: 
+              - text: 預約
+            - button "" [ref=e918]:
+              - generic [ref=e919]: 
+      - article [ref=e920] [cursor=pointer]:
+        - complementary [ref=e921]:
+          - generic [ref=e923]: 
+        - main [ref=e924]:
+          - generic [ref=e925]:
+            - generic [ref=e926]:
+              - strong [ref=e927]: 網球場預約
+              - generic [ref=e928]:
+                - generic [ref=e929]: 
+                - generic [ref=e930]: 01:00
+                - text: 時長
+            - generic [ref=e932]: 已發布
+          - generic [ref=e933]:
+            - generic [ref=e935]:
+              - generic [ref=e936]: "0"
+              - generic [ref=e937]: 即將到來
+            - generic [ref=e939]:
+              - generic [ref=e940]: "0"
+              - generic [ref=e941]: 總計
+          - generic [ref=e943]:
+            - generic [ref=e944]: 
+            - text: 1 個場地
+          - generic [ref=e945]:
+            - button " 分享" [ref=e946]:
+              - generic [ref=e947]: 
+              - text: 分享
+            - button " 預約" [ref=e948]:
+              - generic [ref=e949]: 
+              - text: 預約
+            - button "" [ref=e950]:
+              - generic [ref=e951]: 
+      - article [ref=e952] [cursor=pointer]:
+        - complementary [ref=e953]:
+          - generic [ref=e955]: 
+        - main [ref=e956]:
+          - generic [ref=e957]:
+            - generic [ref=e958]:
+              - strong [ref=e959]: 專家諮詢
+              - generic [ref=e960]:
+                - generic [ref=e961]: 
+                - generic [ref=e962]: 01:00
+                - text: 時長
+            - generic [ref=e964]: 已發布
+          - generic [ref=e965]:
+            - generic [ref=e967]:
+              - generic [ref=e968]: "3"
+              - generic [ref=e969]: 即將到來
+            - generic [ref=e971]:
+              - generic [ref=e972]: "14"
+              - generic [ref=e973]: 總計
+          - generic [ref=e975]:
+            - generic [ref=e976]: 
+            - text: 1 位服務人員
+          - generic [ref=e977]:
+            - button " 分享" [ref=e978]:
+              - generic [ref=e979]: 
+              - text: 分享
+            - button " 預約" [ref=e980]:
+              - generic [ref=e981]: 
+              - text: 預約
+            - button "" [ref=e982]:
+              - generic [ref=e983]: 
+      - article [ref=e984] [cursor=pointer]:
+        - complementary [ref=e985]:
+          - generic [ref=e987]: 
+        - main [ref=e988]:
+          - generic [ref=e989]:
+            - generic [ref=e990]:
+              - strong [ref=e991]: Test Deactivated Type
+              - generic [ref=e992]:
+                - generic [ref=e993]: 
+                - generic [ref=e994]: 01:00
+                - text: 時長
+            - generic [ref=e996]: 已發布
+          - generic [ref=e997]:
+            - generic [ref=e999]:
+              - generic [ref=e1000]: "0"
+              - generic [ref=e1001]: 即將到來
+            - generic [ref=e1003]:
+              - generic [ref=e1004]: "0"
+              - generic [ref=e1005]: 總計
+          - generic [ref=e1006]:
+            - button " 分享" [ref=e1007]:
+              - generic [ref=e1008]: 
+              - text: 分享
+            - button " 預約" [ref=e1009]:
+              - generic [ref=e1010]: 
+              - text: 預約
+            - button "" [ref=e1011]:
+              - generic [ref=e1012]: 
+      - article [ref=e1013] [cursor=pointer]:
+        - complementary [ref=e1014]:
+          - generic [ref=e1016]: 
+        - main [ref=e1017]:
+          - generic [ref=e1018]:
+            - generic [ref=e1019]:
+              - strong [ref=e1020]: Test Deactivated Type
+              - generic [ref=e1021]:
+                - generic [ref=e1022]: 
+                - generic [ref=e1023]: 01:00
+                - text: 時長
+            - generic [ref=e1025]: 已發布
+          - generic [ref=e1026]:
+            - generic [ref=e1028]:
+              - generic [ref=e1029]: "0"
+              - generic [ref=e1030]: 即將到來
+            - generic [ref=e1032]:
+              - generic [ref=e1033]: "0"
+              - generic [ref=e1034]: 總計
+          - generic [ref=e1035]:
+            - button " 分享" [ref=e1036]:
+              - generic [ref=e1037]: 
+              - text: 分享
+            - button " 預約" [ref=e1038]:
+              - generic [ref=e1039]: 
+              - text: 預約
+            - button "" [ref=e1040]:
+              - generic [ref=e1041]: 
+      - article [ref=e1042] [cursor=pointer]:
+        - complementary [ref=e1043]:
+          - generic [ref=e1045]: 
+        - main [ref=e1046]:
+          - generic [ref=e1047]:
+            - generic [ref=e1048]:
+              - strong [ref=e1049]: Test Paid Appointment
+              - generic [ref=e1050]:
+                - generic [ref=e1051]: 
+                - generic [ref=e1052]: 01:00
+                - text: 時長
+            - generic [ref=e1054]: 已發布
+          - generic [ref=e1055]:
+            - generic [ref=e1057]:
+              - generic [ref=e1058]: "4"
+              - generic [ref=e1059]: 即將到來
+            - generic [ref=e1061]:
+              - generic [ref=e1062]: "8"
+              - generic [ref=e1063]: 總計
+          - generic [ref=e1064]:
+            - button " 分享" [ref=e1065]:
+              - generic [ref=e1066]: 
+              - text: 分享
+            - button " 預約" [ref=e1067]:
+              - generic [ref=e1068]: 
+              - text: 預約
+            - button "" [ref=e1069]:
+              - generic [ref=e1070]: 
+  - generic:
+    - generic:
+      - paragraph: 按 esc 離開全螢幕
+    - generic [ref=e767]:
+      - button "" [ref=e768] [cursor=pointer]
+      - generic [ref=e769]:
+        - generic [ref=e771]: 
+        - text: 
+        - button "對話串圖片" [ref=e772] [cursor=pointer]:
+          - img "對話串圖片" [ref=e773]

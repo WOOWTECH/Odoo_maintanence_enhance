@@ -1,0 +1,87 @@
+- generic [ref=e2]:
+  - link "跳至內容" [ref=e3] [cursor=pointer]:
+    - /url: "#wrap"
+  - banner [ref=e4]:
+    - navigation [ref=e5]:
+      - generic [ref=e6]:
+        - link "Logo of My Company" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Logo of My Company" [ref=e8]
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - button "Test Vendor (Portal)" [ref=e11] [cursor=pointer]
+            - text:  
+  - main [ref=e12]:
+    - list [ref=e15]:
+      - listitem [ref=e16]:
+        - link "首頁" [ref=e17] [cursor=pointer]:
+          - /url: /my/home
+          - generic [ref=e18]: 
+    - generic [ref=e20]:
+      - generic [ref=e23]:
+        - heading "Test Request Alpha" [level=3] [ref=e24]: Test Request Alpha
+        - link "返回列表" [ref=e25] [cursor=pointer]:
+          - /url: /my/maintenance-requests
+          - text: 返回列表
+      - generic [ref=e29]:
+        - heading "狀態進度" [level=6] [ref=e30]
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - generic [ref=e34]: "1"
+            - generic [ref=e35]: 新增請求
+          - generic [ref=e36]:
+            - generic [ref=e38]: "2"
+            - generic [ref=e39]: 進行中
+          - generic [ref=e40]:
+            - generic [ref=e42]: "3"
+            - generic [ref=e43]: V2_DuplicateSeq
+          - generic [ref=e46]: 已維修
+          - generic [ref=e47]:
+            - generic [ref=e49]: "5"
+            - generic [ref=e50]: 報廢
+      - generic [ref=e51]:
+        - generic [ref=e54]:
+          - generic [ref=e55]: 請求資訊
+          - table [ref=e57]:
+            - rowgroup [ref=e58]:
+              - row "請求名稱 Test Request Alpha" [ref=e59]:
+                - rowheader "請求名稱" [ref=e60]
+                - cell "Test Request Alpha" [ref=e61]
+              - row "設備 Test Equipment A" [ref=e62]:
+                - rowheader "設備" [ref=e63]
+                - cell "Test Equipment A" [ref=e64]:
+                  - link "Test Equipment A" [ref=e65] [cursor=pointer]:
+                    - /url: /my/equipments/1
+              - row "類別 Test Category Portal" [ref=e66]:
+                - rowheader "類別" [ref=e67]
+                - cell "Test Category Portal" [ref=e68]:
+                  - generic [ref=e69]: Test Category Portal
+              - row "維護類型 修復性維護" [ref=e70]:
+                - rowheader "維護類型" [ref=e71]
+                - cell "修復性維護" [ref=e72]
+              - row "請求日期 2026年03月20日" [ref=e73]:
+                - rowheader "請求日期" [ref=e74]
+                - cell "2026年03月20日" [ref=e75]
+              - row "目前階段 已維修" [ref=e76]:
+                - rowheader "目前階段" [ref=e77]
+                - cell "已維修" [ref=e78]:
+                  - generic [ref=e79]: 已維修
+              - row "描述 Test corrective maintenance request" [ref=e80]:
+                - rowheader "描述" [ref=e81]
+                - cell "Test corrective maintenance request" [ref=e82]:
+                  - paragraph [ref=e83]: Test corrective maintenance request
+        - generic [ref=e86]:
+          - generic [ref=e87]: 更新狀態
+          - generic [ref=e90]:
+            - generic [ref=e91]: 更新階段
+            - generic [ref=e93]: 此請求已完成。
+      - generic [ref=e96]: 評論與討論
+  - contentinfo [ref=e98]:
+    - generic [ref=e101]:
+      - generic [ref=e103]: 版權所有 © My Company
+      - generic [ref=e105]:
+        - text: 由
+        - link "Odoo" [ref=e106] [cursor=pointer]:
+          - /url: http://www.odoo.com?utm_source=db&utm_medium=portal
+          - img "Odoo" [ref=e107]
+        - text: 驅動
