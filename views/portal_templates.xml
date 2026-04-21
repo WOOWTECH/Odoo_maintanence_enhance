@@ -10,9 +10,9 @@
         <div id="portal_client_category" position="inside">
             <t t-call="portal.portal_docs_entry">
                 <t t-set="icon" t-value="'/maintenance_portal/static/src/img/equipment.svg?v=4'"/>
-                <t t-set="title">設備</t>
+                <t t-set="title">Equipment</t>
                 <t t-set="url" t-value="'/my/equipments'"/>
-                <t t-set="text">查看指派給您的設備</t>
+                <t t-set="text">View your assigned equipment</t>
                 <t t-set="placeholder_count" t-value="'equipment_count'"/>
             </t>
         </div>
@@ -23,9 +23,9 @@
         <div id="portal_client_category" position="inside">
             <t t-call="portal.portal_docs_entry">
                 <t t-set="icon" t-value="'/maintenance_portal/static/src/img/maintenance.svg?v=4'"/>
-                <t t-set="title">維修請求</t>
+                <t t-set="title">Maintenance Requests</t>
                 <t t-set="url" t-value="'/my/maintenance-requests'"/>
-                <t t-set="text">查看和更新維修請求</t>
+                <t t-set="text">View and update maintenance requests</t>
                 <t t-set="placeholder_count" t-value="'maintenance_request_count'"/>
             </t>
         </div>
@@ -38,7 +38,7 @@
             <t t-set="breadcrumbs_searchbar" t-value="True"/>
 
             <t t-call="portal.portal_searchbar">
-                <t t-set="title">設備</t>
+                <t t-set="title">Equipment</t>
             </t>
 
             <t t-if="equipments">
@@ -86,7 +86,7 @@
             <t t-else="">
                 <div class="maintenance-empty-state mt-4">
                     <i class="mdi mdi-clipboard-text-outline"></i>
-                    <p>沒有指派給您的設備。</p>
+                    <p>No equipment assigned to you.</p>
                 </div>
             </t>
         </t>
@@ -104,7 +104,7 @@
                             <t t-esc="equipment.name"/>
                         </h3>
                         <a href="/my/equipments" class="btn btn-ghost btn-sm">
-                            <i class="mdi mdi-arrow-left me-1"></i>返回列表
+                            <i class="mdi mdi-arrow-left me-1"></i>Back to list
                         </a>
                     </div>
                 </div>
@@ -117,32 +117,32 @@
                         <div class="card-body">
                             <div class="maintenance-section-title">
                                 <span class="maintenance-section-dot dot-blue"></span>
-                                設備資訊
+                                Equipment Information
                             </div>
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr t-if="equipment.serial_no">
-                                        <th class="text-muted maintenance-info-label">序號</th>
+                                        <th class="text-muted maintenance-info-label">Serial Number</th>
                                         <td><t t-esc="equipment.serial_no"/></td>
                                     </tr>
                                     <tr t-if="equipment.category_id">
-                                        <th class="text-muted">類別</th>
+                                        <th class="text-muted">Category</th>
                                         <td><span class="badge bg-secondary"><t t-esc="equipment.category_id.name"/></span></td>
                                     </tr>
                                     <tr t-if="equipment.location">
-                                        <th class="text-muted">位置</th>
+                                        <th class="text-muted">Location</th>
                                         <td><t t-esc="equipment.location"/></td>
                                     </tr>
                                     <tr t-if="equipment.model">
-                                        <th class="text-muted">型號</th>
+                                        <th class="text-muted">Model</th>
                                         <td><t t-esc="equipment.model"/></td>
                                     </tr>
                                     <tr t-if="equipment.assign_date">
-                                        <th class="text-muted">指派日期</th>
+                                        <th class="text-muted">Assigned Date</th>
                                         <td><t t-esc="equipment.assign_date" t-options='{"widget": "date"}'/></td>
                                     </tr>
                                     <tr t-if="equipment.note">
-                                        <th class="text-muted">備註</th>
+                                        <th class="text-muted">Notes</th>
                                         <td><t t-raw="equipment.note"/></td>
                                     </tr>
                                 </tbody>
@@ -157,7 +157,7 @@
                         <div class="card-body">
                             <div class="maintenance-section-title">
                                 <span class="maintenance-section-dot dot-cyan"></span>
-                                相關維修請求
+                                Related Maintenance Requests
                             </div>
                             <t t-if="maintenance_requests">
                                 <div class="list-group list-group-flush">
@@ -177,7 +177,7 @@
                                 </div>
                             </t>
                             <t t-else="">
-                                <p class="text-muted mb-0">此設備沒有維修請求。</p>
+                                <p class="text-muted mb-0">No maintenance requests for this equipment.</p>
                             </t>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
                 <div class="col-12 maintenance-chatter-section">
                     <div class="maintenance-section-title">
                         <span class="maintenance-section-dot dot-lavender"></span>
-                        評論與討論
+                        Comments &amp; Discussion
                     </div>
                     <t t-call="portal.message_thread">
                         <t t-set="object" t-value="equipment"/>
@@ -206,7 +206,7 @@
             <t t-set="breadcrumbs_searchbar" t-value="True"/>
 
             <t t-call="portal.portal_searchbar">
-                <t t-set="title">維修請求</t>
+                <t t-set="title">Maintenance Requests</t>
             </t>
 
             <t t-if="requests">
@@ -215,10 +215,10 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>請求名稱</th>
-                                <th>設備</th>
-                                <th>階段</th>
-                                <th>日期</th>
+                                <th>Request Name</th>
+                                <th>Equipment</th>
+                                <th>Stage</th>
+                                <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -285,7 +285,7 @@
             <t t-else="">
                 <div class="maintenance-empty-state mt-4">
                     <i class="mdi mdi-clipboard-text-outline"></i>
-                    <p>沒有指派給您的維修請求。</p>
+                    <p>No maintenance requests assigned to you.</p>
                 </div>
             </t>
         </t>
@@ -303,7 +303,7 @@
                             <t t-esc="mrequest.name"/>
                         </h3>
                         <a href="/my/maintenance-requests" class="btn btn-ghost btn-sm">
-                            <i class="mdi mdi-arrow-left me-1"></i>返回列表
+                            <i class="mdi mdi-arrow-left me-1"></i>Back to list
                         </a>
                     </div>
                 </div>
@@ -314,7 +314,7 @@
                 <div class="col-12">
                     <div class="card maintenance-detail-card">
                         <div class="card-body maintenance-progress-wrapper">
-                            <h6 class="card-title text-muted mb-3">狀態進度</h6>
+                            <h6 class="card-title text-muted mb-3">Status Progress</h6>
                             <div class="d-flex justify-content-between position-relative maintenance-progress">
                                 <t t-foreach="stages" t-as="stage">
                                     <div class="text-center maintenance-stage">
@@ -348,16 +348,16 @@
                         <div class="card-body">
                             <div class="maintenance-section-title">
                                 <span class="maintenance-section-dot dot-blue"></span>
-                                請求資訊
+                                Request Information
                             </div>
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr>
-                                        <th class="text-muted maintenance-info-label">請求名稱</th>
+                                        <th class="text-muted maintenance-info-label">Request Name</th>
                                         <td><t t-esc="mrequest.name"/></td>
                                     </tr>
                                     <tr t-if="mrequest.sudo().equipment_id">
-                                        <th class="text-muted">設備</th>
+                                        <th class="text-muted">Equipment</th>
                                         <td>
                                             <a t-attf-href="/my/equipments/#{mrequest.sudo().equipment_id.id}">
                                                 <t t-esc="mrequest.sudo().equipment_id.name"/>
@@ -365,7 +365,7 @@
                                         </td>
                                     </tr>
                                     <tr t-if="mrequest.sudo().equipment_id.category_id">
-                                        <th class="text-muted">類別</th>
+                                        <th class="text-muted">Category</th>
                                         <td>
                                             <span class="badge bg-secondary">
                                                 <t t-esc="mrequest.sudo().equipment_id.category_id.name"/>
@@ -373,22 +373,22 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th class="text-muted">維護類型</th>
+                                        <th class="text-muted">Maintenance Type</th>
                                         <td>
-                                            <t t-if="mrequest.maintenance_type == 'corrective'">修復性維護</t>
-                                            <t t-else="">預防性維護</t>
+                                            <t t-if="mrequest.maintenance_type == 'corrective'">Corrective</t>
+                                            <t t-else="">Preventive</t>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th class="text-muted">請求日期</th>
+                                        <th class="text-muted">Request Date</th>
                                         <td><t t-esc="mrequest.request_date" t-options='{"widget": "date"}'/></td>
                                     </tr>
                                     <tr t-if="mrequest.schedule_date">
-                                        <th class="text-muted">預定日期</th>
+                                        <th class="text-muted">Scheduled Date</th>
                                         <td><t t-esc="mrequest.schedule_date" t-options='{"widget": "date"}'/></td>
                                     </tr>
                                     <tr>
-                                        <th class="text-muted">目前階段</th>
+                                        <th class="text-muted">Current Stage</th>
                                         <td>
                                             <span t-attf-class="badge #{mrequest.stage_id.done and 'bg-success' or 'bg-info'}">
                                                 <t t-esc="mrequest.stage_id.name"/>
@@ -396,7 +396,7 @@
                                         </td>
                                     </tr>
                                     <tr t-if="mrequest.description">
-                                        <th class="text-muted">描述</th>
+                                        <th class="text-muted">Description</th>
                                         <td><t t-out="mrequest.description"/></td>
                                     </tr>
                                 </tbody>
@@ -411,33 +411,33 @@
                         <div class="card-body">
                             <div class="maintenance-section-title">
                                 <span class="maintenance-section-dot dot-green"></span>
-                                更新狀態
+                                Update Status
                             </div>
                             <form t-attf-action="/my/maintenance-requests/#{mrequest.id}/update" method="post">
                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
                                 <!-- Status Update Buttons -->
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold">更新階段</label>
+                                    <label class="form-label fw-bold">Update Stage</label>
                                     <div class="d-grid gap-2">
                                         <t t-if="not mrequest.stage_id.done">
                                             <!-- Find if current stage is the first one -->
                                             <t t-set="is_first_stage" t-value="mrequest.stage_id.sequence == min(stages.mapped('sequence'))"/>
                                             <t t-if="is_first_stage">
                                                 <button type="submit" name="action" value="in_progress" class="btn btn-start-work">
-                                                    <i class="mdi mdi-play me-1"></i>開始工作（進行中）
+                                                    <i class="mdi mdi-play me-1"></i>Start Work (In Progress)
                                                 </button>
                                             </t>
                                             <t t-else="">
                                                 <button type="submit" name="action" value="done" class="btn btn-mark-done">
-                                                    <i class="mdi mdi-check me-1"></i>標記為完成
+                                                    <i class="mdi mdi-check me-1"></i>Mark as Done
                                                 </button>
                                             </t>
                                         </t>
                                         <t t-else="">
                                             <div class="maintenance-alert alert-completed">
                                                 <i class="mdi mdi-check-circle me-2"></i>
-                                                此請求已完成。
+                                                This request has been completed.
                                             </div>
                                         </t>
                                     </div>
@@ -454,7 +454,7 @@
                 <div class="col-12 maintenance-chatter-section">
                     <div class="maintenance-section-title">
                         <span class="maintenance-section-dot dot-lavender"></span>
-                        評論與討論
+                        Comments &amp; Discussion
                     </div>
                     <t t-call="portal.message_thread">
                         <t t-set="object" t-value="mrequest"/>
