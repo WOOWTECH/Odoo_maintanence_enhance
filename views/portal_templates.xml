@@ -1,34 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- ==================== Portal Home Cards ==================== -->
+    <!-- ==================== Portal Home Card ==================== -->
 
-    <!-- Add Equipment counter to portal home -->
-    <template id="portal_my_home_equipment" name="Portal My Home: Equipment" inherit_id="portal.portal_my_home" priority="40">
+    <!-- Single "Maintenance" card on portal home -->
+    <template id="portal_my_home_maintenance" name="Portal My Home: Maintenance" inherit_id="portal.portal_my_home" priority="40">
         <xpath expr="//div[hasclass('o_portal_docs')]" position="before">
             <t t-set="portal_client_category_enable" t-value="True"/>
         </xpath>
         <div id="portal_client_category" position="inside">
             <t t-call="portal.portal_docs_entry">
-                <t t-set="icon" t-value="'/maintenance_portal/static/src/img/equipment.svg?v=4'"/>
-                <t t-set="title">Equipment</t>
-                <t t-set="url" t-value="'/my/equipments'"/>
-                <t t-set="text">View your assigned equipment</t>
-                <t t-set="placeholder_count" t-value="'equipment_count'"/>
+                <t t-set="icon" t-value="'/maintenance_portal/static/src/img/maintenance_dashboard.svg?v=1'"/>
+                <t t-set="title">Maintenance</t>
+                <t t-set="url" t-value="'/my/maintenance'"/>
+                <t t-set="text">Manage equipment and maintenance requests</t>
+                <t t-set="placeholder_count" t-value="'maintenance_count'"/>
             </t>
         </div>
     </template>
 
-    <!-- Add Maintenance Request counter to portal home -->
-    <template id="portal_my_home_maintenance_request" name="Portal My Home: Maintenance Requests" inherit_id="portal.portal_my_home" priority="41">
-        <div id="portal_client_category" position="inside">
-            <t t-call="portal.portal_docs_entry">
-                <t t-set="icon" t-value="'/maintenance_portal/static/src/img/maintenance.svg?v=4'"/>
-                <t t-set="title">Maintenance Requests</t>
-                <t t-set="url" t-value="'/my/maintenance-requests'"/>
-                <t t-set="text">View and update maintenance requests</t>
-                <t t-set="placeholder_count" t-value="'maintenance_request_count'"/>
-            </t>
-        </div>
+    <!-- ==================== Maintenance Dashboard Page ==================== -->
+
+    <template id="portal_my_maintenance" name="Maintenance Dashboard">
+        <t t-call="portal.portal_layout">
+            <div class="maintenance-dashboard mt-3">
+                <div class="row">
+                    <!-- Left Column: Equipment -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card maintenance-detail-card maintenance-dashboard-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <div class="maintenance-section-title">
+                                    <span class="maintenance-section-dot dot-blue"></span>
+                                    My Equipment
+                                </div>
+                                <p class="text-muted mb-3">View your assigned maintenance equipment</p>
+                                <div class="mt-auto">
+                                    <a href="/my/equipments" class="btn btn-ghost w-100">
+                                        View All
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Maintenance Requests -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card maintenance-detail-card maintenance-dashboard-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <div class="maintenance-section-title">
+                                    <span class="maintenance-section-dot dot-cyan"></span>
+                                    Maintenance Requests
+                                </div>
+                                <p class="text-muted mb-3">View and update maintenance request progress</p>
+                                <div class="mt-auto">
+                                    <a href="/my/maintenance-requests" class="btn btn-ghost w-100">
+                                        View All
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
     </template>
 
     <!-- ==================== Equipment List Page ==================== -->

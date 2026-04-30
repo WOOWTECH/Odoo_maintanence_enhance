@@ -136,24 +136,47 @@ msgid "You do not have access to this document."
 msgstr "您沒有存取此文件的權限。"
 
 #. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_equipment
-msgid "Equipment"
-msgstr "設備"
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance
+msgid "Maintenance"
+msgstr "保養"
 
 #. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_equipment
-msgid "View your assigned equipment"
-msgstr "查看指派給您的設備"
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance
+msgid "Manage equipment and maintenance requests"
+msgstr "管理設備與保養請求"
 
 #. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance_request
-msgid "Maintenance Requests"
-msgstr "維修請求"
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid ""
+"<span class=\"maintenance-section-dot dot-blue\"/>\n"
+"                                    My Equipment"
+msgstr ""
+"<span class=\"maintenance-section-dot dot-blue\"/>\n"
+"                                    我的設備"
 
 #. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance_request
-msgid "View and update maintenance requests"
-msgstr "查看和更新維修請求"
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid "View your assigned maintenance equipment"
+msgstr "查看您被指派的保養設備"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid "View All"
+msgstr "查看全部"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid ""
+"<span class=\"maintenance-section-dot dot-cyan\"/>\n"
+"                                    Maintenance Requests"
+msgstr ""
+"<span class=\"maintenance-section-dot dot-cyan\"/>\n"
+"                                    保養請求"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid "View and update maintenance request progress"
+msgstr "查看及更新保養請求進度"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments

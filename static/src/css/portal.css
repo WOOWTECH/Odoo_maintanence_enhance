@@ -452,6 +452,30 @@
 /* Portal Home Cards: no override — keep native Odoo theme */
 
 /* ============================================================
+   Maintenance Dashboard (/my/maintenance)
+   ============================================================ */
+.maintenance-dashboard .maintenance-dashboard-card {
+    border-top: 3px solid var(--wt-primary);
+    transition: box-shadow var(--wt-transition);
+}
+
+.maintenance-dashboard .maintenance-dashboard-card:hover {
+    box-shadow: var(--wt-shadow-hover);
+}
+
+.maintenance-dashboard .col-md-6:first-child .maintenance-dashboard-card {
+    border-top-color: var(--wt-primary);
+}
+
+.maintenance-dashboard .col-md-6:last-child .maintenance-dashboard-card {
+    border-top-color: var(--wt-cyan);
+}
+
+.maintenance-dashboard .btn-ghost {
+    text-align: center;
+}
+
+/* ============================================================
    Pre-formatted text
    ============================================================ */
 pre {

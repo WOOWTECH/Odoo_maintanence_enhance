@@ -35,6 +35,15 @@ class MaintenancePortal(CustomerPortal):
             ) if request.env['maintenance.request'].check_access_rights('read', raise_exception=False) else 0
             values['maintenance_request_count'] = request_count
 
+        if 'maintenance_count' in counters:
+            eq_count = request.env['maintenance.equipment'].search_count(
+                self._get_equipment_domain()
+            ) if request.env['maintenance.equipment'].check_access_rights('read', raise_exception=False) else 0
+            req_count = request.env['maintenance.request'].search_count(
+                self._get_maintenance_request_domain()
+            ) if request.env['maintenance.request'].check_access_rights('read', raise_exception=False) else 0
+            values['maintenance_count'] = eq_count + req_count
+
         return values
 
     def _get_equipment_domain(self):
@@ -44,6 +53,33 @@ class MaintenancePortal(CustomerPortal):
     def _get_maintenance_request_domain(self):
         """Domain for portal user's assigned maintenance requests"""
         return [('portal_user_ids', 'in', request.env.user.id)]
+
+    # ==================== Maintenance Dashboard ====================
+
+    @http.route(['/my/maintenance'], type='http', auth='user', website=True)
+    def portal_my_maintenance(self, **kw):
+        """Maintenance dashboard: combined view of equipment and requests"""
+        Equipment = request.env['maintenance.equipment']
+        MaintenanceRequest = request.env['maintenance.request']
+
+        equipment_count = Equipment.search_count(
+            self._get_equipment_domain()
+        ) if Equipment.check_access_rights('read', raise_exception=False) else 0
+
+        request_count = MaintenanceRequest.search_count(
+            self._get_maintenance_request_domain()
+        ) if MaintenanceRequest.check_access_rights('read', raise_exception=False) else 0
+
+        values = self._prepare_portal_layout_values()
+        frontend_languages = request.env['res.lang']._get_frontend()
+        values.update({
+            'equipment_count': equipment_count,
+            'maintenance_request_count': request_count,
+            'page_name': 'maintenance',
+            'frontend_languages': frontend_languages,
+        })
+
+        return request.render('maintenance_portal.portal_my_maintenance', values)
 
     # ==================== Equipment Routes ====================
 
