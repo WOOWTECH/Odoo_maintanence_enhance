@@ -24,24 +24,40 @@ class MaintenancePortal(CustomerPortal):
         values = super()._prepare_home_portal_values(counters)
 
         if 'equipment_count' in counters:
-            equipment_count = request.env['maintenance.equipment'].search_count(
-                self._get_equipment_domain()
-            ) if request.env['maintenance.equipment'].check_access_rights('read', raise_exception=False) else 0
-            values['equipment_count'] = equipment_count
+            try:
+                request.env['maintenance.equipment'].check_access('read')
+                values['equipment_count'] = request.env['maintenance.equipment'].search_count(
+                    self._get_equipment_domain()
+                )
+            except AccessError:
+                values['equipment_count'] = 0
 
         if 'maintenance_request_count' in counters:
-            request_count = request.env['maintenance.request'].search_count(
-                self._get_maintenance_request_domain()
-            ) if request.env['maintenance.request'].check_access_rights('read', raise_exception=False) else 0
-            values['maintenance_request_count'] = request_count
+            try:
+                request.env['maintenance.request'].check_access('read')
+                values['maintenance_request_count'] = request.env['maintenance.request'].search_count(
+                    self._get_maintenance_request_domain()
+                )
+            except AccessError:
+                values['maintenance_request_count'] = 0
 
         if 'maintenance_count' in counters:
-            eq_count = request.env['maintenance.equipment'].search_count(
-                self._get_equipment_domain()
-            ) if request.env['maintenance.equipment'].check_access_rights('read', raise_exception=False) else 0
-            req_count = request.env['maintenance.request'].search_count(
-                self._get_maintenance_request_domain()
-            ) if request.env['maintenance.request'].check_access_rights('read', raise_exception=False) else 0
+            eq_count = 0
+            req_count = 0
+            try:
+                request.env['maintenance.equipment'].check_access('read')
+                eq_count = request.env['maintenance.equipment'].search_count(
+                    self._get_equipment_domain()
+                )
+            except AccessError:
+                pass
+            try:
+                request.env['maintenance.request'].check_access('read')
+                req_count = request.env['maintenance.request'].search_count(
+                    self._get_maintenance_request_domain()
+                )
+            except AccessError:
+                pass
             values['maintenance_count'] = eq_count + req_count
 
         return values
@@ -59,25 +75,11 @@ class MaintenancePortal(CustomerPortal):
     @http.route(['/my/maintenance'], type='http', auth='user', website=True)
     def portal_my_maintenance(self, **kw):
         """Maintenance dashboard: combined view of equipment and requests"""
-        Equipment = request.env['maintenance.equipment']
-        MaintenanceRequest = request.env['maintenance.request']
-
-        equipment_count = Equipment.search_count(
-            self._get_equipment_domain()
-        ) if Equipment.check_access_rights('read', raise_exception=False) else 0
-
-        request_count = MaintenanceRequest.search_count(
-            self._get_maintenance_request_domain()
-        ) if MaintenanceRequest.check_access_rights('read', raise_exception=False) else 0
-
         values = self._prepare_portal_layout_values()
-        frontend_languages = request.env['res.lang']._get_frontend()
-        values.update({
-            'equipment_count': equipment_count,
-            'maintenance_request_count': request_count,
-            'page_name': 'maintenance',
-            'frontend_languages': frontend_languages,
-        })
+        values.update(self._prepare_home_portal_values(
+            ['equipment_count', 'maintenance_request_count']
+        ))
+        values['page_name'] = 'maintenance'
 
         return request.render('maintenance_portal.portal_my_maintenance', values)
 

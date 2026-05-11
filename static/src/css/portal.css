@@ -452,27 +452,22 @@
 /* Portal Home Cards: no override — keep native Odoo theme */
 
 /* ============================================================
-   Maintenance Dashboard (/my/maintenance)
+   Portal Home / Dashboard Cards (o_portal_index_card)
    ============================================================ */
-.maintenance-dashboard .maintenance-dashboard-card {
-    border-top: 3px solid var(--wt-primary);
-    transition: box-shadow var(--wt-transition);
+.o_portal_index_card a {
+    border: 1px solid transparent;
+    transition: all var(--wt-transition) !important;
 }
 
-.maintenance-dashboard .maintenance-dashboard-card:hover {
-    box-shadow: var(--wt-shadow-hover);
+.o_portal_index_card a:hover {
+    border-color: var(--wt-primary-light) !important;
+    box-shadow: var(--wt-shadow-hover) !important;
+    background: var(--wt-white) !important;
 }
 
-.maintenance-dashboard .col-md-6:first-child .maintenance-dashboard-card {
-    border-top-color: var(--wt-primary);
-}
-
-.maintenance-dashboard .col-md-6:last-child .maintenance-dashboard-card {
-    border-top-color: var(--wt-cyan);
-}
-
-.maintenance-dashboard .btn-ghost {
-    text-align: center;
+/* Ensure portal card text inherits color with color_customizer */
+#wrapwrap .o_portal_wrap .o_portal_my_home .o_portal_index_card a {
+    color: inherit !important;
 }
 
 /* ============================================================

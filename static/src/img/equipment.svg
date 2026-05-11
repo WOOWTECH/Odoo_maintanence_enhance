@@ -1,32 +1,33 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Shadow ellipse -->
-  <ellipse cx="32" cy="57" rx="14" ry="3" fill="#C1DBF6"/>
-  <!-- Monitor body -->
-  <rect x="12" y="10" width="40" height="30" rx="3" fill="white" stroke="#374874" stroke-width="1.5"/>
-  <!-- Screen -->
-  <rect x="15" y="13" width="34" height="22" rx="1.5" fill="#C1DBF6"/>
-  <!-- Grid lines on screen -->
-  <line x1="26" y1="13" x2="26" y2="35" stroke="white" stroke-width="1"/>
-  <line x1="38" y1="13" x2="38" y2="35" stroke="white" stroke-width="1"/>
-  <line x1="15" y1="21" x2="49" y2="21" stroke="white" stroke-width="1"/>
-  <line x1="15" y1="28" x2="49" y2="28" stroke="white" stroke-width="1"/>
-  <!-- Dashboard dots on screen -->
-  <circle cx="20.5" cy="17" r="2" fill="#374874"/>
-  <circle cx="32" cy="17" r="2" fill="#FBDBD0"/>
-  <circle cx="43.5" cy="17" r="2" fill="#374874"/>
-  <circle cx="20.5" cy="24.5" r="2" fill="#FBDBD0"/>
-  <circle cx="32" cy="24.5" r="2" fill="#374874"/>
-  <circle cx="43.5" cy="24.5" r="2" fill="#FBDBD0"/>
-  <circle cx="20.5" cy="31.5" r="2" fill="#374874"/>
-  <circle cx="32" cy="31.5" r="2" fill="#FBDBD0"/>
-  <circle cx="43.5" cy="31.5" r="2" fill="#374874"/>
-  <!-- Power button -->
-  <circle cx="32" cy="38" r="1.2" stroke="#374874" stroke-width="0.8" fill="none"/>
-  <!-- Stand -->
-  <path d="M28 40H36V43H28V40Z" fill="white" stroke="#374874" stroke-width="1.2"/>
-  <path d="M24 43H40" stroke="#374874" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Gear icon (small, bottom right) -->
-  <circle cx="47" cy="47" r="7" fill="#FBDBD0"/>
-  <path d="M47 42.5L48 44L50 44L51 45.5L50 47L51 48.5L50 50L48 50L47 51.5L46 50L44 50L43 48.5L44 47L43 45.5L44 44L46 44L47 42.5Z" fill="white" stroke="#374874" stroke-width="0.8"/>
-  <circle cx="47" cy="47" r="2" fill="#374874"/>
+  <!-- Shadow -->
+  <ellipse cx="32" cy="58" rx="16" ry="3" fill="#C1DBF6"/>
+  <!-- Machine body -->
+  <rect x="14" y="16" width="28" height="32" rx="3" fill="white" stroke="#374874" stroke-width="1.5"/>
+  <!-- Machine top panel -->
+  <rect x="14" y="16" width="28" height="10" rx="3" fill="#C1DBF6" stroke="#374874" stroke-width="1.5"/>
+  <!-- Screen/display -->
+  <rect x="19" y="19" width="12" height="5" rx="1" fill="white" stroke="#374874" stroke-width="0.8"/>
+  <!-- Indicator lights -->
+  <circle cx="35" cy="20" r="1.5" fill="#374874"/>
+  <circle cx="35" cy="24" r="1.5" fill="#FBDBD0"/>
+  <!-- Ventilation lines -->
+  <line x1="19" y1="31" x2="37" y2="31" stroke="#C1DBF6" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="19" y1="34" x2="37" y2="34" stroke="#C1DBF6" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="19" y1="37" x2="37" y2="37" stroke="#C1DBF6" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Door/hatch -->
+  <rect x="22" y="40" width="12" height="6" rx="1" fill="none" stroke="#374874" stroke-width="0.8"/>
+  <circle cx="32" cy="43" r="0.8" fill="#374874"/>
+  <!-- Legs -->
+  <rect x="17" y="48" width="4" height="4" rx="0.5" fill="#FBDBD0" stroke="#374874" stroke-width="0.8"/>
+  <rect x="35" y="48" width="4" height="4" rx="0.5" fill="#FBDBD0" stroke="#374874" stroke-width="0.8"/>
+  <!-- Gear (top right) -->
+  <g transform="translate(40, 8)">
+    <circle cx="8" cy="8" r="5" fill="#FBDBD0" stroke="#374874" stroke-width="1.2"/>
+    <circle cx="8" cy="8" r="2" fill="white" stroke="#374874" stroke-width="0.8"/>
+    <!-- Gear teeth -->
+    <rect x="6.5" y="1.5" width="3" height="2" rx="0.5" fill="#FBDBD0" stroke="#374874" stroke-width="0.6"/>
+    <rect x="6.5" y="12.5" width="3" height="2" rx="0.5" fill="#FBDBD0" stroke="#374874" stroke-width="0.6"/>
+    <rect x="1.5" y="6.5" width="2" height="3" rx="0.5" fill="#FBDBD0" stroke="#374874" stroke-width="0.6"/>
+    <rect x="12.5" y="6.5" width="2" height="3" rx="0.5" fill="#FBDBD0" stroke="#374874" stroke-width="0.6"/>
+  </g>
 </svg>

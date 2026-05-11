@@ -147,12 +147,8 @@ msgstr "管理設備與保養請求"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
-msgid ""
-"<span class=\"maintenance-section-dot dot-blue\"/>\n"
-"                                    My Equipment"
-msgstr ""
-"<span class=\"maintenance-section-dot dot-blue\"/>\n"
-"                                    我的設備"
+msgid "My Equipment"
+msgstr "我的設備"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
@@ -161,17 +157,8 @@ msgstr "查看您被指派的保養設備"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
-msgid "View All"
-msgstr "查看全部"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
-msgid ""
-"<span class=\"maintenance-section-dot dot-cyan\"/>\n"
-"                                    Maintenance Requests"
-msgstr ""
-"<span class=\"maintenance-section-dot dot-cyan\"/>\n"
-"                                    保養請求"
+msgid "Maintenance Requests"
+msgstr "保養請求"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
