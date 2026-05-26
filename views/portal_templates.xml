@@ -17,6 +17,40 @@
         </div>
     </template>
 
+    <!-- ==================== Breadcrumbs ==================== -->
+
+    <template id="portal_breadcrumbs_maintenance" name="Portal Breadcrumbs: Maintenance"
+              inherit_id="portal.portal_breadcrumbs" priority="40">
+        <xpath expr="//ol" position="inside">
+            <!-- Maintenance Dashboard -->
+            <li t-if="page_name in ('maintenance', 'equipments', 'equipment_detail', 'maintenance_requests', 'maintenance_request_detail')"
+                t-attf-class="breadcrumb-item #{'active' if page_name == 'maintenance' else ''}">
+                <a t-if="page_name != 'maintenance'" href="/my/maintenance">Maintenance</a>
+                <t t-else="">Maintenance</t>
+            </li>
+            <!-- Equipment list -->
+            <li t-if="page_name in ('equipments', 'equipment_detail')"
+                t-attf-class="breadcrumb-item #{'active' if page_name == 'equipments' else ''}">
+                <a t-if="page_name != 'equipments'" href="/my/equipments">Equipment</a>
+                <t t-else="">Equipment</t>
+            </li>
+            <!-- Equipment detail -->
+            <li t-if="page_name == 'equipment_detail'" class="breadcrumb-item active">
+                <t t-esc="equipment.name"/>
+            </li>
+            <!-- Request list -->
+            <li t-if="page_name in ('maintenance_requests', 'maintenance_request_detail')"
+                t-attf-class="breadcrumb-item #{'active' if page_name == 'maintenance_requests' else ''}">
+                <a t-if="page_name != 'maintenance_requests'" href="/my/maintenance-requests">Requests</a>
+                <t t-else="">Requests</t>
+            </li>
+            <!-- Request detail -->
+            <li t-if="page_name == 'maintenance_request_detail'" class="breadcrumb-item active">
+                <t t-esc="mrequest.name"/>
+            </li>
+        </xpath>
+    </template>
+
     <!-- ==================== Maintenance Dashboard Page ==================== -->
 
     <template id="portal_my_maintenance" name="Maintenance Dashboard">
