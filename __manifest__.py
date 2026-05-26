@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Maintenance Portal',
-    'version': '18.0.1.0.0',
+    'version': '18.0.2.0.0',
     'category': 'Maintenance',
     'summary': 'Portal interface for external maintenance vendors',
     'description': """
@@ -31,11 +31,7 @@ Note: This module does NOT depend on the website module.
         'views/maintenance_request_views.xml',
         'views/portal_templates.xml',
     ],
-    'assets': {
-        'web.assets_frontend': [
-            'maintenance_portal/static/src/css/portal.css',
-        ],
-    },
+    'assets': {},
     'installable': True,
     'application': False,
     'auto_install': False,
