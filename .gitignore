@@ -22,3 +22,5 @@ Thumbs.db
 
 # Vibe images (user conversation screenshots)
 .vibe-images/
+.playwright-cli/
+test-screenshots/
