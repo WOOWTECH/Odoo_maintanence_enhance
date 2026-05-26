@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-26 12:00+0000\n"
-"PO-Revision-Date: 2026-05-26 12:00+0000\n"
+"POT-Creation-Date: 2026-04-21 12:00+0000\n"
+"PO-Revision-Date: 2026-04-21 12:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese (Traditional) <>\n"
 "Language: zh_TW\n"
@@ -136,19 +136,6 @@ msgid "You do not have access to this document."
 msgstr "您沒有存取此文件的權限。"
 
 #. module: maintenance_portal
-#. odoo-python
-#: code:addons/maintenance_portal/models/maintenance_request.py:0
-#, python-format
-msgid "Portal users are not allowed to modify: %s"
-msgstr "外部廠商不允許修改：%s"
-
-#. module: maintenance_portal
-#. odoo-python
-#: code:addons/maintenance_portal/models/maintenance_request.py:0
-msgid "You do not have access to this maintenance request."
-msgstr "您沒有存取此維修請求的權限。"
-
-#. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance
 msgid "Maintenance"
 msgstr "保養"
@@ -157,11 +144,6 @@ msgstr "保養"
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance
 msgid "Manage equipment and maintenance requests"
 msgstr "管理設備與保養請求"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_breadcrumbs_maintenance
-msgid "Requests"
-msgstr "請求"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
@@ -189,40 +171,33 @@ msgid "No equipment assigned to you."
 msgstr "沒有指派給您的設備。"
 
 #. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
-msgid "Serial No."
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "<i class=\"mdi mdi-arrow-left me-1\"/>Back to list"
+msgstr "<i class=\"mdi mdi-arrow-left me-1\"/>返回列表"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid ""
+"<span class=\"maintenance-section-dot dot-blue\"/>\n"
+"                                Equipment Information"
+msgstr ""
+"<span class=\"maintenance-section-dot dot-blue\"/>\n"
+"                                設備資訊"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Serial Number"
 msgstr "序號"
 
 #. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Category"
+msgstr "類別"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
 msgid "Location"
 msgstr "位置"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "Back to list"
-msgstr "返回列表"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "Equipment Information"
-msgstr "設備資訊"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "Related Maintenance Requests"
-msgstr "相關維修請求"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "No maintenance requests for this equipment."
-msgstr "此設備沒有維修請求。"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Comments &amp; Discussion"
-msgstr "評論與討論"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
@@ -240,6 +215,45 @@ msgid "Notes"
 msgstr "備註"
 
 #. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid ""
+"<span class=\"maintenance-section-dot dot-cyan\"/>\n"
+"                                Related Maintenance Requests"
+msgstr ""
+"<span class=\"maintenance-section-dot dot-cyan\"/>\n"
+"                                相關維修請求"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "No maintenance requests for this equipment."
+msgstr "此設備沒有維修請求。"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid ""
+"<span class=\"maintenance-section-dot dot-lavender\"/>\n"
+"                        Comments &amp; Discussion"
+msgstr ""
+"<span class=\"maintenance-section-dot dot-lavender\"/>\n"
+"                        評論與討論"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
+msgid "Request Name"
+msgstr "請求名稱"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
+msgid "Equipment"
+msgstr "設備"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
+msgid "Stage"
+msgstr "階段"
+
+#. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
 msgid "Date"
 msgstr "日期"
@@ -251,13 +265,37 @@ msgstr "沒有指派給您的維修請求。"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "<i class=\"mdi mdi-arrow-left me-1\"/>Back to list"
+msgstr "<i class=\"mdi mdi-arrow-left me-1\"/>返回列表"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
 msgid "Status Progress"
 msgstr "狀態進度"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid ""
+"<span class=\"maintenance-section-dot dot-blue\"/>\n"
+"                                Request Information"
+msgstr ""
+"<span class=\"maintenance-section-dot dot-blue\"/>\n"
+"                                請求資訊"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
 msgid "Request Name"
 msgstr "請求名稱"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Equipment"
+msgstr "設備"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Category"
+msgstr "類別"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
@@ -296,23 +334,37 @@ msgstr "描述"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Update Status"
-msgstr "更新狀態"
+msgid ""
+"<span class=\"maintenance-section-dot dot-green\"/>\n"
+"                                Update Status"
+msgstr ""
+"<span class=\"maintenance-section-dot dot-green\"/>\n"
+"                                更新狀態"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Start Work (In Progress)"
-msgstr "開始工作（進行中）"
+msgid "Update Stage"
+msgstr "更新階段"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Mark as Done"
-msgstr "標記為完成"
+msgid "<i class=\"mdi mdi-play me-1\"/>Start Work (In Progress)"
+msgstr "<i class=\"mdi mdi-play me-1\"/>開始工作（進行中）"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "This request has been completed."
-msgstr "此請求已完成。"
+msgid "<i class=\"mdi mdi-check me-1\"/>Mark as Done"
+msgstr "<i class=\"mdi mdi-check me-1\"/>標記為完成"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid ""
+"<i class=\"mdi mdi-check-circle me-2\"/>\n"
+"                                                This request has been "
+"completed."
+msgstr ""
+"<i class=\"mdi mdi-check-circle me-2\"/>\n"
+"                                                此請求已完成。"
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_equipment_view_search_portal

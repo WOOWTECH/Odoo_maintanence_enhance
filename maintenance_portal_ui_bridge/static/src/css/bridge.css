@@ -1,451 +1,56 @@
-/* ============================================================
+/* =================================================================
    Maintenance Portal × Portal UI Bridge
    When both maintenance_portal and woow_portal_ui are installed,
-   this CSS provides the wt-* design system components for
-   maintenance portal pages.
+   switch the Maintenance Portal's purple accent to Portal User UI's
+   blue FontAwesome style.
 
-   Base tokens (--wt-primary, --wt-canvas, etc.) and base
-   components (.wt-card-grid, .wt-portal-card, .wt-badge) are
-   provided by woow_portal_ui's woowtech_theme.css.
+   The variables --wt-blue and --tint-blue are provided by
+   woow_portal_ui. Hardcoded fallbacks ensure correct rendering
+   even if CSS load order varies.
+   ================================================================= */
 
-   This file adds maintenance-specific components:
-   - Detail card system (.wt-detail-card)
-   - Progress bar (.wt-progress)
-   - Action buttons (.wt-btn-start, .wt-btn-done)
-   - Page header, chatter, empty state, alerts
-   ============================================================ */
-
-/* ── Additional Design Tokens (maintenance-specific) ── */
-:root {
-    /* Tone（語意色）— supplement portal_ui tokens */
-    --wt-tone-green:  #8CD37F;
-    --wt-tone-orange: #E66D3E;
-    --wt-tone-cyan:   #7BDBE0;
-    --wt-tone-lilac:  #C09FE0;
-
-    /* Tint（淺背景） */
-    --tint-green:  #ebf7e7;
-    --tint-cyan:   #e3f8f9;
-    --tint-lilac:  #f1e8f8;
+/* ── List Card Icons: purple tint → blue tint ── */
+.wt-pc-icon {
+    background: var(--tint-blue, #eef2ff);
+    color: var(--wt-blue, #6183fc);
 }
 
-/* ============================================================
-   Detail Card (.wt-detail-card)
-   ============================================================ */
-.wt-detail-card {
-    background: var(--wt-surface, #fff);
-    border: 1px solid var(--wt-line, #e3e6ee);
-    border-radius: var(--r-lg, 12px);
-    box-shadow: var(--sh-1, 0 1px 2px rgba(20,22,30,.04), 0 2px 6px rgba(20,22,30,.04));
-    overflow: hidden;
-}
-
-/* ── Detail Header (gradient) ── */
+/* ── Detail Card header gradient: purple → blue ── */
 .wt-detail-header {
-    padding: 16px 20px;
-    background: linear-gradient(135deg, var(--wt-primary-50, #f8f4f7), var(--wt-surface, #fff));
-    border-bottom: 1px solid var(--wt-line-soft, #eef0f5);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--wt-ink, #1a1d29);
+    background: linear-gradient(135deg, var(--tint-blue, #eef2ff), var(--wt-surface, #fff));
 }
 
-.wt-detail-header .wt-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
+/* ── Page header icon: purple → blue ── */
+.wt-page-header h3 i {
+    color: var(--wt-blue, #6183fc);
 }
 
-.wt-dot-primary { background: var(--wt-primary, #714B67); }
-.wt-dot-cyan    { background: var(--wt-tone-cyan); }
-.wt-dot-green   { background: var(--wt-tone-green); }
-.wt-dot-lilac   { background: var(--wt-tone-lilac); }
-
-/* ── Detail Body ── */
-.wt-detail-body {
-    padding: 16px 20px;
-}
-
-.wt-detail-row {
-    display: flex;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--wt-line-soft, #eef0f5);
-    gap: 12px;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.wt-detail-row:last-child {
-    border-bottom: none;
-}
-
-.wt-detail-label {
-    width: 40%;
-    flex-shrink: 0;
-    color: var(--wt-ink-3, #8b8e9a);
-    font-weight: 500;
-}
-
-.wt-detail-value {
-    flex: 1;
-    color: var(--wt-ink, #1a1d29);
-    min-width: 0;
-    word-break: break-word;
-}
-
-.wt-detail-value a {
-    color: var(--wt-primary, #714B67);
-    text-decoration: none;
-}
-
-.wt-detail-value a:hover {
-    color: var(--wt-primary-700, #5E3D56);
-}
-
-/* ============================================================
-   Progress Bar (.wt-progress)
-   ============================================================ */
-.wt-progress-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-.wt-progress {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    padding: 16px 20px 12px;
-    font-family: var(--wt-font, "Outfit", "Noto Sans TC", system-ui, sans-serif);
-    color: var(--wt-ink, #1a1d29);
-}
-
-.wt-progress::before {
-    content: '';
-    position: absolute;
-    top: 36px;
-    left: 15%;
-    right: 15%;
-    height: 2px;
-    background: var(--wt-line, #e3e6ee);
-    z-index: 0;
-}
-
-.wt-progress-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    z-index: 1;
-    gap: 6px;
-}
-
-.wt-step-circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: 600;
-    border: 2px solid transparent;
-    transition: all .18s;
-}
-
-.wt-step-circle.is-done {
-    background: var(--wt-tone-green);
-    border-color: var(--wt-tone-green);
-    color: var(--wt-surface, #fff);
-}
-
+/* ── Progress step active circle: purple → blue ── */
 .wt-step-circle.is-active {
-    background: var(--wt-primary, #714B67);
-    border-color: var(--wt-primary, #714B67);
-    color: var(--wt-surface, #fff);
-}
-
-.wt-step-circle.is-pending {
-    background: var(--wt-canvas, #FAFBFF);
-    border-color: var(--wt-line, #e3e6ee);
-    color: var(--wt-ink-3, #8b8e9a);
-}
-
-.wt-step-label {
-    font-size: 12px;
-    text-align: center;
-    max-width: 80px;
-    line-height: 1.3;
+    background: var(--wt-blue, #6183fc);
+    border-color: var(--wt-blue, #6183fc);
 }
 
 .wt-step-label.is-active {
-    font-weight: 600;
-    color: var(--wt-primary, #714B67);
+    color: var(--wt-blue, #6183fc);
 }
 
-.wt-step-label.is-done {
-    color: var(--wt-ink-2, #4a4e5b);
+/* ── Dot indicator: purple → blue ── */
+.wt-dot-primary {
+    background: var(--wt-blue, #6183fc);
 }
 
-.wt-step-label.is-pending {
-    color: var(--wt-ink-4, #b6b9c4);
-}
-
-/* ============================================================
-   Badge variants (maintenance-specific)
-   ============================================================ */
-.wt-badge-working {
-    background: var(--tint-cyan);
-    color: #0e7490;
-    border-color: #a5e8ec;
-}
-
-.wt-badge-category {
-    background: var(--tint-lilac);
-    color: #6d4a8a;
-    border-color: #d4bee8;
-}
-
-/* ============================================================
-   Action Buttons
-   ============================================================ */
-.wt-btn-start {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--wt-tone-orange);
-    border: 1px solid var(--wt-tone-orange);
-    color: var(--wt-surface, #fff);
-    border-radius: var(--r-md, 8px);
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    width: 100%;
-    justify-content: center;
-    transition: all .15s;
-    cursor: pointer;
-}
-
-.wt-btn-start:hover, .wt-btn-start:focus {
-    background: #c75a2e;
-    border-color: #c75a2e;
-    color: var(--wt-surface, #fff);
-}
-
-.wt-btn-done {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--wt-tone-green);
-    border: 1px solid var(--wt-tone-green);
-    color: var(--wt-ink, #1a1d29);
-    border-radius: var(--r-md, 8px);
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    width: 100%;
-    justify-content: center;
-    transition: all .15s;
-    cursor: pointer;
-}
-
-.wt-btn-done:hover, .wt-btn-done:focus {
-    background: #72b866;
-    border-color: #72b866;
-    color: var(--wt-ink, #1a1d29);
-}
-
-/* ============================================================
-   Alert — Completed State
-   ============================================================ */
-.wt-alert-completed {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 18px;
-    background: var(--tint-green);
-    border: 1px solid #b8e0c4;
-    border-radius: var(--r-md, 8px);
-    color: #1b8a4d;
-    font-weight: 500;
-    font-size: 14px;
-}
-
-.wt-alert-completed i {
-    font-size: 18px;
-}
-
-/* ============================================================
-   Empty State
-   ============================================================ */
-.wt-empty-state {
-    text-align: center;
-    padding: 3rem 1rem;
-}
-
-.wt-empty-state i {
-    font-size: 3rem;
-    color: var(--wt-ink-4, #b6b9c4);
-    display: block;
-    margin-bottom: 1rem;
-}
-
-.wt-empty-state p {
-    color: var(--wt-ink-3, #8b8e9a);
-    font-size: 14px;
-    margin: 0;
-}
-
-/* ============================================================
-   Page Header
-   ============================================================ */
-.wt-page-header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    border-bottom: 1px solid var(--wt-line-soft, #eef0f5);
-    padding-bottom: 14px;
-    margin-bottom: 20px;
-}
-
-.wt-page-header h3 {
-    font-family: var(--wt-font, "Outfit", "Noto Sans TC", system-ui, sans-serif);
-    font-weight: 600;
-    color: var(--wt-ink, #1a1d29);
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.wt-page-header h3 i {
-    color: var(--wt-primary, #714B67);
-}
-
-/* ============================================================
-   Chatter Section
-   ============================================================ */
-.wt-chatter-section {
-    margin-top: 28px;
-}
-
-.wt-chatter-section > .wt-detail-card {
-    border: 1px solid var(--wt-line, #e3e6ee);
-}
-
-/* ============================================================
-   Form Controls (scoped to detail cards)
-   ============================================================ */
+/* ── Form focus: purple → blue ── */
 .wt-detail-card .form-control:focus {
-    border-color: var(--wt-primary, #714B67);
-    box-shadow: 0 0 0 3px rgba(113, 75, 103, .12);
+    border-color: var(--wt-blue, #6183fc);
+    box-shadow: 0 0 0 3px rgba(97, 131, 252, .12);
 }
 
-/* ============================================================
-   Pre-formatted text
-   ============================================================ */
-.wt-detail-value pre {
-    font-family: inherit;
-    font-size: 13px;
-    color: var(--wt-ink-2, #4a4e5b);
-    background: var(--wt-canvas, #FAFBFF);
-    padding: 12px;
-    border-radius: var(--r-md, 8px);
-    margin: 0;
-    white-space: pre-wrap;
+/* ── Detail value links: purple → blue ── */
+.wt-detail-value a {
+    color: var(--wt-blue, #6183fc);
 }
 
-/* ============================================================
-   Responsive: Tablet (<=768px)
-   ============================================================ */
-@media (max-width: 768px) {
-    .wt-progress {
-        padding: 12px 8px 8px;
-        min-width: 400px;
-    }
-
-    .wt-progress::before {
-        top: 32px;
-        left: 10%;
-        right: 10%;
-    }
-
-    .wt-step-circle {
-        width: 32px;
-        height: 32px;
-        font-size: 12px;
-    }
-
-    .wt-step-label {
-        font-size: 11px;
-    }
-
-    .wt-detail-label {
-        width: auto;
-        min-width: 100px;
-    }
-
-    .wt-detail-body {
-        padding: 12px 16px;
-    }
-
-    .wt-detail-header {
-        padding: 12px 16px;
-        font-size: 14px;
-    }
-}
-
-/* ============================================================
-   Responsive: Mobile (<=576px)
-   ============================================================ */
-@media (max-width: 576px) {
-    .wt-progress {
-        min-width: 320px;
-        padding: 8px 4px 4px;
-    }
-
-    .wt-progress::before {
-        top: 22px;
-        left: 8%;
-        right: 8%;
-    }
-
-    .wt-step-circle {
-        width: 28px;
-        height: 28px;
-        font-size: 11px;
-    }
-
-    .wt-step-label {
-        font-size: 10px;
-        max-width: 60px;
-    }
-
-    .wt-detail-row {
-        flex-direction: column;
-        gap: 2px;
-    }
-
-    .wt-detail-label {
-        width: 100%;
-        font-size: 12px;
-    }
-
-    .wt-detail-value {
-        font-size: 14px;
-    }
-
-    .wt-page-header h3 {
-        font-size: 1.1rem;
-    }
-
-    .wt-page-header h3 i {
-        display: none;
-    }
+.wt-detail-value a:hover {
+    color: #4a6de0;
 }
