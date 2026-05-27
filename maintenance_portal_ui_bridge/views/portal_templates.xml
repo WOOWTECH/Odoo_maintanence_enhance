@@ -13,13 +13,22 @@
               name="Bridge: Dashboard Icons to Portal UI style"
               inherit_id="maintenance_portal.portal_my_maintenance">
 
-        <!-- Equipment card: SVG → fa-cog -->
-        <xpath expr="//t[@t-set='icon'][1]" position="attributes">
+        <!-- Equipment card: SVG → FA (let woow_portal_ui handle the icon) -->
+        <xpath expr="//t[@t-set='icon'][@t-value=&quot;'/maintenance_portal/static/src/img/equipment.svg'&quot;]" position="attributes">
             <attribute name="t-value">False</attribute>
         </xpath>
 
-        <!-- Request card: SVG → fa-wrench -->
-        <xpath expr="//t[@t-set='icon'][2]" position="attributes">
+        <!-- Request card: SVG → FA -->
+        <xpath expr="//t[@t-set='icon'][@t-value=&quot;'/maintenance_portal/static/src/img/maintenance_request.svg'&quot;]" position="attributes">
+            <attribute name="t-value">False</attribute>
+        </xpath>
+    </template>
+
+    <!-- Portal Home card: SVG → FA -->
+    <template id="bridge_home_icon"
+              name="Bridge: Home Card Icon to Portal UI style"
+              inherit_id="maintenance_portal.portal_my_home_maintenance">
+        <xpath expr="//t[@t-set='icon']" position="attributes">
             <attribute name="t-value">False</attribute>
         </xpath>
     </template>

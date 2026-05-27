@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-21 12:00+0000\n"
-"PO-Revision-Date: 2026-04-21 12:00+0000\n"
+"POT-Creation-Date: 2026-05-27 12:00+0000\n"
+"PO-Revision-Date: 2026-05-27 12:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: \n"
@@ -136,23 +136,82 @@ msgid "You do not have access to this document."
 msgstr ""
 
 #. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_equipment
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+#, python-format
+msgid "Portal users are not allowed to modify: %s"
+msgstr ""
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+msgid "You do not have access to this maintenance request."
+msgstr ""
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance
+msgid "Maintenance"
+msgstr ""
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance
+msgid "Manage equipment and maintenance requests"
+msgstr ""
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_breadcrumbs_maintenance
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid "Maintenance"
+msgstr ""
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_breadcrumbs_maintenance
 msgid "Equipment"
 msgstr ""
 
 #. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_equipment
-msgid "View your assigned equipment"
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_breadcrumbs_maintenance
+msgid "Requests"
 msgstr ""
 
 #. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance_request
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid "My Equipment"
+msgstr ""
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid "View your assigned maintenance equipment"
+msgstr ""
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
 msgid "Maintenance Requests"
 msgstr ""
 
 #. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance_request
-msgid "View and update maintenance requests"
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid "View and update maintenance request progress"
+msgstr ""
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
+msgid "Equipment"
+msgstr ""
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
+msgid "Serial No."
+msgstr ""
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
+msgid "Location"
+msgstr ""
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
+msgid "View details"
 msgstr ""
 
 #. module: maintenance_portal
@@ -162,14 +221,15 @@ msgstr ""
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "<i class=\"mdi mdi-arrow-left me-1\"/>Back to list"
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "<i class=\"fa fa-arrow-left\"/>Back to list"
 msgstr ""
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
 msgid ""
-"<span class=\"maintenance-section-dot dot-blue\"/>\n"
-"                                Equipment Information"
+"<span class=\"wt-dot wt-dot-primary\"/>\n"
+"                            Equipment Information"
 msgstr ""
 
 #. module: maintenance_portal
@@ -205,8 +265,13 @@ msgstr ""
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
 msgid ""
-"<span class=\"maintenance-section-dot dot-cyan\"/>\n"
-"                                Related Maintenance Requests"
+"<span class=\"wt-dot wt-dot-cyan\"/>\n"
+"                            Related Maintenance Requests"
+msgstr ""
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Date"
 msgstr ""
 
 #. module: maintenance_portal
@@ -218,13 +283,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
 msgid ""
-"<span class=\"maintenance-section-dot dot-lavender\"/>\n"
-"                        Comments &amp; Discussion"
+"<span class=\"wt-dot wt-dot-lilac\"/>\n"
+"                            Comments &amp; Discussion"
 msgstr ""
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
-msgid "Request Name"
+msgid "Maintenance Requests"
 msgstr ""
 
 #. module: maintenance_portal
@@ -234,12 +299,12 @@ msgstr ""
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
-msgid "Stage"
+msgid "Date"
 msgstr ""
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
-msgid "Date"
+msgid "View details"
 msgstr ""
 
 #. module: maintenance_portal
@@ -249,19 +314,16 @@ msgstr ""
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "<i class=\"mdi mdi-arrow-left me-1\"/>Back to list"
-msgstr ""
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Status Progress"
+msgid ""
+"<span class=\"wt-dot wt-dot-primary\"/>\n"
+"                            Status Progress"
 msgstr ""
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
 msgid ""
-"<span class=\"maintenance-section-dot dot-blue\"/>\n"
-"                                Request Information"
+"<span class=\"wt-dot wt-dot-primary\"/>\n"
+"                            Request Information"
 msgstr ""
 
 #. module: maintenance_portal
@@ -317,31 +379,25 @@ msgstr ""
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
 msgid ""
-"<span class=\"maintenance-section-dot dot-green\"/>\n"
-"                                Update Status"
+"<span class=\"wt-dot wt-dot-green\"/>\n"
+"                            Update Status"
 msgstr ""
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Update Stage"
+msgid "<i class=\"fa fa-play\"/>Start Work (In Progress)"
 msgstr ""
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "<i class=\"mdi mdi-play me-1\"/>Start Work (In Progress)"
-msgstr ""
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "<i class=\"mdi mdi-check me-1\"/>Mark as Done"
+msgid "<i class=\"fa fa-check\"/>Mark as Done"
 msgstr ""
 
 #. module: maintenance_portal
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
 msgid ""
-"<i class=\"mdi mdi-check-circle me-2\"/>\n"
-"                                                This request has been "
-"completed."
+"<i class=\"fa fa-check-circle\"/>\n"
+"                                        This request has been completed."
 msgstr ""
 
 #. module: maintenance_portal
