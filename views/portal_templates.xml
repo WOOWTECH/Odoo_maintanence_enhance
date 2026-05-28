@@ -51,15 +51,17 @@
         </xpath>
     </template>
 
-    <!-- ==================== Maintenance Dashboard Page ==================== -->
+    <!-- ==================== Maintenance Hub Page ==================== -->
 
     <template id="portal_my_maintenance" name="Maintenance Dashboard">
         <t t-call="portal.portal_layout">
-            <t t-set="breadcrumbs_searchbar" t-value="False"/>
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Maintenance</t>
+            </t>
 
             <div class="o_portal_my_home">
-                <h3 class="page-header mt-3">Maintenance</h3>
-
                 <div class="o_portal_category row g-2 mt-3">
                     <t t-call="portal.portal_docs_entry">
                         <t t-set="icon" t-value="'/maintenance_portal/static/src/img/equipment.svg'"/>
@@ -93,47 +95,39 @@
             </t>
 
             <t t-if="equipments">
-                <div class="wt-card-grid mt-3">
-                    <t t-foreach="equipments" t-as="equipment">
-                        <a t-attf-href="/my/equipments/#{equipment.id}" class="wt-portal-card">
-                            <div class="wt-pc-head">
-                                <span class="wt-pc-icon"><i class="fa fa-cog"/></span>
-                                <span class="wt-pc-num"><t t-esc="equipment.name"/></span>
-                                <t t-if="equipment.category_id">
-                                    <span class="wt-badge wt-badge-category"><t t-esc="equipment.category_id.name"/></span>
-                                </t>
-                            </div>
-                            <div class="wt-pc-meta">
-                                <t t-if="equipment.serial_no">
-                                    <div class="wt-pc-row">
-                                        <span class="wt-pc-label">Serial No.</span>
-                                        <span class="wt-pc-value"><t t-esc="equipment.serial_no"/></span>
-                                    </div>
-                                </t>
-                                <t t-if="equipment.location">
-                                    <div class="wt-pc-row">
-                                        <span class="wt-pc-label">Location</span>
-                                        <span class="wt-pc-value"><t t-esc="equipment.location"/></span>
-                                    </div>
-                                </t>
-                            </div>
-                            <div class="wt-pc-foot">
-                                <span>View details</span>
-                                <i class="fa fa-angle-right"/>
-                            </div>
-                        </a>
-                    </t>
-                </div>
-
-                <div class="d-flex justify-content-center mt-4">
-                    <t t-call="portal.pager"/>
-                </div>
+                <t t-call="portal.portal_table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Serial No</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="equipments" t-as="equipment">
+                            <tr>
+                                <td>
+                                    <a t-attf-href="/my/equipments/#{equipment.id}">
+                                        <span t-esc="equipment.name"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span t-if="equipment.category_id"
+                                          class="badge rounded-pill text-bg-info"
+                                          t-esc="equipment.category_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-if="equipment.serial_no" t-esc="equipment.serial_no"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </t>
             </t>
 
             <t t-else="">
-                <div class="wt-empty-state mt-4">
-                    <i class="fa fa-inbox"/>
-                    <p>No equipment assigned to you.</p>
+                <div class="alert alert-warning" role="alert">
+                    No equipment assigned to you.
                 </div>
             </t>
         </t>
@@ -141,127 +135,144 @@
 
     <!-- ==================== Equipment Detail Page ==================== -->
 
-    <template id="portal_equipment_detail" name="Equipment Detail">
-        <t t-call="portal.portal_layout">
-            <div class="row mt-3">
-                <div class="col-12">
-                    <div class="wt-page-header">
-                        <h3>
-                            <i class="fa fa-cog d-none d-sm-inline"/>
-                            <t t-esc="equipment.name"/>
-                        </h3>
-                        <a href="/my/equipments" class="wt-btn-ghost">
-                            <i class="fa fa-arrow-left"/>Back to list
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <template id="portal_equipment_detail" name="Equipment Detail"
+              inherit_id="portal.portal_sidebar" primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
 
-            <div class="row">
-                <!-- Equipment Info -->
-                <div class="col-lg-6 mb-4">
-                    <div class="wt-detail-card">
-                        <div class="wt-detail-header">
-                            <span class="wt-dot wt-dot-primary"/>
-                            Equipment Information
-                        </div>
-                        <div class="wt-detail-body">
-                            <t t-if="equipment.serial_no">
-                                <div class="wt-detail-row">
-                                    <span class="wt-detail-label">Serial Number</span>
-                                    <span class="wt-detail-value"><t t-esc="equipment.serial_no"/></span>
-                                </div>
-                            </t>
-                            <t t-if="equipment.category_id">
-                                <div class="wt-detail-row">
-                                    <span class="wt-detail-label">Category</span>
-                                    <span class="wt-detail-value">
-                                        <span class="wt-badge wt-badge-category"><t t-esc="equipment.category_id.name"/></span>
-                                    </span>
-                                </div>
-                            </t>
-                            <t t-if="equipment.location">
-                                <div class="wt-detail-row">
-                                    <span class="wt-detail-label">Location</span>
-                                    <span class="wt-detail-value"><t t-esc="equipment.location"/></span>
-                                </div>
-                            </t>
-                            <t t-if="equipment.model">
-                                <div class="wt-detail-row">
-                                    <span class="wt-detail-label">Model</span>
-                                    <span class="wt-detail-value"><t t-esc="equipment.model"/></span>
-                                </div>
-                            </t>
-                            <t t-if="equipment.assign_date">
-                                <div class="wt-detail-row">
-                                    <span class="wt-detail-label">Assigned Date</span>
-                                    <span class="wt-detail-value"><t t-esc="equipment.assign_date" t-options='{"widget": "date"}'/></span>
-                                </div>
-                            </t>
-                            <t t-if="equipment.note">
-                                <div class="wt-detail-row">
-                                    <span class="wt-detail-label">Notes</span>
-                                    <span class="wt-detail-value"><t t-raw="equipment.note"/></span>
-                                </div>
-                            </t>
-                        </div>
-                    </div>
-                </div>
+            <div class="row o_portal_equipment_sidebar">
+                <!-- ─── Sidebar ─── -->
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-lg-4 col-xxl-3 d-print-none'"/>
 
-                <!-- Related Maintenance Requests -->
-                <div class="col-lg-6 mb-4">
-                    <div class="wt-detail-card">
-                        <div class="wt-detail-header">
-                            <span class="wt-dot wt-dot-cyan"/>
-                            Related Maintenance Requests
-                        </div>
-                        <div class="wt-detail-body">
-                            <t t-if="maintenance_requests">
-                                <div class="d-flex flex-column gap-2">
-                                    <t t-foreach="maintenance_requests" t-as="req">
-                                        <a t-attf-href="/my/maintenance-requests/#{req.id}" class="wt-portal-card">
-                                            <div class="wt-pc-head">
-                                                <span class="wt-pc-icon"><i class="fa fa-wrench"/></span>
-                                                <span class="wt-pc-num"><t t-esc="req.name"/></span>
-                                                <span t-attf-class="wt-badge #{req.stage_id.done and 'wt-badge-done' or 'wt-badge-working'}">
-                                                    <t t-esc="req.stage_id.name"/>
-                                                </span>
-                                            </div>
-                                            <div class="wt-pc-meta">
-                                                <div class="wt-pc-row">
-                                                    <span class="wt-pc-label">Date</span>
-                                                    <span class="wt-pc-value"><t t-esc="req.create_date" t-options='{"widget": "datetime", "format": "yyyy-MM-dd"}'/></span>
-                                                </div>
-                                            </div>
+                    <t t-set="entries">
+                        <div class="d-flex flex-wrap flex-column gap-4">
+                            <!-- Navigation -->
+                            <div class="d-flex align-items-center flex-grow-1 p-0" t-ignore="true" role="complementary">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link p-0" href="#card_header">
+                                            Equipment
                                         </a>
-                                    </t>
-                                </div>
-                            </t>
-                            <t t-else="">
-                                <p class="text-muted mb-0" style="color: var(--wt-ink-3);">No maintenance requests for this equipment.</p>
-                            </t>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link p-0" href="#equipment_requests">
+                                            Related Requests
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link p-0" href="#equipment_chat">
+                                            History
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
 
-            <!-- Chatter / Message Thread -->
-            <div class="row">
-                <div class="col-12 wt-chatter-section">
-                    <div class="wt-detail-card">
-                        <div class="wt-detail-header">
-                            <span class="wt-dot wt-dot-lilac"/>
-                            Comments &amp; Discussion
+                            <!-- Category -->
+                            <div t-if="equipment.category_id" class="d-flex flex-column gap-2 mt-3">
+                                <h6><small class="text-muted">Category</small></h6>
+                                <span class="badge rounded-pill text-bg-info"
+                                      t-esc="equipment.category_id.name"/>
+                            </div>
                         </div>
-                        <div class="wt-detail-body">
-                            <t t-call="portal.message_thread">
-                                <t t-set="object" t-value="equipment"/>
-                            </t>
+                    </t>
+                </t>
+
+                <!-- ─── Main Content ─── -->
+                <div id="equipment_content" class="o_portal_content col-12 col-lg-8 col-xxl-9">
+                    <div id="card">
+                        <div id="card_header" data-anchor="true">
+                            <div class="row justify-content-between mb-3">
+                                <div class="col-12 col-md-9">
+                                    <h3 class="my-0">
+                                        <i class="fa fa-cog me-1"/>
+                                        <span t-esc="equipment.name"/>
+                                    </h3>
+                                </div>
+                                <div class="col-auto" t-if="equipment.category_id">
+                                    <span class="badge rounded-pill text-bg-info"
+                                          t-esc="equipment.category_id.name"/>
+                                </div>
+                            </div>
                         </div>
+
+                        <div id="card_body">
+                            <div class="row mb-4">
+                                <div class="col-12 col-md-6">
+                                    <div t-if="equipment.serial_no">
+                                        <strong>Serial Number:</strong> <span t-esc="equipment.serial_no"/>
+                                    </div>
+                                    <div t-if="equipment.location">
+                                        <strong>Location:</strong> <span t-esc="equipment.location"/>
+                                    </div>
+                                    <div t-if="equipment.model">
+                                        <strong>Model:</strong> <span t-esc="equipment.model"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div t-if="equipment.assign_date">
+                                        <strong>Assigned Date:</strong>
+                                        <span t-esc="equipment.assign_date" t-options='{"widget": "date"}'/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div t-if="equipment.note" class="mb-4">
+                                <h5 class="mb-1">Notes</h5>
+                                <hr class="mt-1 mb-2"/>
+                                <div class="py-1 px-2 bg-100 small" t-out="equipment.note"/>
+                            </div>
+
+                            <!-- Related Maintenance Requests -->
+                            <div id="equipment_requests" data-anchor="true" class="mb-4">
+                                <h5 class="mb-1">Related Maintenance Requests</h5>
+                                <hr class="mt-1 mb-2"/>
+                                <t t-if="maintenance_requests">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Date</th>
+                                                <th class="text-end">Stage</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="maintenance_requests" t-as="req">
+                                                <tr>
+                                                    <td>
+                                                        <a t-attf-href="/my/maintenance-requests/#{req.id}">
+                                                            <span t-esc="req.name"/>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="req.create_date" t-options='{"widget": "datetime", "format": "yyyy-MM-dd"}'/>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        <span t-attf-class="badge rounded-pill #{req.stage_id.done and 'text-bg-success' or 'text-bg-warning'}"
+                                                              t-esc="req.stage_id.name"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </t>
+                                <t t-else="">
+                                    <p class="text-muted mb-0">No maintenance requests for this equipment.</p>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr/>
+                    <!-- Communication history / Chatter -->
+                    <div id="equipment_chat" data-anchor="true">
+                        <h3>Communication history</h3>
+                        <t t-call="portal.message_thread">
+                            <t t-set="object" t-value="equipment"/>
+                        </t>
                     </div>
                 </div>
             </div>
-        </t>
+        </xpath>
     </template>
 
     <!-- ==================== Maintenance Request List Page ==================== -->
@@ -275,45 +286,42 @@
             </t>
 
             <t t-if="requests">
-                <div class="wt-card-grid mt-3">
-                    <t t-foreach="requests" t-as="req">
-                        <a t-attf-href="/my/maintenance-requests/#{req.id}" class="wt-portal-card">
-                            <div class="wt-pc-head">
-                                <span class="wt-pc-icon"><i class="fa fa-wrench"/></span>
-                                <span class="wt-pc-num"><t t-esc="req.name"/></span>
-                                <span t-attf-class="wt-badge #{req.stage_id.done and 'wt-badge-done' or 'wt-badge-working'}">
-                                    <t t-esc="req.stage_id.name"/>
-                                </span>
-                            </div>
-                            <div class="wt-pc-meta">
-                                <t t-if="req.equipment_id">
-                                    <div class="wt-pc-row">
-                                        <span class="wt-pc-label">Equipment</span>
-                                        <span class="wt-pc-value"><t t-esc="req.sudo().equipment_id.name"/></span>
-                                    </div>
-                                </t>
-                                <div class="wt-pc-row">
-                                    <span class="wt-pc-label">Date</span>
-                                    <span class="wt-pc-value"><t t-esc="req.create_date" t-options='{"widget": "datetime", "format": "yyyy-MM-dd"}'/></span>
-                                </div>
-                            </div>
-                            <div class="wt-pc-foot">
-                                <span>View details</span>
-                                <i class="fa fa-angle-right"/>
-                            </div>
-                        </a>
-                    </t>
-                </div>
-
-                <div class="d-flex justify-content-center mt-4">
-                    <t t-call="portal.pager"/>
-                </div>
+                <t t-call="portal.portal_table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Equipment</th>
+                            <th>Date</th>
+                            <th class="text-end">Stage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="requests" t-as="req">
+                            <tr>
+                                <td>
+                                    <a t-attf-href="/my/maintenance-requests/#{req.id}">
+                                        <span t-esc="req.name"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span t-if="req.equipment_id" t-esc="req.sudo().equipment_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="req.create_date" t-options='{"widget": "datetime", "format": "yyyy-MM-dd"}'/>
+                                </td>
+                                <td class="text-end">
+                                    <span t-attf-class="badge rounded-pill #{req.stage_id.done and 'text-bg-success' or 'text-bg-warning'}"
+                                          t-esc="req.stage_id.name"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </t>
             </t>
 
             <t t-else="">
-                <div class="wt-empty-state mt-4">
-                    <i class="fa fa-inbox"/>
-                    <p>No maintenance requests assigned to you.</p>
+                <div class="alert alert-warning" role="alert">
+                    No maintenance requests assigned to you.
                 </div>
             </t>
         </t>
@@ -321,178 +329,159 @@
 
     <!-- ==================== Maintenance Request Detail Page ==================== -->
 
-    <template id="portal_maintenance_request_detail" name="Maintenance Request Detail">
-        <t t-call="portal.portal_layout">
-            <div class="row mt-3">
-                <div class="col-12">
-                    <div class="wt-page-header">
-                        <h3>
-                            <i class="fa fa-wrench d-none d-sm-inline"/>
-                            <t t-esc="mrequest.name"/>
-                        </h3>
-                        <a href="/my/maintenance-requests" class="wt-btn-ghost">
-                            <i class="fa fa-arrow-left"/>Back to list
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <template id="portal_maintenance_request_detail" name="Maintenance Request Detail"
+              inherit_id="portal.portal_sidebar" primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
 
-            <!-- Status Progress Bar -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="wt-detail-card">
-                        <div class="wt-detail-header">
-                            <span class="wt-dot wt-dot-primary"/>
-                            Status Progress
-                        </div>
-                        <div class="wt-progress-wrapper">
-                            <div class="wt-progress">
-                                <t t-foreach="stages" t-as="stage">
-                                    <t t-set="is_active" t-value="stage.sequence &lt;= mrequest.stage_id.sequence"/>
-                                    <t t-set="is_done_stage" t-value="stage.done and is_active"/>
-                                    <t t-set="is_current" t-value="stage.id == mrequest.stage_id.id"/>
+            <div class="row o_portal_maintenance_sidebar">
+                <!-- ─── Sidebar ─── -->
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-lg-4 col-xxl-3 d-print-none'"/>
 
-                                    <div class="wt-progress-step">
-                                        <div t-attf-class="wt-step-circle #{is_done_stage and 'is-done' or (is_active and 'is-active' or 'is-pending')}">
-                                            <t t-if="is_done_stage">
-                                                <i class="fa fa-check"/>
-                                            </t>
-                                            <t t-else="">
-                                                <span t-esc="stage_index + 1"/>
-                                            </t>
-                                        </div>
-                                        <small t-attf-class="wt-step-label #{is_done_stage and 'is-done' or (is_current and 'is-active' or 'is-pending')}">
-                                            <t t-esc="stage.name"/>
-                                        </small>
-                                    </div>
-                                </t>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <!-- Request Info -->
-                <div class="col-lg-6 mb-4">
-                    <div class="wt-detail-card">
-                        <div class="wt-detail-header">
-                            <span class="wt-dot wt-dot-primary"/>
-                            Request Information
-                        </div>
-                        <div class="wt-detail-body">
-                            <div class="wt-detail-row">
-                                <span class="wt-detail-label">Request Name</span>
-                                <span class="wt-detail-value"><t t-esc="mrequest.name"/></span>
-                            </div>
-                            <t t-if="mrequest.sudo().equipment_id">
-                                <div class="wt-detail-row">
-                                    <span class="wt-detail-label">Equipment</span>
-                                    <span class="wt-detail-value">
-                                        <a t-attf-href="/my/equipments/#{mrequest.sudo().equipment_id.id}">
-                                            <t t-esc="mrequest.sudo().equipment_id.name"/>
+                    <t t-set="entries">
+                        <div class="d-flex flex-wrap flex-column gap-4">
+                            <!-- Navigation -->
+                            <div class="d-flex align-items-center flex-grow-1 p-0" t-ignore="true" role="complementary">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link p-0" href="#card_header">
+                                            Request
                                         </a>
-                                    </span>
-                                </div>
-                            </t>
-                            <t t-if="mrequest.sudo().equipment_id.category_id">
-                                <div class="wt-detail-row">
-                                    <span class="wt-detail-label">Category</span>
-                                    <span class="wt-detail-value">
-                                        <span class="wt-badge wt-badge-category">
-                                            <t t-esc="mrequest.sudo().equipment_id.category_id.name"/>
-                                        </span>
-                                    </span>
-                                </div>
-                            </t>
-                            <div class="wt-detail-row">
-                                <span class="wt-detail-label">Maintenance Type</span>
-                                <span class="wt-detail-value">
-                                    <t t-if="mrequest.maintenance_type == 'corrective'">Corrective</t>
-                                    <t t-else="">Preventive</t>
-                                </span>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link p-0" href="#request_chat">
+                                            History
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="wt-detail-row">
-                                <span class="wt-detail-label">Request Date</span>
-                                <span class="wt-detail-value"><t t-esc="mrequest.request_date" t-options='{"widget": "date"}'/></span>
-                            </div>
-                            <t t-if="mrequest.schedule_date">
-                                <div class="wt-detail-row">
-                                    <span class="wt-detail-label">Scheduled Date</span>
-                                    <span class="wt-detail-value"><t t-esc="mrequest.schedule_date" t-options='{"widget": "date"}'/></span>
-                                </div>
-                            </t>
-                            <div class="wt-detail-row">
-                                <span class="wt-detail-label">Current Stage</span>
-                                <span class="wt-detail-value">
-                                    <span t-attf-class="wt-badge #{mrequest.stage_id.done and 'wt-badge-done' or 'wt-badge-working'}">
-                                        <t t-esc="mrequest.stage_id.name"/>
-                                    </span>
-                                </span>
-                            </div>
-                            <t t-if="mrequest.description">
-                                <div class="wt-detail-row">
-                                    <span class="wt-detail-label">Description</span>
-                                    <span class="wt-detail-value"><t t-out="mrequest.description"/></span>
-                                </div>
-                            </t>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Update Status Form -->
-                <div class="col-lg-6 mb-4">
-                    <div class="wt-detail-card">
-                        <div class="wt-detail-header">
-                            <span class="wt-dot wt-dot-green"/>
-                            Update Status
-                        </div>
-                        <div class="wt-detail-body">
-                            <form t-attf-action="/my/maintenance-requests/#{mrequest.id}/update" method="post">
-                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <!-- Status -->
+                            <div class="d-flex flex-column gap-2 mt-3">
+                                <h6><small class="text-muted">Stage</small></h6>
+                                <span t-attf-class="badge rounded-pill #{mrequest.stage_id.done and 'text-bg-success' or 'text-bg-warning'}"
+                                      t-esc="mrequest.stage_id.name"/>
+                            </div>
 
-                                <t t-if="not mrequest.stage_id.done">
-                                    <t t-set="is_first_stage" t-value="mrequest.stage_id.sequence == min(stages.mapped('sequence'))"/>
-                                    <t t-if="is_first_stage">
-                                        <button type="submit" name="action" value="in_progress" class="wt-btn-start">
-                                            <i class="fa fa-play"/>Start Work (In Progress)
-                                        </button>
+                            <!-- Status Progress -->
+                            <div class="d-flex flex-column gap-2">
+                                <h6><small class="text-muted">Progress</small></h6>
+                                <div class="d-flex flex-column gap-1">
+                                    <t t-foreach="stages" t-as="stage">
+                                        <t t-set="is_active" t-value="stage.sequence &lt;= mrequest.stage_id.sequence"/>
+                                        <t t-set="is_done_stage" t-value="stage.done and is_active"/>
+                                        <t t-set="is_current" t-value="stage.id == mrequest.stage_id.id"/>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i t-if="is_done_stage" class="fa fa-check-circle text-success"/>
+                                            <i t-elif="is_current" class="fa fa-arrow-circle-right text-primary"/>
+                                            <i t-else="" class="fa fa-circle-o text-muted"/>
+                                            <small t-attf-class="#{is_current and 'fw-bold' or (is_done_stage and 'text-success' or 'text-muted')}"
+                                                   t-esc="stage.name"/>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+
+                            <!-- Update Status Action -->
+                            <div class="d-flex flex-column gap-2">
+                                <form t-attf-action="/my/maintenance-requests/#{mrequest.id}/update" method="post">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                    <t t-if="not mrequest.stage_id.done">
+                                        <t t-set="is_first_stage" t-value="mrequest.stage_id.sequence == min(stages.mapped('sequence'))"/>
+                                        <t t-if="is_first_stage">
+                                            <button type="submit" name="action" value="in_progress"
+                                                    class="btn btn-primary btn-sm w-100">
+                                                <i class="fa fa-play me-1"/>Start Work
+                                            </button>
+                                        </t>
+                                        <t t-else="">
+                                            <button type="submit" name="action" value="done"
+                                                    class="btn btn-success btn-sm w-100">
+                                                <i class="fa fa-check me-1"/>Mark as Done
+                                            </button>
+                                        </t>
                                     </t>
                                     <t t-else="">
-                                        <button type="submit" name="action" value="done" class="wt-btn-done">
-                                            <i class="fa fa-check"/>Mark as Done
-                                        </button>
+                                        <span class="text-success">
+                                            <i class="fa fa-check-circle me-1"/>Completed
+                                        </span>
                                     </t>
-                                </t>
-                                <t t-else="">
-                                    <div class="wt-alert-completed">
-                                        <i class="fa fa-check-circle"/>
-                                        This request has been completed.
-                                    </div>
-                                </t>
-                            </form>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </t>
+                </t>
 
-            <!-- Chatter / Message Thread -->
-            <div class="row">
-                <div class="col-12 wt-chatter-section">
-                    <div class="wt-detail-card">
-                        <div class="wt-detail-header">
-                            <span class="wt-dot wt-dot-lilac"/>
-                            Comments &amp; Discussion
+                <!-- ─── Main Content ─── -->
+                <div id="request_content" class="o_portal_content col-12 col-lg-8 col-xxl-9">
+                    <div id="card">
+                        <div id="card_header" data-anchor="true">
+                            <div class="row justify-content-between mb-3">
+                                <div class="col-12 col-md-9">
+                                    <h3 class="my-0">
+                                        <i class="fa fa-wrench me-1"/>
+                                        <span t-esc="mrequest.name"/>
+                                    </h3>
+                                </div>
+                                <div class="col-auto">
+                                    <small class="text-end">Stage:</small>
+                                    <span t-attf-class="badge rounded-pill #{mrequest.stage_id.done and 'text-bg-success' or 'text-bg-warning'}"
+                                          t-esc="mrequest.stage_id.name"/>
+                                </div>
+                            </div>
                         </div>
-                        <div class="wt-detail-body">
-                            <t t-call="portal.message_thread">
-                                <t t-set="object" t-value="mrequest"/>
-                            </t>
+
+                        <div id="card_body">
+                            <div class="row mb-4">
+                                <div class="col-12 col-md-6">
+                                    <div t-if="mrequest.sudo().equipment_id">
+                                        <strong>Equipment:</strong>
+                                        <a t-attf-href="/my/equipments/#{mrequest.sudo().equipment_id.id}"
+                                           t-esc="mrequest.sudo().equipment_id.name"/>
+                                    </div>
+                                    <div t-if="mrequest.sudo().equipment_id.category_id">
+                                        <strong>Category:</strong>
+                                        <span class="badge rounded-pill text-bg-info"
+                                              t-esc="mrequest.sudo().equipment_id.category_id.name"/>
+                                    </div>
+                                    <div>
+                                        <strong>Maintenance Type:</strong>
+                                        <t t-if="mrequest.maintenance_type == 'corrective'">Corrective</t>
+                                        <t t-else="">Preventive</t>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div>
+                                        <strong>Request Date:</strong>
+                                        <span t-esc="mrequest.request_date" t-options='{"widget": "date"}'/>
+                                    </div>
+                                    <div t-if="mrequest.schedule_date">
+                                        <strong>Scheduled Date:</strong>
+                                        <span t-esc="mrequest.schedule_date" t-options='{"widget": "date"}'/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div t-if="mrequest.description" class="mb-4">
+                                <h5 class="mb-1">Description</h5>
+                                <hr class="mt-1 mb-2"/>
+                                <div class="py-1 px-2 bg-100 small" t-out="mrequest.description"/>
+                            </div>
                         </div>
+                    </div>
+
+                    <hr/>
+                    <!-- Communication history / Chatter -->
+                    <div id="request_chat" data-anchor="true">
+                        <h3>Communication history</h3>
+                        <t t-call="portal.message_thread">
+                            <t t-set="object" t-value="mrequest"/>
+                        </t>
                     </div>
                 </div>
             </div>
-        </t>
+        </xpath>
     </template>
 
 </odoo>

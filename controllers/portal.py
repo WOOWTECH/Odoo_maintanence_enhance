@@ -321,14 +321,19 @@ class MaintenancePortal(CustomerPortal):
 
     def _document_check_access(self, model_name, document_id, access_token=None):
         """Check if portal user has access to the document"""
-        document = request.env[model_name].browse([document_id])
-        document_sudo = document.sudo().exists()
+        # Only apply portal_user_ids check for maintenance models
+        if model_name in ('maintenance.equipment', 'maintenance.request'):
+            document = request.env[model_name].browse([document_id])
+            document_sudo = document.sudo().exists()
 
-        if not document_sudo:
-            raise MissingError(_("This document does not exist."))
+            if not document_sudo:
+                raise MissingError(_("This document does not exist."))
 
-        # Check if user is in portal_user_ids
-        if request.env.user.id not in document_sudo.portal_user_ids.ids:
-            raise AccessError(_("You do not have access to this document."))
+            # Check if user is in portal_user_ids
+            if request.env.user.id not in document_sudo.portal_user_ids.ids:
+                raise AccessError(_("You do not have access to this document."))
 
-        return document_sudo
+            return document_sudo
+
+        # For all other models, use the standard Odoo access check
+        return super()._document_check_access(model_name, document_id, access_token)
