@@ -175,6 +175,14 @@ class MaintenancePortal(CustomerPortal):
             ('portal_user_ids', 'in', request.env.user.id)
         ], order='create_date desc', limit=10)
 
+        # Compute prev/next record URLs
+        Equipment = request.env['maintenance.equipment']
+        eq_domain = self._get_equipment_domain()
+        all_eq_ids = Equipment.search(eq_domain, order='name asc').ids
+        eq_idx = all_eq_ids.index(equipment.id) if equipment.id in all_eq_ids else -1
+        prev_record = '/my/equipments/%d' % all_eq_ids[eq_idx - 1] if eq_idx > 0 else None
+        next_record = '/my/equipments/%d' % all_eq_ids[eq_idx + 1] if 0 <= eq_idx < len(all_eq_ids) - 1 else None
+
         values = self._prepare_portal_layout_values()
         frontend_languages = request.env['res.lang']._get_frontend()
         values.update({
@@ -183,6 +191,8 @@ class MaintenancePortal(CustomerPortal):
             'maintenance_requests': requests,
             'page_name': 'equipment_detail',
             'frontend_languages': frontend_languages,
+            'prev_record': prev_record,
+            'next_record': next_record,
         })
 
         return request.render('maintenance_portal.portal_equipment_detail', values)
@@ -289,6 +299,14 @@ class MaintenancePortal(CustomerPortal):
         # Get all stages for status display
         stages = request.env['maintenance.stage'].search([], order='sequence')
 
+        # Compute prev/next record URLs
+        MR = request.env['maintenance.request']
+        mr_domain = self._get_maintenance_request_domain()
+        all_mr_ids = MR.search(mr_domain, order='create_date desc').ids
+        mr_idx = all_mr_ids.index(maintenance_request.id) if maintenance_request.id in all_mr_ids else -1
+        prev_record = '/my/maintenance-requests/%d' % all_mr_ids[mr_idx - 1] if mr_idx > 0 else None
+        next_record = '/my/maintenance-requests/%d' % all_mr_ids[mr_idx + 1] if 0 <= mr_idx < len(all_mr_ids) - 1 else None
+
         values = self._prepare_portal_layout_values()
         frontend_languages = request.env['res.lang']._get_frontend()
         values.update({
@@ -297,6 +315,8 @@ class MaintenancePortal(CustomerPortal):
             'stages': stages,
             'page_name': 'maintenance_request_detail',
             'frontend_languages': frontend_languages,
+            'prev_record': prev_record,
+            'next_record': next_record,
         })
 
         return request.render('maintenance_portal.portal_maintenance_request_detail', values)
