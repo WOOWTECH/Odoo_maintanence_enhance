@@ -4,17 +4,259 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 18.0-20260119\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-27 12:00+0000\n"
-"PO-Revision-Date: 2026-05-27 12:00+0000\n"
+"POT-Creation-Date: 2026-05-29 04:39+0000\n"
+"PO-Revision-Date: 2026-05-29 04:39+0000\n"
 "Last-Translator: \n"
-"Language-Team: Chinese (Traditional) <>\n"
-"Language: zh_TW\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: \n"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "<i class=\"fa fa-check me-1\"/>Mark as Done"
+msgstr "<i class=\"fa fa-check me-1\"/>標記完成"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "<i class=\"fa fa-play me-1\"/>Start Work"
+msgstr "<i class=\"fa fa-play me-1\"/>開始作業"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "<small class=\"text-end\">Stage:</small>"
+msgstr "<small class=\"text-end\">階段：</small>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "<small class=\"text-muted\">Category</small>"
+msgstr "<small class=\"text-muted\">類別</small>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "<small class=\"text-muted\">Progress</small>"
+msgstr "<small class=\"text-muted\">進度</small>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "<small class=\"text-muted\">Stage</small>"
+msgstr "<small class=\"text-muted\">階段</small>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid ""
+"<span class=\"text-success\">\n"
+"                                            <i class=\"fa fa-check-circle me-1\"/>Completed\n"
+"                                        </span>"
+msgstr ""
+"<span class=\"text-success\">\n"
+"                                            <i class=\"fa fa-check-circle me-1\"/>已完成\n"
+"                                        </span>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "<strong>Assigned Date:</strong>"
+msgstr "<strong>指派日期：</strong>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "<strong>Category:</strong>"
+msgstr "<strong>類別：</strong>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "<strong>Equipment:</strong>"
+msgstr "<strong>設備：</strong>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "<strong>Location:</strong>"
+msgstr "<strong>位置：</strong>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "<strong>Maintenance Type:</strong>"
+msgstr "<strong>保養類型：</strong>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "<strong>Model:</strong>"
+msgstr "<strong>型號：</strong>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "<strong>Request Date:</strong>"
+msgstr "<strong>請求日期：</strong>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "<strong>Scheduled Date:</strong>"
+msgstr "<strong>排定日期：</strong>"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "<strong>Serial Number:</strong>"
+msgstr "<strong>序號：</strong>"
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/controllers/portal.py:0
+msgid "All"
+msgstr "全部"
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
+msgid "Category"
+msgstr "類別"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Communication history"
+msgstr "溝通紀錄"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Corrective"
+msgstr "修復性保養"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
+msgid "Date"
+msgstr "日期"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Description"
+msgstr "描述"
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_breadcrumbs_maintenance
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
+msgid "Equipment"
+msgstr "設備"
+
+#. module: maintenance_portal
+#: model:ir.model.fields,help:maintenance_portal.field_maintenance_request__portal_user_ids
+msgid "External vendors who can view and update this request in portal"
+msgstr "可在入口網站查看和更新此請求的外部廠商"
+
+#. module: maintenance_portal
+#: model:ir.model.fields,help:maintenance_portal.field_maintenance_equipment__portal_user_ids
+msgid "External vendors who can view this equipment in portal"
+msgstr "可在入口網站查看此設備的外部廠商"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_equipment_view_search_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_request_view_search_portal
+msgid "Has Portal Users"
+msgstr "有外部廠商"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "History"
+msgstr "歷程"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_breadcrumbs_maintenance
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid "Maintenance"
+msgstr "保養"
+
+#. module: maintenance_portal
+#: model:ir.model,name:maintenance_portal.model_maintenance_equipment
+msgid "Maintenance Equipment"
+msgstr "設備維護保養"
+
+#. module: maintenance_portal
+#: model:ir.model,name:maintenance_portal.model_maintenance_request
+msgid "Maintenance Request"
+msgstr "保養請求"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
+msgid "Maintenance Requests"
+msgstr "保養請求"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance
+msgid "Manage equipment and maintenance requests"
+msgstr "管理設備與保養請求"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid "My Equipment"
+msgstr "我的設備"
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/controllers/portal.py:0
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
+msgid "Name"
+msgstr "名稱"
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/controllers/portal.py:0
+msgid "Newest"
+msgstr "最新"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
+msgid "No equipment assigned to you."
+msgstr "沒有指派給您的設備。"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
+msgid "No maintenance requests assigned to you."
+msgstr "沒有指派給您的保養請求。"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "No maintenance requests for this equipment."
+msgstr "此設備尚無保養請求。"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Notes"
+msgstr "備註"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_request_view_form_portal
+msgid "Notes from external vendor will appear here..."
+msgstr "外部廠商的備註將會顯示在此處..."
+
+#. module: maintenance_portal
+#: model:ir.model.fields,help:maintenance_portal.field_maintenance_request__portal_notes
+msgid "Notes from portal user about the maintenance work performed"
+msgstr "外部廠商關於保養工作的備註"
+
+#. module: maintenance_portal
+#: model:ir.model.fields,field_description:maintenance_portal.field_maintenance_request__portal_notes
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_request_view_form_portal
+msgid "Portal Notes"
+msgstr "廠商備註"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_equipment_view_search_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_request_view_search_portal
+msgid "Portal User"
+msgstr "外部廠商"
 
 #. module: maintenance_portal
 #: model:ir.model.fields,field_description:maintenance_portal.field_maintenance_equipment__portal_user_ids
@@ -23,50 +265,54 @@ msgid "Portal Users"
 msgstr "外部廠商"
 
 #. module: maintenance_portal
-#: model:ir.model.fields,help:maintenance_portal.field_maintenance_equipment__portal_user_ids
-msgid "External vendors who can view this equipment in portal"
-msgstr "可在入口網站查看此設備的外部廠商"
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+msgid "Portal notes updated by portal user."
+msgstr "外部廠商已更新備註。"
 
 #. module: maintenance_portal
-#: model:ir.model.fields,help:maintenance_portal.field_maintenance_request__portal_user_ids
-msgid "External vendors who can view and update this request in portal"
-msgstr "可在入口網站查看和更新此請求的外部廠商"
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+msgid "Portal users are not allowed to modify: %s"
+msgstr "入口網站使用者不允許修改：%s"
 
 #. module: maintenance_portal
-#: model:ir.model.fields,field_description:maintenance_portal.field_maintenance_request__portal_notes
-msgid "Portal Notes"
-msgstr "廠商備註"
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Preventive"
+msgstr "預防性保養"
 
 #. module: maintenance_portal
-#: model:ir.model.fields,help:maintenance_portal.field_maintenance_request__portal_notes
-msgid "Notes from portal user about the maintenance work performed"
-msgstr "外部廠商關於保養工作的備註"
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Related Maintenance Requests"
+msgstr "相關保養請求"
 
 #. module: maintenance_portal
-#: model:ir.rule,name:maintenance_portal.equipment_portal_rule
-msgid "Portal: Equipment Access"
-msgstr "入口網站：設備存取權限"
-
-#. module: maintenance_portal
-#: model:ir.rule,name:maintenance_portal.request_portal_rule
-msgid "Portal: Maintenance Request Access"
-msgstr "入口網站：保養請求存取權限"
-
-#. module: maintenance_portal
-#: model:ir.rule,name:maintenance_portal.stage_portal_rule
-msgid "Portal: Maintenance Stage Access"
-msgstr "入口網站：保養階段存取權限"
-
-#. module: maintenance_portal
-#: model:ir.rule,name:maintenance_portal.category_portal_rule
-msgid "Portal: Equipment Category Access"
-msgstr "入口網站：設備類別存取權限"
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+msgid "Related Requests"
+msgstr "相關請求"
 
 #. module: maintenance_portal
 #. odoo-python
 #: code:addons/maintenance_portal/controllers/portal.py:0
-msgid "Name"
-msgstr "名稱"
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
+msgid "Request"
+msgstr "請求"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_breadcrumbs_maintenance
+msgid "Requests"
+msgstr "請求"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_equipment_view_form_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_request_view_form_portal
+msgid "Select external vendors..."
+msgstr "選擇外部廠商..."
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
+msgid "Serial No"
+msgstr "序號"
 
 #. module: maintenance_portal
 #. odoo-python
@@ -77,57 +323,32 @@ msgstr "序號"
 #. module: maintenance_portal
 #. odoo-python
 #: code:addons/maintenance_portal/controllers/portal.py:0
-msgid "Category"
-msgstr "類別"
-
-#. module: maintenance_portal
-#. odoo-python
-#: code:addons/maintenance_portal/controllers/portal.py:0
-msgid "Request"
-msgstr "請求"
-
-#. module: maintenance_portal
-#. odoo-python
-#: code:addons/maintenance_portal/controllers/portal.py:0
-msgid "Equipment"
-msgstr "設備"
-
-#. module: maintenance_portal
-#. odoo-python
-#: code:addons/maintenance_portal/controllers/portal.py:0
-msgid "Newest"
-msgstr "最新"
-
-#. module: maintenance_portal
-#. odoo-python
-#: code:addons/maintenance_portal/controllers/portal.py:0
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
 msgid "Stage"
 msgstr "階段"
 
 #. module: maintenance_portal
 #. odoo-python
-#: code:addons/maintenance_portal/controllers/portal.py:0
-msgid "All"
-msgstr "全部"
-
-#. module: maintenance_portal
-#. odoo-python
 #: code:addons/maintenance_portal/models/maintenance_request.py:0
-#, python-format
 msgid "Status updated to \"%s\" by portal user."
 msgstr "外部廠商已將狀態更新為「%s」。"
-
-#. module: maintenance_portal
-#. odoo-python
-#: code:addons/maintenance_portal/models/maintenance_request.py:0
-msgid "Portal notes updated by portal user."
-msgstr "外部廠商已更新備註。"
 
 #. module: maintenance_portal
 #. odoo-python
 #: code:addons/maintenance_portal/controllers/portal.py:0
 msgid "This document does not exist."
 msgstr "此文件不存在。"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid "View and update maintenance request progress"
+msgstr "查看及更新保養請求進度"
+
+#. module: maintenance_portal
+#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
+msgid "View your assigned maintenance equipment"
+msgstr "查看您被指派的保養設備"
 
 #. module: maintenance_portal
 #. odoo-python
@@ -138,289 +359,5 @@ msgstr "您沒有存取此文件的權限。"
 #. module: maintenance_portal
 #. odoo-python
 #: code:addons/maintenance_portal/models/maintenance_request.py:0
-#, python-format
-msgid "Portal users are not allowed to modify: %s"
-msgstr "入口網站使用者不允許修改：%s"
-
-#. module: maintenance_portal
-#. odoo-python
-#: code:addons/maintenance_portal/models/maintenance_request.py:0
 msgid "You do not have access to this maintenance request."
 msgstr "您沒有存取此保養請求的權限。"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance
-msgid "Maintenance"
-msgstr "保養"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_home_maintenance
-msgid "Manage equipment and maintenance requests"
-msgstr "管理設備與保養請求"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_breadcrumbs_maintenance
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
-msgid "Maintenance"
-msgstr "保養"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_breadcrumbs_maintenance
-msgid "Equipment"
-msgstr "設備"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_breadcrumbs_maintenance
-msgid "Requests"
-msgstr "請求"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
-msgid "My Equipment"
-msgstr "我的設備"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
-msgid "View your assigned maintenance equipment"
-msgstr "查看您被指派的保養設備"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
-msgid "Maintenance Requests"
-msgstr "保養請求"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance
-msgid "View and update maintenance request progress"
-msgstr "查看及更新保養請求進度"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
-msgid "Equipment"
-msgstr "設備"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
-msgid "Serial No."
-msgstr "序號"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
-msgid "Location"
-msgstr "位置"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
-msgid "View details"
-msgstr "查看詳情"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_equipments
-msgid "No equipment assigned to you."
-msgstr "沒有指派給您的設備。"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "<i class=\"fa fa-arrow-left\"/>Back to list"
-msgstr "<i class=\"fa fa-arrow-left\"/>返回列表"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid ""
-"<span class=\"wt-dot wt-dot-primary\"/>\n"
-"                            Equipment Information"
-msgstr ""
-"<span class=\"wt-dot wt-dot-primary\"/>\n"
-"                            設備資訊"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "Serial Number"
-msgstr "序號"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "Category"
-msgstr "類別"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "Location"
-msgstr "位置"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "Model"
-msgstr "型號"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "Assigned Date"
-msgstr "指派日期"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "Notes"
-msgstr "備註"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid ""
-"<span class=\"wt-dot wt-dot-cyan\"/>\n"
-"                            Related Maintenance Requests"
-msgstr ""
-"<span class=\"wt-dot wt-dot-cyan\"/>\n"
-"                            相關保養請求"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "Date"
-msgstr "日期"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-msgid "No maintenance requests for this equipment."
-msgstr "此設備沒有保養請求。"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_equipment_detail
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid ""
-"<span class=\"wt-dot wt-dot-lilac\"/>\n"
-"                            Comments &amp; Discussion"
-msgstr ""
-"<span class=\"wt-dot wt-dot-lilac\"/>\n"
-"                            評論與討論"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
-msgid "Maintenance Requests"
-msgstr "保養請求"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
-msgid "Equipment"
-msgstr "設備"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
-msgid "Date"
-msgstr "日期"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
-msgid "View details"
-msgstr "查看詳情"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_my_maintenance_requests
-msgid "No maintenance requests assigned to you."
-msgstr "沒有指派給您的保養請求。"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid ""
-"<span class=\"wt-dot wt-dot-primary\"/>\n"
-"                            Status Progress"
-msgstr ""
-"<span class=\"wt-dot wt-dot-primary\"/>\n"
-"                            狀態進度"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid ""
-"<span class=\"wt-dot wt-dot-primary\"/>\n"
-"                            Request Information"
-msgstr ""
-"<span class=\"wt-dot wt-dot-primary\"/>\n"
-"                            請求資訊"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Request Name"
-msgstr "請求名稱"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Equipment"
-msgstr "設備"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Category"
-msgstr "類別"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Maintenance Type"
-msgstr "保養類型"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Corrective"
-msgstr "修復性保養"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Preventive"
-msgstr "預防性保養"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Request Date"
-msgstr "請求日期"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Scheduled Date"
-msgstr "預定日期"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Current Stage"
-msgstr "目前階段"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "Description"
-msgstr "描述"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid ""
-"<span class=\"wt-dot wt-dot-green\"/>\n"
-"                            Update Status"
-msgstr ""
-"<span class=\"wt-dot wt-dot-green\"/>\n"
-"                            更新狀態"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "<i class=\"fa fa-play\"/>Start Work (In Progress)"
-msgstr "<i class=\"fa fa-play\"/>開始工作（進行中）"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid "<i class=\"fa fa-check\"/>Mark as Done"
-msgstr "<i class=\"fa fa-check\"/>標記為完成"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.portal_maintenance_request_detail
-msgid ""
-"<i class=\"fa fa-check-circle\"/>\n"
-"                                        This request has been completed."
-msgstr ""
-"<i class=\"fa fa-check-circle\"/>\n"
-"                                        此請求已完成。"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_equipment_view_search_portal
-msgid "Has Portal Users"
-msgstr "有外部廠商"
-
-#. module: maintenance_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_equipment_view_search_portal
-#: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_request_view_search_portal
-msgid "Portal User"
-msgstr "外部廠商"
