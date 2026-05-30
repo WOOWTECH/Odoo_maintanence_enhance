@@ -2,7 +2,7 @@
 <odoo>
     <!-- ==================== Portal Home Card ==================== -->
 
-    <template id="portal_my_home_maintenance" name="Portal My Home: Maintenance" inherit_id="portal.portal_my_home" priority="40">
+    <template id="portal_my_home_maintenance" name="Portal My Home: Maintenance" inherit_id="portal.portal_my_home" priority="35">
         <xpath expr="//div[hasclass('o_portal_docs')]" position="before">
             <t t-set="portal_service_category_enable" t-value="True"/>
         </xpath>
