@@ -391,7 +391,7 @@
                                         <t t-set="is_first_stage" t-value="mrequest.stage_id.sequence == min(stages.mapped('sequence'))"/>
                                         <t t-if="is_first_stage">
                                             <button type="submit" name="action" value="in_progress"
-                                                    class="btn btn-light btn-sm w-100">
+                                                    class="btn btn-secondary btn-sm w-100">
                                                 <i class="fa fa-play me-1"/>Start Work
                                             </button>
                                         </t>
