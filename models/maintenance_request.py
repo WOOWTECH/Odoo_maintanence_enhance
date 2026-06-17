@@ -10,6 +10,15 @@ class MaintenanceRequest(models.Model):
     # Fields that portal users are allowed to write via RPC
     _PORTAL_WRITABLE_FIELDS = {'portal_notes'}
 
+    well_feature = fields.Selection([
+        ('A14', 'A14 - Air Filtration Maintenance'),
+        ('W01', 'W01 - Water System Maintenance'),
+        ('M08', 'M08 - Cleaning Protocol'),
+        ('L01', 'L01 - Lighting Maintenance'),
+        ('none', 'Non-WELL Related'),
+    ], string='WELL Feature', default='none',
+        help='WELL Building Standard feature category for this maintenance request')
+
     portal_user_ids = fields.Many2many(
         'res.users',
         'maintenance_request_portal_user_rel',

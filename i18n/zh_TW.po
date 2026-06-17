@@ -361,3 +361,38 @@ msgstr "您沒有存取此文件的權限。"
 #: code:addons/maintenance_portal/models/maintenance_request.py:0
 msgid "You do not have access to this maintenance request."
 msgstr "您沒有存取此保養請求的權限。"
+
+#. module: maintenance_portal
+#: model:ir.model.fields,field_description:maintenance_portal.field_maintenance_request__well_feature
+msgid "WELL Feature"
+msgstr "WELL 特徵"
+
+#. module: maintenance_portal
+#: model:ir.model.fields,help:maintenance_portal.field_maintenance_request__well_feature
+msgid "WELL Building Standard feature category for this maintenance request"
+msgstr "此保養請求的 WELL 建築標準特徵類別"
+
+#. module: maintenance_portal
+#: model:ir.model.fields.selection,name:maintenance_portal.field_maintenance_request__well_feature__A14
+msgid "A14 - Air Filtration Maintenance"
+msgstr "A14 - 空氣過濾維護"
+
+#. module: maintenance_portal
+#: model:ir.model.fields.selection,name:maintenance_portal.field_maintenance_request__well_feature__W01
+msgid "W01 - Water System Maintenance"
+msgstr "W01 - 水系統維護"
+
+#. module: maintenance_portal
+#: model:ir.model.fields.selection,name:maintenance_portal.field_maintenance_request__well_feature__M08
+msgid "M08 - Cleaning Protocol"
+msgstr "M08 - 清潔規程"
+
+#. module: maintenance_portal
+#: model:ir.model.fields.selection,name:maintenance_portal.field_maintenance_request__well_feature__L01
+msgid "L01 - Lighting Maintenance"
+msgstr "L01 - 照明維護"
+
+#. module: maintenance_portal
+#: model:ir.model.fields.selection,name:maintenance_portal.field_maintenance_request__well_feature__none
+msgid "Non-WELL Related"
+msgstr "非 WELL 相關"
