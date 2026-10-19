@@ -62,6 +62,7 @@
             </t>
 
             <div class="o_portal_my_home">
+                <span class="o_portal_doc_spinner d-none"/>
                 <div class="o_portal_category row g-2 mt-3">
                     <t t-call="portal.portal_docs_entry">
                         <t t-set="icon" t-value="'/maintenance_portal/static/src/img/equipment.svg'"/>
