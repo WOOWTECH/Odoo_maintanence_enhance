@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import logging
 from collections import OrderedDict
 from operator import itemgetter
 
@@ -7,7 +8,9 @@ from odoo import http, _
 from odoo.http import request
 from odoo.osv.expression import AND
 from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager
-from odoo.exceptions import AccessError, MissingError
+from odoo.exceptions import AccessError, MissingError, UserError
+
+_logger = logging.getLogger(__name__)
 
 
 class MaintenancePortal(CustomerPortal):
@@ -67,8 +70,12 @@ class MaintenancePortal(CustomerPortal):
         return [('portal_user_ids', 'in', request.env.user.id)]
 
     def _get_maintenance_request_domain(self):
-        """Domain for portal user's assigned maintenance requests"""
-        return [('portal_user_ids', 'in', request.env.user.id)]
+        """Domain for portal user's assigned maintenance requests.
+
+        Archived requests (``archive``) are hidden, like in the backend, and
+        are not reachable through the detail page either.
+        """
+        return [('portal_user_ids', 'in', request.env.user.id), ('archive', '=', False)]
 
     # ==================== Maintenance Dashboard ====================
 
@@ -170,10 +177,10 @@ class MaintenancePortal(CustomerPortal):
             return request.redirect('/my')
 
         # Get related maintenance requests for this equipment
-        requests = request.env['maintenance.request'].search([
-            ('equipment_id', '=', equipment_id),
-            ('portal_user_ids', 'in', request.env.user.id)
-        ], order='create_date desc', limit=10)
+        requests = request.env['maintenance.request'].search(AND([
+            [('equipment_id', '=', equipment_id)],
+            self._get_maintenance_request_domain(),
+        ]), order='create_date desc', limit=10)
 
         # Compute prev/next record URLs
         Equipment = request.env['maintenance.equipment']
@@ -331,16 +338,32 @@ class MaintenancePortal(CustomerPortal):
 
         action = kw.get('action')
 
-        # Handle status update actions
-        if action == 'in_progress':
-            maintenance_request.action_portal_set_in_progress()
-        elif action == 'done':
-            maintenance_request.action_portal_set_done()
+        # Handle status update actions. The model refuses transitions the
+        # portal does not offer (e.g. on a closed request, or a stale/double
+        # submission); the page is simply shown again with the current state.
+        try:
+            if action == 'in_progress':
+                maintenance_request.action_portal_set_in_progress()
+            elif action == 'done':
+                maintenance_request.action_portal_set_done()
+        except (AccessError, UserError) as e:
+            _logger.info(
+                "maintenance_portal: refused portal action %r on maintenance.request %s for user %s: %s",
+                action, request_id, request.env.user.id, e,
+            )
 
         return request.redirect(f'/my/maintenance-requests/{request_id}')
 
     def _document_check_access(self, model_name, document_id, access_token=None):
-        """Check if portal user has access to the document"""
+        """Check if portal user has access to the document.
+
+        For the maintenance models the user must be assigned to the record
+        (``portal_user_ids``), the record must be active (equipment) / not
+        archived (request), and the regular access rules must grant read
+        access (assignment and multi-company rules), so the detail pages
+        expose exactly what the ORM-based list pages expose. Only then is the
+        sudo record returned for rendering.
+        """
         # Only apply portal_user_ids check for maintenance models
         if model_name in ('maintenance.equipment', 'maintenance.request'):
             document = request.env[model_name].browse([document_id])
@@ -349,9 +372,18 @@ class MaintenancePortal(CustomerPortal):
             if not document_sudo:
                 raise MissingError(_("This document does not exist."))
 
+            # Archived documents are hidden from the portal
+            if model_name == 'maintenance.equipment' and not document_sudo.active:
+                raise MissingError(_("This document does not exist."))
+            if model_name == 'maintenance.request' and document_sudo.archive:
+                raise MissingError(_("This document does not exist."))
+
             # Check if user is in portal_user_ids
             if request.env.user.id not in document_sudo.portal_user_ids.ids:
                 raise AccessError(_("You do not have access to this document."))
+
+            # Record rules (assignment + multi-company) must allow reading it
+            document.check_access('read')
 
             return document_sudo
 

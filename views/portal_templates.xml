@@ -438,8 +438,12 @@
                                 <div class="col-12 col-md-6">
                                     <div t-if="mrequest.sudo().equipment_id">
                                         <strong>Equipment:</strong>
-                                        <a t-attf-href="/my/equipments/#{mrequest.sudo().equipment_id.id}"
-                                           t-esc="mrequest.sudo().equipment_id.name"/>
+                                        <!-- Only link to the equipment page when the vendor is assigned to that equipment -->
+                                        <t t-set="mrequest_equipment" t-value="mrequest.sudo().equipment_id"/>
+                                        <a t-if="mrequest_equipment.active and request.env.user in mrequest_equipment.portal_user_ids"
+                                           t-attf-href="/my/equipments/#{mrequest_equipment.id}"
+                                           t-esc="mrequest_equipment.name"/>
+                                        <span t-else="" t-esc="mrequest_equipment.name"/>
                                     </div>
                                     <div t-if="mrequest.sudo().equipment_id.category_id">
                                         <strong>Category:</strong>

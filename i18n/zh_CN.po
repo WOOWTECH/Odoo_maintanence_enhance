@@ -115,7 +115,7 @@ msgstr "全部"
 #: code:addons/maintenance_portal/models/maintenance_request.py:0
 #, python-format
 msgid "Status updated to \"%s\" by portal user."
-msgstr "外部供应商已将状态更新为"%s"。"
+msgstr "外部供应商已将状态更新为“%s”。"
 
 #. module: maintenance_portal
 #. odoo-python
@@ -424,3 +424,40 @@ msgstr "有外部供应商"
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_request_view_search_portal
 msgid "Portal User"
 msgstr "外部供应商"
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+msgid "This maintenance request is already closed and can no longer be updated from the portal."
+msgstr "此维保请求已结案，无法再从门户更新。"
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+msgid "Work can only be started on a maintenance request that is still in its first stage."
+msgstr "只有仍在第一个阶段的维保请求才能开始作业。"
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+msgid "Portal notes must be text."
+msgstr "门户备注必须是文本。"
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+#, python-format
+msgid "Portal notes are limited to %s characters."
+msgstr "门户备注最多 %s 个字符。"
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+msgid "This maintenance request is archived."
+msgstr "此维保请求已归档。"
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/portal_mail_guard.py:0
+msgid "Portal users can only follow or unfollow documents for themselves."
+msgstr "门户用户只能为自己关注或取消关注文档。"
