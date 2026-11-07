@@ -410,3 +410,40 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:maintenance_portal.maintenance_request_view_search_portal
 msgid "Portal User"
 msgstr ""
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+msgid "This maintenance request is already closed and can no longer be updated from the portal."
+msgstr ""
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+msgid "Work can only be started on a maintenance request that is still in its first stage."
+msgstr ""
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+msgid "Portal notes must be text."
+msgstr ""
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+#, python-format
+msgid "Portal notes are limited to %s characters."
+msgstr ""
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/maintenance_request.py:0
+msgid "This maintenance request is archived."
+msgstr ""
+
+#. module: maintenance_portal
+#. odoo-python
+#: code:addons/maintenance_portal/models/portal_mail_guard.py:0
+msgid "Portal users can only follow or unfollow documents for themselves."
+msgstr ""
