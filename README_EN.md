@@ -308,10 +308,14 @@ maintenance_portal/
 │       └── img/
 │           ├── equipment.svg       # Equipment icon (64x64 illustration)
 │           └── maintenance.svg     # Maintenance icon (64x64 illustration)
-├── tests/
-│   ├── test_portal_v1.py           # V1 unit tests (103 tests)
-│   ├── test_portal_v2.py           # V2 integration tests (56 tests)
-│   └── test_portal_v3.py           # V3 visual/RWD tests (80 tests)
+├── scripts/
+│   └── e2e/                        # External E2E scripts against a running instance (not Odoo tests; credentials from env vars, see e2e_config.py)
+│       ├── e2e_config.py
+│       ├── e2e_portal_v1.py        # V1 (103 checks)
+│       ├── e2e_portal_v2.py        # V2 integration (56 checks)
+│       └── e2e_portal_v3.py        # V3 visual/RWD (80 checks)
+├── tests/                          # Odoo tests (loaded with --test-enable)
+│   └── test_portal_security.py     # Portal stage transition / chatter access regression tests
 ├── views/
 │   ├── maintenance_equipment_views.xml  # Backend equipment view extension
 │   ├── maintenance_request_views.xml    # Backend request view extension

@@ -308,10 +308,14 @@ maintenance_portal/
 │       └── img/
 │           ├── equipment.svg       # 設備圖示（64x64 插畫風格）
 │           └── maintenance.svg     # 維修圖示（64x64 插畫風格）
-├── tests/
-│   ├── test_portal_v1.py           # V1 單元測試（103 項）
-│   ├── test_portal_v2.py           # V2 整合測試（56 項）
-│   └── test_portal_v3.py           # V3 視覺/RWD 測試（80 項）
+├── scripts/
+│   └── e2e/                        # 對執行中站台跑的外部 E2E 腳本（非 Odoo 測試；帳密讀環境變數，見 e2e_config.py）
+│       ├── e2e_config.py
+│       ├── e2e_portal_v1.py        # V1（103 項）
+│       ├── e2e_portal_v2.py        # V2 整合（56 項）
+│       └── e2e_portal_v3.py        # V3 視覺/RWD（80 項）
+├── tests/                          # Odoo 測試（--test-enable 載入）
+│   └── test_portal_security.py     # portal 狀態轉換、chatter 權限回歸測試
 ├── views/
 │   ├── maintenance_equipment_views.xml  # 後台設備視圖擴展
 │   ├── maintenance_request_views.xml    # 後台維修請求視圖擴展

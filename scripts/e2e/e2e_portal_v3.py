@@ -16,7 +16,7 @@ Covers gaps identified in professional QA audit:
   - Portal counter with no access rights (GAP-05)
   - _check_portal_access for internal users (GAP-10)
 
-Target: Odoo 18 at localhost:9070, DB=odoomaintain
+Target: Odoo 18 instance configured through scripts/e2e/e2e_config.py (environment variables)
 """
 import xmlrpc.client
 import requests
@@ -29,15 +29,16 @@ from datetime import datetime
 # ============================================================
 # Configuration
 # ============================================================
-URL = "http://localhost:9070"
-DB = "odoomaintain"
-ADMIN_USER = "admin"
-ADMIN_PASS = "admin"
-# Portal user credentials (updated)
-PORTAL_USER1_LOGIN = "portal"
-PORTAL_USER1_PASS = "portal"
-PORTAL_USER2_LOGIN = "vendor_test2@test.com"
-PORTAL_USER2_PASS = "vendor_test2_123"
+from e2e_config import (  # credentials come from the environment
+    URL,
+    DB,
+    ADMIN_USER,
+    ADMIN_PASS,
+    PORTAL_USER1_LOGIN,
+    PORTAL_USER1_PASS,
+    PORTAL_USER2_LOGIN,
+    PORTAL_USER2_PASS,
+)
 
 # ============================================================
 # Results Tracking

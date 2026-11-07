@@ -3,8 +3,9 @@
 Maintenance Portal V2 - Comprehensive Edge/Stress/Security Test Suite
 Covers 52 testing gaps from V1 analysis.
 ALL TEST DATA IS PRESERVED for manual inspection.
-Target: Odoo 18 at localhost:9070, DB=odoomaintain
+Target: Odoo 18 instance configured through scripts/e2e/e2e_config.py (environment variables)
 """
+import secrets
 import xmlrpc.client
 import requests
 import re
@@ -17,14 +18,19 @@ from datetime import datetime
 # ============================================================
 # Configuration
 # ============================================================
-URL = "http://localhost:9070"
-DB = "odoomaintain"
-ADMIN_USER = "admin"
-ADMIN_PASS = "admin"
-PORTAL_USER1_LOGIN = "vendor_test@test.com"
-PORTAL_USER1_PASS = "vendor_test_123"
-PORTAL_USER2_LOGIN = "vendor_test2@test.com"
-PORTAL_USER2_PASS = "vendor_test2_123"
+from e2e_config import (  # credentials come from the environment
+    URL,
+    DB,
+    ADMIN_USER,
+    ADMIN_PASS,
+    PORTAL_USER1_LOGIN,
+    PORTAL_USER1_PASS,
+    PORTAL_USER2_LOGIN,
+    PORTAL_USER2_PASS,
+)
+
+# Throwaway users created by this script get a random password per run
+EPHEMERAL_PASS = secrets.token_urlsafe(16)
 
 # Known IDs from V1 (will be verified at startup)
 EQUIPMENT_A_ID = 1
@@ -660,12 +666,12 @@ def phase_17(rpc, portal_group_id):
     team_id = rpc.search("maintenance.team", [], limit=1)[0]
 
     # Create revoke user
-    revoke_uid = create_portal_user(rpc, "V2 Revoke User", "v2_revoke@test.com", "v2_revoke_123", portal_group_id)
+    revoke_uid = create_portal_user(rpc, "V2 Revoke User", "v2_revoke@test.com", EPHEMERAL_PASS, portal_group_id)
     rpc.write("maintenance.equipment", [EQUIPMENT_A_ID], {"portal_user_ids": [(4, revoke_uid)]})
 
     # 17.1: Admin removes portal assignment during active session
     h = HTTP(URL, DB)
-    h.login("v2_revoke@test.com", "v2_revoke_123")
+    h.login("v2_revoke@test.com", EPHEMERAL_PASS)
     try:
         r = h.get(f"/my/equipments/{EQUIPMENT_A_ID}")
         if r.status_code != 200:
@@ -689,7 +695,7 @@ def phase_17(rpc, portal_group_id):
         log_fail("17.1 access revocation", str(e))
 
     # Create deactivate user
-    deact_uid = create_portal_user(rpc, "V2 Deactivate User", "v2_deactivate@test.com", "v2_deactivate_123", portal_group_id)
+    deact_uid = create_portal_user(rpc, "V2 Deactivate User", "v2_deactivate@test.com", EPHEMERAL_PASS, portal_group_id)
     deact_req_id = find_or_create(rpc, "maintenance.request", "V2_Deactivate_Request", {
         "portal_user_ids": [(4, deact_uid)], "maintenance_team_id": team_id,
     })
@@ -697,7 +703,7 @@ def phase_17(rpc, portal_group_id):
 
     # 17.2: Deactivate user while session alive
     hd = HTTP(URL, DB)
-    hd.login("v2_deactivate@test.com", "v2_deactivate_123")
+    hd.login("v2_deactivate@test.com", EPHEMERAL_PASS)
     try:
         r = hd.get("/my/maintenance-requests")
         if r.status_code != 200:
@@ -723,7 +729,7 @@ def phase_17(rpc, portal_group_id):
         except: pass
 
     # Create group change user
-    gc_uid = create_portal_user(rpc, "V2 GroupChange User", "v2_groupchange@test.com", "v2_gc_123", portal_group_id)
+    gc_uid = create_portal_user(rpc, "V2 GroupChange User", "v2_groupchange@test.com", EPHEMERAL_PASS, portal_group_id)
     gc_req_id = find_or_create(rpc, "maintenance.request", "V2_GroupChange_Request", {
         "portal_user_ids": [(4, gc_uid)], "maintenance_team_id": team_id,
     })
@@ -731,7 +737,7 @@ def phase_17(rpc, portal_group_id):
 
     # 17.3: Change user group from portal to internal
     hg = HTTP(URL, DB)
-    hg.login("v2_groupchange@test.com", "v2_gc_123")
+    hg.login("v2_groupchange@test.com", EPHEMERAL_PASS)
     try:
         internal_group = rpc.search("res.groups", [("category_id.name", "=", "User types"), ("name", "ilike", "Internal")])
         if internal_group:
@@ -897,9 +903,9 @@ def phase_19(rpc, portal_group_id):
         log_fail("19.2 page=-1", str(e))
 
     # 19.3: Zero records user
-    empty_uid = create_portal_user(rpc, "V2 Empty User", "v2_empty@test.com", "v2_empty_123", portal_group_id)
+    empty_uid = create_portal_user(rpc, "V2 Empty User", "v2_empty@test.com", EPHEMERAL_PASS, portal_group_id)
     he = HTTP(URL, DB)
-    he.login("v2_empty@test.com", "v2_empty_123")
+    he.login("v2_empty@test.com", EPHEMERAL_PASS)
     try:
         r = he.get("/my/equipments")
         if r.status_code == 200:

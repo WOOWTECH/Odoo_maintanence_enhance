@@ -2,7 +2,7 @@
 """
 Comprehensive Test Suite for Maintenance Portal Module
 Tests: Installation, Backend, Portal, Security, Edge Cases, i18n
-Target: Odoo 18 instance at localhost:9070
+Target: Odoo 18 instance configured through scripts/e2e/e2e_config.py (environment variables)
 """
 import xmlrpc.client
 import requests
@@ -16,10 +16,16 @@ from urllib.parse import urljoin
 # ============================================================
 # Configuration
 # ============================================================
-ODOO_URL = "http://localhost:9070"
-DB_NAME = "odoomaintain"  # From odoo.conf
-ADMIN_USER = "admin"
-ADMIN_PASS = "admin"
+from e2e_config import (  # credentials come from the environment
+    URL as ODOO_URL,
+    DB as DB_NAME,
+    ADMIN_USER,
+    ADMIN_PASS,
+    PORTAL_USER1_LOGIN,
+    PORTAL_USER1_PASS,
+    PORTAL_USER2_LOGIN,
+    PORTAL_USER2_PASS,
+)
 
 # XML-RPC endpoints
 COMMON_EP = f"{ODOO_URL}/xmlrpc/2/common"
@@ -394,18 +400,18 @@ def create_test_data(rpc):
         # Check if test portal user already exists
         existing = rpc.search_read(
             "res.users",
-            [("login", "=", "vendor_test@test.com")],
+            [("login", "=", PORTAL_USER1_LOGIN)],
             fields=["id", "login"],
         )
         if existing:
             data["portal_user_id"] = existing[0]["id"]
-            rpc.write("res.users", [data["portal_user_id"]], {"password": "vendor_test_123"})
+            rpc.write("res.users", [data["portal_user_id"]], {"password": PORTAL_USER1_PASS})
             print(f"  Portal user already exists: ID {data['portal_user_id']} (password reset)")
         else:
             # Create partner first
             partner_id = rpc.create("res.partner", {
                 "name": "Test Vendor (Portal)",
-                "email": "vendor_test@test.com",
+                "email": PORTAL_USER1_LOGIN,
                 "company_type": "person",
             })
             # Create portal user
@@ -415,8 +421,8 @@ def create_test_data(rpc):
 
             user_id = rpc.create("res.users", {
                 "name": "Test Vendor (Portal)",
-                "login": "vendor_test@test.com",
-                "password": "vendor_test_123",
+                "login": PORTAL_USER1_LOGIN,
+                "password": PORTAL_USER1_PASS,
                 "partner_id": partner_id,
                 "groups_id": [(6, 0, portal_group)] if portal_group else [],
             })
@@ -426,23 +432,23 @@ def create_test_data(rpc):
         # Create second portal user for access control tests
         existing2 = rpc.search_read(
             "res.users",
-            [("login", "=", "vendor_test2@test.com")],
+            [("login", "=", PORTAL_USER2_LOGIN)],
             fields=["id"],
         )
         if existing2:
             data["portal_user2_id"] = existing2[0]["id"]
-            rpc.write("res.users", [data["portal_user2_id"]], {"password": "vendor_test2_123"})
+            rpc.write("res.users", [data["portal_user2_id"]], {"password": PORTAL_USER2_PASS})
         else:
             partner2_id = rpc.create("res.partner", {
                 "name": "Test Vendor 2 (Portal)",
-                "email": "vendor_test2@test.com",
+                "email": PORTAL_USER2_LOGIN,
                 "company_type": "person",
             })
             portal_group = rpc.search("res.groups", [("category_id.name", "=", "User types"), ("name", "ilike", "Portal")])
             user2_id = rpc.create("res.users", {
                 "name": "Test Vendor 2 (Portal)",
-                "login": "vendor_test2@test.com",
-                "password": "vendor_test2_123",
+                "login": PORTAL_USER2_LOGIN,
+                "password": PORTAL_USER2_PASS,
                 "groups_id": [(6, 0, portal_group)] if portal_group else [],
                 "partner_id": partner2_id,
             })
@@ -702,7 +708,7 @@ def test_portal_access_control(data):
 
     # Connect as portal user 1
     try:
-        portal_rpc = OdooRPC(ODOO_URL, DB_NAME, "vendor_test@test.com", "vendor_test_123")
+        portal_rpc = OdooRPC(ODOO_URL, DB_NAME, PORTAL_USER1_LOGIN, PORTAL_USER1_PASS)
         log_pass("Portal user 1 can authenticate via XML-RPC")
     except Exception as e:
         log_fail("Portal user 1 authentication", str(e))
@@ -853,7 +859,7 @@ def test_portal_http(data):
     # Login as portal user
     session = OdooHTTPSession(ODOO_URL, DB_NAME)
     try:
-        resp = session.login("vendor_test@test.com", "vendor_test_123")
+        resp = session.login(PORTAL_USER1_LOGIN, PORTAL_USER1_PASS)
         if resp.status_code == 200 and "/my" in resp.url:
             log_pass("Portal user HTTP login successful")
         elif resp.status_code == 200:
@@ -1118,7 +1124,7 @@ def test_edge_cases(rpc, data):
 
     # Test: Non-existent equipment page
     session = OdooHTTPSession(ODOO_URL, DB_NAME)
-    session.login("vendor_test@test.com", "vendor_test_123")
+    session.login(PORTAL_USER1_LOGIN, PORTAL_USER1_PASS)
 
     try:
         resp = session.get("/my/equipments/999999")
@@ -1376,7 +1382,7 @@ def test_security(data):
     # Test: Portal user 2 trying to update user 1's request
     session2 = OdooHTTPSession(ODOO_URL, DB_NAME)
     try:
-        session2.login("vendor_test2@test.com", "vendor_test2_123")
+        session2.login(PORTAL_USER2_LOGIN, PORTAL_USER2_PASS)
         resp = session2.post(
             f"/my/maintenance-requests/{data['request_a_id']}/update",
             data={"action": "done", "notes": "Unauthorized update attempt"},
@@ -1427,7 +1433,7 @@ def test_i18n(rpc, data):
     log_section("Phase 10: i18n / Translation Tests")
 
     session = OdooHTTPSession(ODOO_URL, DB_NAME)
-    session.login("vendor_test@test.com", "vendor_test_123")
+    session.login(PORTAL_USER1_LOGIN, PORTAL_USER1_PASS)
 
     # Check if zh_TW translations are loaded
     try:
@@ -1587,7 +1593,7 @@ def test_bulk_operations(rpc, data):
 
     # Test pagination
     session = OdooHTTPSession(ODOO_URL, DB_NAME)
-    session.login("vendor_test@test.com", "vendor_test_123")
+    session.login(PORTAL_USER1_LOGIN, PORTAL_USER1_PASS)
 
     try:
         # Page 1
